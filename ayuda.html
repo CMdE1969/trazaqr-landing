@@ -369,7 +369,6 @@ nav {
   <img src="/img/Cap-2-1.png" alt="Documento emitido - datos del cargador y transportista" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
   <img src="/img/Cap-2-2.png" alt="Documento emitido - fechas, vehículo y hash SHA-256" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
 </div>
-        </div>
 
         <h3 style="font-size:14px;font-weight:600;color:var(--ink);margin:1.25rem 0 .75rem">Campos obligatorios por responsabilidad</h3>
         <table class="tabla-campos">
@@ -388,7 +387,6 @@ nav {
           </tbody>
         </table>
 
-      </div>
     </section>
 
     <!-- PROCESO 2 -->
@@ -452,15 +450,12 @@ nav {
 <div class="captura">
   <img src="/img/Cap-2-2.png" alt="Confirmación de entrega">
 </div>
-</div>
-        </div>
 
         <div class="nota-aviso">
           <strong>GPS y permisos</strong>
           La app solicita permiso de ubicación al iniciar transporte, registrar incidencias y confirmar entrega. Si el conductor rechaza el permiso, la acción se registra igualmente pero sin coordenadas.
         </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 3 -->
@@ -515,10 +510,7 @@ nav {
   <img src="/img/Cap-3-1.png" alt="Panel de verificación">
 </div>
         </div>
-</div>
-        </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 4 -->
@@ -577,9 +569,7 @@ nav {
 <div class="captura">
   <img src="/img/Cap-4-2.png" alt="Modal del QR de verificación">
 </div>
-        </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 5 -->
@@ -644,13 +634,10 @@ nav {
 <div class="captura">
   <img src="/img/Cap-5-3.png" alt="Email de alerta recibido">
 </div>
-        </div>
 <div class="captura">
   <img src="/img/Cap-5-4.png" alt="Historial de alertas enviadas">
 </div>
-        </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 6 -->
@@ -709,16 +696,14 @@ nav {
 <div class="captura">
   <img src="/img/Cap-6-2.png" alt="PDF generado">
 </div>
-</div>
-        </div>
 
         <div class="nota">
           <strong>Conservación obligatoria</strong>
           La normativa (art. 9 Orden FOM/2861/2012) exige conservar el DCD durante al menos 1 año desde la entrega. TrazaQR calcula automáticamente la fecha de archivo de cada expedición y la muestra en el detalle.
         </div>
 
-      </div>
     </section>
+  </div> <!-- /layout -->
 
     <!-- FOOTER -->
     <div style="text-align:center;padding:2rem 0;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:1rem">
@@ -727,26 +712,4 @@ nav {
       · <a href="https://trazaqr.com" style="color:var(--blue)">trazaqr.com</a>
     </div>
 
-  </main>
-</div>
-
-<script>
-// Resaltar enlace activo en el sidebar al hacer scroll
-const secciones = document.querySelectorAll('.proceso')
-const links     = document.querySelectorAll('.sidebar-link[href^="#"]')
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      links.forEach(l => l.classList.remove('active'))
-      const link = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`)
-      if (link) link.classList.add('active')
-    }
-  })
-}, { rootMargin: '-20% 0px -70% 0px' })
-
-secciones.forEach(s => observer.observe(s))
-</script>
-
-</body>
-</html>
+  </m
