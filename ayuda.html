@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayuda — TrazaQR Transporte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:       #0C447C;
+  --blue-mid:   #185FA5;
+  --blue-light: #E6F1FB;
+  --ink:        #0A1628;
+  --cream:      #F7F5F0;
+  --white:      #FFFFFF;
+  --text:       #1E2B3C;
+  --muted:      #6B7B8D;
+  --border:     rgba(12,68,124,0.12);
+  --gold:       #C9973A;
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body:    'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-body);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ────────────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(247,245,240,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw; height: 56px;
+  display: flex; align-items: center; gap: 16px;
+}
+.nav-logo {
+  font-family: var(--ff-display); font-size: 16px; font-weight: 600;
+  color: var(--blue); text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-logo-mark {
+  width: 24px; height: 24px; background: var(--blue); border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: white;
+}
+.nav-back {
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  margin-left: auto; display: flex; align-items: center; gap: 4px;
+}
+.nav-back:hover { color: var(--blue); }
+
+/* ── LAYOUT ─────────────────────────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  align-items: start;
+}
+
+/* ── SIDEBAR ────────────────────────────────────────────────── */
+.sidebar {
+  position: sticky; top: 72px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-right: 2rem;
+}
+
+.sidebar-title {
+  font-size: 11px; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px; border-radius: 7px;
+  text-decoration: none; font-size: 13px; color: var(--text);
+  transition: all .15s; margin-bottom: 2px;
+}
+.sidebar-link:hover { background: var(--blue-light); color: var(--blue); }
+.sidebar-link.active { background: var(--blue-light); color: var(--blue); font-weight: 500; }
+
+.sidebar-num {
+  width: 20px; height: 20px; border-radius: 5px;
+  background: var(--blue); color: white;
+  font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-divider {
+  height: 1px; background: var(--border); margin: 10px 0;
+}
+
+/* ── CONTENIDO ──────────────────────────────────────────────── */
+.content { min-width: 0; }
+
+/* Hero de ayuda */
+.help-hero {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+  border-radius: 16px; padding: 2rem 2.5rem;
+  margin-bottom: 2rem; color: white;
+}
+.help-hero h1 {
+  font-family: var(--ff-display); font-size: 28px;
+  font-weight: 600; margin-bottom: 8px; letter-spacing: -.02em;
+}
+.help-hero p { color: rgba(255,255,255,0.75); font-size: 15px; line-height: 1.6; }
+
+/* Sección de proceso */
+.proceso {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  scroll-margin-top: 80px;
+}
+
+.proceso-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 14px;
+}
+
+.proceso-num {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: var(--blue); color: white;
+  font-family: var(--ff-display); font-size: 18px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.proceso-header h2 {
+  font-family: var(--ff-display); font-size: 20px;
+  font-weight: 600; color: var(--ink); letter-spacing: -.01em;
+}
+.proceso-header p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.proceso-body { padding: 1.5rem 2rem; }
+
+/* Pasos numerados */
+.pasos-lista { list-style: none; counter-reset: paso; margin-bottom: 1.5rem; }
+.paso-item {
+  counter-increment: paso;
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 12px 0; border-bottom: 1px solid #F0F0EE;
+}
+.paso-item:last-child { border-bottom: none; }
+.paso-item::before {
+  content: counter(paso);
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--blue-light); color: var(--blue);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.paso-item strong { display: block; font-size: 14px; color: var(--ink); margin-bottom: 3px; }
+.paso-item span { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* Nota informativa */
+.nota {
+  background: var(--blue-light);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 13px; color: var(--blue);
+  margin-bottom: 1.25rem; line-height: 1.5;
+}
+.nota strong { display: block; margin-bottom: 2px; }
+
+.nota-aviso {
+  background: #FAEEDA;
+  border-left: 3px solid #C9973A;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 13px; color: #633806;
+  margin-bottom: 1.25rem; line-height: 1.5;
+}
+
+/* Placeholder de captura */
+.captura {
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  background: #FAFAF8;
+  padding: 2rem;
+  text-align: center;
+  margin: 1.25rem 0;
+  cursor: pointer;
+  transition: all .2s;
+}
+.captura:hover { border-color: var(--blue); background: var(--blue-light); }
+.captura-icon { font-size: 28px; margin-bottom: 8px; opacity: .4; }
+.captura-label { font-size: 12px; color: var(--muted); }
+.captura-label strong { display: block; font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* Captura real (cuando se añade una imagen) */
+.captura img {
+  width: 100%; border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(12,68,124,0.08);
+}
+
+/* Tabla de campos */
+.tabla-campos {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px; margin-bottom: 1.25rem;
+}
+.tabla-campos th {
+  background: #F7F7F5; color: var(--muted); font-weight: 500;
+  padding: 8px 12px; text-align: left; font-size: 11px;
+  text-transform: uppercase; letter-spacing: .05em;
+  border-bottom: 1px solid var(--border);
+}
+.tabla-campos td {
+  padding: 8px 12px; border-bottom: 1px solid #F0F0EE;
+  vertical-align: top;
+}
+.badge-c { background: #E1F5EE; color: #085041; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+.badge-t { background: #E6F1FB; color: #0C447C; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+.badge-o { background: #F1EFE8; color: #5F5E5A; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; margin-right: 0; margin-bottom: 1.5rem; }
+  .proceso-body { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://app.trazaqr.com" class="nav-logo">
+    <img src="/logo.jpg" alt="TrazaQR" style="width:28px;height:28px;border-radius:6px;object-fit:cover;">
+    TrazaQR Transporte
+  </a>
+  <a href="https://app.trazaqr.com" class="nav-back">← Volver a la app</a>
+</nav>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Guía de uso</div>
+
+    <a href="#proceso-1" class="sidebar-link active">
+      <div class="sidebar-num">1</div>
+      Crear una expedición
+    </a>
+    <a href="#proceso-2" class="sidebar-link">
+      <div class="sidebar-num">2</div>
+      El conductor y el QR
+    </a>
+    <a href="#proceso-3" class="sidebar-link">
+      <div class="sidebar-num">3</div>
+      Verificación de inspección
+    </a>
+    <a href="#proceso-4" class="sidebar-link">
+      <div class="sidebar-num">4</div>
+      Panel de expediciones
+    </a>
+    <a href="#proceso-5" class="sidebar-link">
+      <div class="sidebar-num">5</div>
+      Alertas de retraso
+    </a>
+    <a href="#proceso-6" class="sidebar-link">
+      <div class="sidebar-num">6</div>
+      Detalle y exportación
+    </a>
+
+    <div class="sidebar-divider"></div>
+
+    <a href="mailto:info@trazaqr.com" class="sidebar-link" style="color: var(--muted)">
+      ✉ Contactar soporte
+    </a>
+  </aside>
+
+  <!-- CONTENIDO -->
+  <main class="content">
+
+    <div class="help-hero">
+      <h1>Centro de ayuda</h1>
+      <p>Guía completa para gestionar el Documento de Control Digital (DCD) conforme a la Orden FOM/2861/2012 modificada por la Orden TRM/282/2026. Obligatorio desde el 5 de octubre de 2026.</p>
+    </div>
+
+    <!-- PROCESO 1 -->
+    <section class="proceso" id="proceso-1">
+      <div class="proceso-header">
+        <div class="proceso-num">1</div>
+        <div>
+          <h2>Crear y emitir una expedición</h2>
+          <p>Cómo generar el Documento de Control Digital antes de iniciar el transporte</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <div class="nota">
+          <strong>¿Cuándo debo generar el documento?</strong>
+          El DCD debe existir en formato digital <strong>antes del inicio del transporte</strong>. Si el documento no está emitido cuando el vehículo sale, cargador y transportista responden solidariamente.
+        </div>
+
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Accede a "+ Nueva expedición"</strong>
+              <span>Desde el menú superior de la app o desde el botón en el panel de expediciones.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Rellena los datos del cargador contractual</strong>
+              <span>Nombre o razón social, NIF/CIF y domicilio fiscal. Estos campos son responsabilidad del cargador (art. 6.a).</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Introduce el transportista efectivo</strong>
+              <span>El titular de la autorización de transporte — nombre y NIF (art. 6.b). Puede ser diferente al propietario del vehículo.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Indica origen y destino</strong>
+              <span>Dirección completa del lugar de carga y del lugar de descarga (art. 6.c).</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Describe la mercancía y el peso</strong>
+              <span>Naturaleza de la mercancía y peso en kg (art. 6.d). Si el peso exacto no es determinable al cargar, usa el campo de magnitud alternativa (ej: "24 palés").</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Introduce fechas y matrícula</strong>
+              <span>Fecha de carga, fecha prevista de descarga y matrícula del vehículo (art. 6.f-g). Si es conjunto articulado, activa el checkbox para añadir la matrícula del semirremolque.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Pulsa "Emitir documento"</strong>
+              <span>El sistema calcula el hash SHA-256, genera el QR único y registra el timestamp de emisión. El documento queda disponible inmediatamente para el conductor.</span>
+            </div>
+          </li>
+        </ol>
+
+<div class="captura" style="display:flex; gap:8px; overflow-x:auto; border:none; background:none; padding:0;">
+  <img src="/img/Cap-1-1.png" alt="Formulario de nueva expedición - Cargador contractual" style="width:24%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
+  <img src="/img/Cap-1-2.png" alt="Formulario de nueva expedición - Origen y destino" style="width:24%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
+  <img src="/img/Cap-1-3.png" alt="Formulario de nueva expedición - Fechas y vehículo" style="width:24%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
+  <img src="/img/Cap-1-4.png" alt="Formulario de nueva expedición - Observaciones" style="width:24%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
+</div>
+        </div>
+<div class="captura" style="display:flex; gap:8px; overflow-x:auto; border:none; background:none; padding:0;">
+  <img src="/img/Cap-2-1.png" alt="Documento emitido - datos del cargador y transportista" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
+  <img src="/img/Cap-2-2.png" alt="Documento emitido - fechas, vehículo y hash SHA-256" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
+</div>
+        </div>
+
+        <h3 style="font-size:14px;font-weight:600;color:var(--ink);margin:1.25rem 0 .75rem">Campos obligatorios por responsabilidad</h3>
+        <table class="tabla-campos">
+          <thead>
+            <tr><th>Apartado</th><th>Campo</th><th>Responsable</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>art. 6.a</td><td>Nombre, NIF y domicilio del cargador</td><td><span class="badge-c">Cargador</span></td></tr>
+            <tr><td>art. 6.b</td><td>Nombre y NIF del transportista</td><td><span class="badge-c">Cargador</span></td></tr>
+            <tr><td>art. 6.c</td><td>Origen y destino</td><td><span class="badge-c">Cargador</span></td></tr>
+            <tr><td>art. 6.d</td><td>Descripción y peso de la mercancía</td><td><span class="badge-c">Cargador</span></td></tr>
+            <tr><td>art. 6.e</td><td>Autorización especial (si aplica)</td><td><span class="badge-t">Transportista</span></td></tr>
+            <tr><td>art. 6.f</td><td>Fechas de carga y descarga</td><td><span class="badge-t">Transportista</span></td></tr>
+            <tr><td>art. 6.g</td><td>Matrícula del vehículo</td><td><span class="badge-t">Transportista</span></td></tr>
+            <tr><td>art. 6.h</td><td>Observaciones</td><td><span class="badge-o">Opcional</span></td></tr>
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 2 -->
+    <section class="proceso" id="proceso-2">
+      <div class="proceso-header">
+        <div class="proceso-num">2</div>
+        <div>
+          <h2>El conductor y el QR</h2>
+          <p>Cómo el conductor accede al documento desde el móvil sin instalar nada</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <div class="nota">
+          <strong>Sin app. Sin registro. Sin papel.</strong>
+          El conductor solo necesita escanear el QR con la cámara del móvil. No hay que instalar ninguna aplicación.
+        </div>
+
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>El cargador comparte el QR con el conductor</strong>
+              <span>Desde la pantalla de confirmación de emisión, el cargador puede mostrar el QR en pantalla, enviarlo por WhatsApp o imprimir la página.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>El conductor escanea el QR</strong>
+              <span>Con la cámara del móvil — iOS o Android — apuntando al código. Se abre automáticamente el navegador con la vista del documento.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>El conductor introduce su nombre</strong>
+              <span>Opcional pero recomendado — queda registrado en el historial de eventos del documento.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Pulsa "Iniciar transporte"</strong>
+              <span>El sistema registra el evento con timestamp y coordenadas GPS del dispositivo. El estado pasa a "En tránsito".</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Registra incidencias durante el trayecto</strong>
+              <span>Si ocurre algo (daño en mercancía, retraso, cambio de vehículo), el conductor pulsa "Registrar incidencia" y selecciona el tipo. Queda registrado con timestamp y GPS.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Confirma la entrega en destino</strong>
+              <span>Al llegar, pulsa "Confirmar entrega en destino". El sistema registra la hora real de entrega y cierra el ciclo del documento.</span>
+            </div>
+          </li>
+        </ol>
+<div class="captura">
+  <img src="/img/Cap-2-1.png" alt="Vista del conductor en móvil">
+</div>
+        </div>
+<div class="captura">
+  <img src="/img/Cap-2-2.png" alt="Confirmación de entrega">
+</div>
+</div>
+        </div>
+
+        <div class="nota-aviso">
+          <strong>GPS y permisos</strong>
+          La app solicita permiso de ubicación al iniciar transporte, registrar incidencias y confirmar entrega. Si el conductor rechaza el permiso, la acción se registra igualmente pero sin coordenadas.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 3 -->
+    <section class="proceso" id="proceso-3">
+      <div class="proceso-header">
+        <div class="proceso-num">3</div>
+        <div>
+          <h2>Verificación de inspección</h2>
+          <p>Cómo la DGT o la Guardia Civil de Tráfico verifica el documento en carretera</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <div class="nota">
+          <strong>Sin registro. Sin login. Sin repositorio ministerial.</strong>
+          El agente inspector solo necesita el código DCD o escanear el QR. El Ministerio de Transportes confirmó que no es necesario registrar el repositorio en ningún sistema oficial.
+        </div>
+
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>El inspector accede a la URL de verificación</strong>
+              <span>Desde el QR del conductor o accediendo directamente a <strong>app.trazaqr.com/verificar</strong>.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Introduce el código DCD</strong>
+              <span>Formato DCD-XXXX-XXXXX. El conductor puede dictarlo o mostrarlo en pantalla.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Pulsa "Verificar"</strong>
+              <span>El sistema muestra inmediatamente todos los datos del documento, el historial de eventos y la verificación del hash SHA-256.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>El inspector comprueba los datos</strong>
+              <span>Verifica que los datos del documento coinciden con el vehículo y la mercancía. La vista muestra claramente qué campos son responsabilidad del cargador y cuáles del transportista.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Registro opcional de la inspección</strong>
+              <span>El inspector puede introducir su nombre o número de agente para dejar constancia de la verificación en el historial del documento.</span>
+            </div>
+          </li>
+        </ol>
+<div class="captura">
+  <img src="/img/Cap-3-1.png" alt="Panel de verificación">
+</div>
+        </div>
+</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 4 -->
+    <section class="proceso" id="proceso-4">
+      <div class="proceso-header">
+        <div class="proceso-num">4</div>
+        <div>
+          <h2>Panel de expediciones</h2>
+          <p>Cómo gestionar, filtrar y exportar el historial de documentos</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Vista general con métricas</strong>
+              <span>El panel muestra en tiempo real el total de expediciones, cuántas están emitidas, en tránsito, entregadas e incidencias acumuladas.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Filtrar expediciones</strong>
+              <span>Usa los filtros de búsqueda libre (código, empresa, matrícula), estado, matrícula y rango de fechas de carga. Pulsa "Filtrar" para aplicar.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Ordenar columnas</strong>
+              <span>Haz clic en cualquier cabecera de columna para ordenar ascendente o descendente. La flecha ↑↓ indica la columna activa.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Reordenar y redimensionar columnas</strong>
+              <span>Arrastra el icono ⠿ de una cabecera para reordenar columnas. Arrastra el borde derecho de una cabecera para cambiar su anchura.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Ver el QR de una expedición</strong>
+              <span>Pulsa el botón "QR" en la fila para ver y compartir el código QR de verificación. Usa "↗" para abrir la vista pública en una nueva pestaña.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Exportar a CSV</strong>
+              <span>Pulsa "↓ Exportar CSV" para descargar todas las expediciones visibles (con los filtros aplicados) en formato CSV compatible con Excel.</span>
+            </div>
+          </li>
+        </ol>
+<div class="captura">
+  <img src="/img/Cap-4-1.png" alt="Panel de expediciones con métricas y filtros">
+</div>
+        </div>
+<div class="captura">
+  <img src="/img/Cap-4-2.png" alt="Modal del QR de verificación">
+</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 5 -->
+    <section class="proceso" id="proceso-5">
+      <div class="proceso-header">
+        <div class="proceso-num">5</div>
+        <div>
+          <h2>Alertas de retraso</h2>
+          <p>Cómo configurar notificaciones automáticas por email cuando una entrega se retrasa</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <div class="nota">
+          <strong>¿Cómo funciona?</strong>
+          El sistema comprueba cada hora si hay expediciones en estado "Emitido" o "En tránsito" que hayan superado la fecha de descarga prevista en más horas de las configuradas. Si las hay, envía un email automático a los destinatarios configurados.
+        </div>
+
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Accede a "Alertas" en el menú</strong>
+              <span>Desde la barra de navegación superior de la app.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Activa las alertas</strong>
+              <span>El toggle de "Alertas activas" debe estar en verde. Si está gris, las alertas están desactivadas para toda la empresa.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Añade destinatarios</strong>
+              <span>Introduce el email de cada persona que debe recibir las alertas y pulsa "+ Añadir". Puedes añadir varios emails (responsable de operaciones, director logístico, etc.).</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Configura el umbral de retraso</strong>
+              <span>Horas de retraso sobre la fecha prevista antes de enviar la primera alerta. Por defecto: 2 horas. Recomendado: entre 1 y 4 horas según tu operativa.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Configura la frecuencia de reenvío</strong>
+              <span>Para evitar spam, el sistema no repite la alerta de la misma expedición hasta que pasen las horas configuradas. Por defecto: 24 horas.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Guarda y prueba</strong>
+              <span>Pulsa "Guardar configuración" y luego "▷ Ejecutar ahora (test)" para verificar que el email llega correctamente.</span>
+            </div>
+          </li>
+        </ol>
+
+<div class="captura">
+  <img src="/img/Cap-5-1.png" alt="Panel de configuración de alertas">
+</div>
+        </div>
+<div class="captura">
+  <img src="/img/Cap-5-3.png" alt="Email de alerta recibido">
+</div>
+        </div>
+<div class="captura">
+  <img src="/img/Cap-5-4.png" alt="Historial de alertas enviadas">
+</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 6 -->
+    <section class="proceso" id="proceso-6">
+      <div class="proceso-header">
+        <div class="proceso-num">6</div>
+        <div>
+          <h2>Detalle de expedición y exportación PDF</h2>
+          <p>Cómo ver el historial completo de una expedición y descargar el documento</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Abre el detalle de una expedición</strong>
+              <span>Haz clic en cualquier fila del panel de expediciones, o pulsa el botón "Ver" en la columna de acciones.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Revisa los datos del documento</strong>
+              <span>Todos los campos del art. 6 organizados por sección con indicación del responsable legal de cada bloque (cargador o transportista).</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Consulta el historial de eventos</strong>
+              <span>Línea temporal con todos los eventos: emisión, inicio de transporte, incidencias, entrega e inspecciones. Cada evento incluye timestamp y coordenadas GPS si están disponibles.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Verifica la integridad del documento</strong>
+              <span>El hash SHA-256 calculado al emitir garantiza que el documento no ha sido modificado. Se muestra en la cabecera del detalle.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Descarga el PDF</strong>
+              <span>Pulsa "↓ Descargar PDF" para generar e imprimir el documento completo. El PDF incluye todos los campos del art. 6, el historial de eventos y el QR de verificación.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Comparte la URL de verificación</strong>
+              <span>Pulsa "⬡ Copiar URL verificación" para copiar el enlace público del documento. Útil para enviar a clientes o adjuntar en emails.</span>
+            </div>
+          </li>
+        </ol>
+<div class="captura">
+  <img src="/img/Cap-6-1.png" alt="Vista de detalle de expedición">
+</div>
+</div>
+<div class="captura">
+  <img src="/img/Cap-6-2.png" alt="PDF generado">
+</div>
+</div>
+        </div>
+
+        <div class="nota">
+          <strong>Conservación obligatoria</strong>
+          La normativa (art. 9 Orden FOM/2861/2012) exige conservar el DCD durante al menos 1 año desde la entrega. TrazaQR calcula automáticamente la fecha de archivo de cada expedición y la muestra en el detalle.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div style="text-align:center;padding:2rem 0;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:1rem">
+      ¿No encuentras lo que buscas? Escríbenos a
+      <a href="mailto:info@trazaqr.com" style="color:var(--blue)">info@trazaqr.com</a>
+      · <a href="https://trazaqr.com" style="color:var(--blue)">trazaqr.com</a>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Resaltar enlace activo en el sidebar al hacer scroll
+const secciones = document.querySelectorAll('.proceso')
+const links     = document.querySelectorAll('.sidebar-link[href^="#"]')
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'))
+      const link = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`)
+      if (link) link.classList.add('active')
+    }
+  })
+}, { rootMargin: '-20% 0px -70% 0px' })
+
+secciones.forEach(s => observer.observe(s))
+</script>
+
+</body>
+</html>
