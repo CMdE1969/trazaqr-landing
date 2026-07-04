@@ -194,25 +194,23 @@ nav {
   margin-bottom: 1.25rem; line-height: 1.5;
 }
 
-/* Placeholder de captura */
+/* Marco de captura */
 .captura {
-  border: 2px dashed var(--border);
+  border: 1px solid var(--border);
   border-radius: 10px;
   background: #FAFAF8;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   margin: 1.25rem 0;
-  cursor: pointer;
-  transition: all .2s;
 }
-.captura:hover { border-color: var(--blue); background: var(--blue-light); }
 .captura-icon { font-size: 28px; margin-bottom: 8px; opacity: .4; }
 .captura-label { font-size: 12px; color: var(--muted); }
 .captura-label strong { display: block; font-size: 13px; color: var(--text); margin-bottom: 3px; }
 
-/* Captura real (cuando se añade una imagen) */
+/* Imagen a tamaño natural, con tope */
 .captura img {
-  width: 100%; border-radius: 8px;
+  width: auto; max-width: 100%; max-height: 480px;
+  border-radius: 8px;
   border: 1px solid var(--border);
   box-shadow: 0 4px 16px rgba(12,68,124,0.08);
 }
@@ -371,7 +369,6 @@ nav {
   <img src="/img/Cap-2-1.png" alt="Documento emitido - datos del cargador y transportista" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
   <img src="/img/Cap-2-2.png" alt="Documento emitido - fechas, vehículo y hash SHA-256" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
 </div>
-        </div>
 
         <h3 style="font-size:14px;font-weight:600;color:var(--ink);margin:1.25rem 0 .75rem">Campos obligatorios por responsabilidad</h3>
         <table class="tabla-campos">
@@ -390,7 +387,6 @@ nav {
           </tbody>
         </table>
 
-      </div>
     </section>
 
     <!-- PROCESO 2 -->
@@ -454,15 +450,12 @@ nav {
 <div class="captura">
   <img src="/img/Cap-2-2.png" alt="Confirmación de entrega">
 </div>
-</div>
-        </div>
 
         <div class="nota-aviso">
           <strong>GPS y permisos</strong>
           La app solicita permiso de ubicación al iniciar transporte, registrar incidencias y confirmar entrega. Si el conductor rechaza el permiso, la acción se registra igualmente pero sin coordenadas.
         </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 3 -->
@@ -517,10 +510,7 @@ nav {
   <img src="/img/Cap-3-1.png" alt="Panel de verificación">
 </div>
         </div>
-</div>
-        </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 4 -->
@@ -579,9 +569,7 @@ nav {
 <div class="captura">
   <img src="/img/Cap-4-2.png" alt="Modal del QR de verificación">
 </div>
-        </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 5 -->
@@ -646,13 +634,10 @@ nav {
 <div class="captura">
   <img src="/img/Cap-5-3.png" alt="Email de alerta recibido">
 </div>
-        </div>
 <div class="captura">
   <img src="/img/Cap-5-4.png" alt="Historial de alertas enviadas">
 </div>
-        </div>
 
-      </div>
     </section>
 
     <!-- PROCESO 6 -->
@@ -711,16 +696,14 @@ nav {
 <div class="captura">
   <img src="/img/Cap-6-2.png" alt="PDF generado">
 </div>
-</div>
-        </div>
 
         <div class="nota">
           <strong>Conservación obligatoria</strong>
           La normativa (art. 9 Orden FOM/2861/2012) exige conservar el DCD durante al menos 1 año desde la entrega. TrazaQR calcula automáticamente la fecha de archivo de cada expedición y la muestra en el detalle.
         </div>
 
-      </div>
     </section>
+  </div> <!-- /layout -->
 
     <!-- FOOTER -->
     <div style="text-align:center;padding:2rem 0;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:1rem">
@@ -729,26 +712,4 @@ nav {
       · <a href="https://trazaqr.com" style="color:var(--blue)">trazaqr.com</a>
     </div>
 
-  </main>
-</div>
-
-<script>
-// Resaltar enlace activo en el sidebar al hacer scroll
-const secciones = document.querySelectorAll('.proceso')
-const links     = document.querySelectorAll('.sidebar-link[href^="#"]')
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      links.forEach(l => l.classList.remove('active'))
-      const link = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`)
-      if (link) link.classList.add('active')
-    }
-  })
-}, { rootMargin: '-20% 0px -70% 0px' })
-
-secciones.forEach(s => observer.observe(s))
-</script>
-
-</body>
-</html>
+  </m
