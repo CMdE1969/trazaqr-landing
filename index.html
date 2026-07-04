@@ -1484,12 +1484,18 @@ document.querySelectorAll('a[href="#demo"]').forEach(el => {
 // ── Confirmación tras enviar el formulario (?gracias=1) ──────────────────
 if (new URLSearchParams(location.search).get('gracias') === '1') {
   const b = document.createElement('div')
-  b.textContent = '✓ Solicitud recibida. Te contestamos en menos de 24h laborables.'
   b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#1D9E75;color:#fff;' +
-    'text-align:center;padding:14px 20px;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:500;'
+    'text-align:center;padding:14px 44px;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:500;'
+  b.appendChild(document.createTextNode('✓ Solicitud recibida. Te contestamos en menos de 24h laborables.'))
+  const x = document.createElement('button')
+  x.textContent = '✕'
+  x.setAttribute('aria-label', 'Cerrar aviso')
+  x.style.cssText = 'position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;' +
+    'border:none;color:#fff;font-size:18px;cursor:pointer;padding:6px;line-height:1;'
+  x.addEventListener('click', () => { b.style.transition = 'opacity .4s'; b.style.opacity = '0'; setTimeout(() => b.remove(), 500) })
+  b.appendChild(x)
   document.body.appendChild(b)
   history.replaceState(null, '', location.pathname)
-  setTimeout(() => { b.style.transition = 'opacity .6s'; b.style.opacity = '0'; setTimeout(() => b.remove(), 700) }, 8000)
 }
 </script>
 
