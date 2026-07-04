@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrazaQR Transporte — DeCA (Documento Electrónico de Control Administrativo)</title>
+<meta name="description" content="Genera el DeCA (Documento Electrónico de Control Administrativo) obligatorio desde octubre 2026. Sin papel, sin app, sin hardware. El conductor lleva el documento con el QR incorporado en el móvil.">
+<meta name="keywords" content="DeCA transporte, documento electrónico de control administrativo, documento control digital transporte, DCD transporte, DCDT, documento control obligatorio 2026, QR transporte mercancías, digitalización transporte España, Resolución 5 junio 2026, Orden TRM 282 2026, FOM 2861 2012, software DeCA cargador transportista">
+<meta name="author" content="TrazaQR Transporte">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trazaqr.com/">
+<meta property="og:title" content="TrazaQR Transporte — DeCA (Documento Electrónico de Control Administrativo) con QR">
+<meta property="og:description" content="Genera el DeCA obligatorio desde octubre 2026 en menos de 2 minutos. Sin papel, sin app, sin hardware. El conductor lleva el documento con el QR incorporado en el móvil.">
+<meta property="og:image" content="https://trazaqr.com/og-image.png">
+<meta property="og:site_name" content="TrazaQR Transporte">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TrazaQR Transporte — DeCA con QR obligatorio desde oct 2026">
+<meta name="twitter:description" content="Sin papel, sin app, sin hardware. El conductor lleva el documento con el QR incorporado en el móvil. Alta en 5 minutos.">
+<meta name="twitter:image" content="https://trazaqr.com/og-image.png">
+<link rel="canonical" href="https://trazaqr.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset & tokens ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #0A1628;
+  --blue:      #0C447C;
+  --blue-mid:  #185FA5;
+  --blue-light:#E6F1FB;
+  --gold:      #C9973A;
+  --gold-light:#FDF3E0;
+  --cream:     #F7F5F0;
+  --white:     #FFFFFF;
+  --text:      #1E2B3C;
+  --muted:     #6B7B8D;
+  --border:    rgba(12,68,124,0.12);
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body:    'DM Sans', system-ui, sans-serif;
+  --ease:       cubic-bezier(.16,1,.3,1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff-body);
+  font-size: 16px;
+  color: var(--text);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Nav ────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 60px;
+  background: rgba(247,245,240,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--ff-display); font-size: 18px; font-weight: 600;
+  color: var(--blue); text-decoration: none; letter-spacing: -.02em;
+}
+
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--blue); }
+
+.nav-cta {
+  background: var(--blue); color: white !important;
+  padding: 8px 18px; border-radius: 7px;
+  font-weight: 500; font-size: 13px !important;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--blue-mid) !important; color: white !important; }
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid; place-items: center;
+  padding: 120px 5vw 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 60% 40%, rgba(12,68,124,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,151,58,0.06) 0%, transparent 60%);
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 900px; margin: 0 auto;
+  text-align: center;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold-light); color: var(--gold);
+  border: 1px solid rgba(201,151,58,0.3);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 12px; font-weight: 500; letter-spacing: .04em;
+  text-transform: uppercase; margin-bottom: 28px;
+}
+
+.hero-tag::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--gold); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.7); }
+}
+
+h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 700; line-height: 1.0;
+  letter-spacing: -.03em; color: var(--ink);
+  margin-bottom: 24px;
+}
+
+h1 em {
+  font-style: italic; font-weight: 300;
+  color: var(--blue);
+}
+
+.deca-e { color: var(--blue); }
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--muted); line-height: 1.6;
+  max-width: 580px; margin: 0 auto 40px;
+}
+
+.hero-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue); color: white;
+  padding: 14px 28px; border-radius: 10px;
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  transition: all .25s var(--ease);
+  box-shadow: 0 4px 20px rgba(12,68,124,0.25);
+}
+.btn-primary:hover {
+  background: var(--blue-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(12,68,124,0.3);
+}
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--blue);
+  padding: 14px 28px; border-radius: 10px;
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all .25s var(--ease);
+}
+.btn-secondary:hover {
+  background: var(--blue-light);
+  transform: translateY(-2px);
+  border-color: rgba(12,68,124,0.25);
+}
+
+.hero-deadline {
+  margin-top: 48px;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 20px; background: white;
+  border: 1px solid var(--border); border-radius: 10px;
+  font-size: 13px; color: var(--muted);
+}
+.hero-deadline strong { color: var(--ink); }
+.deadline-bar {
+  width: 120px; height: 4px; background: #eee; border-radius: 2px; overflow: hidden;
+}
+.deadline-fill {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), #E8A020);
+  width: 72%;
+  animation: fillBar 1.5s var(--ease) 1s both;
+}
+@keyframes fillBar { from { width: 0 } }
+
+/* ── Problema ───────────────────────────────────────────────── */
+.problema {
+  padding: 100px 5vw;
+  background: var(--ink);
+  position: relative; overflow: hidden;
+}
+
+.problema::before {
+  content: '';
+  position: absolute; top: -1px; left: 0; right: 0; height: 60px;
+  background: var(--cream);
+  clip-path: ellipse(60% 100% at 50% 0%);
+}
+
+.problema-inner {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+
+.problema-text { color: white; }
+
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.problema-text h2 {
+  font-family: var(--ff-display); font-size: clamp(30px, 4vw, 44px);
+  font-weight: 600; line-height: 1.15; letter-spacing: -.02em;
+  margin-bottom: 20px; color: white;
+}
+
+.problema-text h2 em {
+  font-style: italic; font-weight: 300; color: rgba(255,255,255,0.55);
+}
+
+.problema-text p {
+  font-size: 16px; line-height: 1.7;
+  color: rgba(255,255,255,0.65); margin-bottom: 16px;
+}
+
+.problema-stats {
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 20px 24px;
+  transition: background .3s;
+}
+.stat-card:hover { background: rgba(255,255,255,0.08); }
+
+.stat-num {
+  font-family: var(--ff-display); font-size: 38px;
+  font-weight: 700; color: var(--gold); letter-spacing: -.03em;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  margin-top: 4px; line-height: 1.4;
+}
+
+/* ── Cómo funciona ──────────────────────────────────────────── */
+.como {
+  padding: 100px 5vw;
+  background: white;
+}
+
+.section-header {
+  max-width: 600px; margin: 0 auto 64px; text-align: center;
+}
+
+.section-header h2 {
+  font-family: var(--ff-display); font-size: clamp(28px, 4vw, 42px);
+  font-weight: 600; line-height: 1.15; letter-spacing: -.02em;
+  color: var(--ink); margin-bottom: 16px;
+}
+
+.section-header h2 em {
+  font-style: italic; font-weight: 300; color: var(--blue);
+}
+
+.section-header p {
+  font-size: 16px; color: var(--muted); line-height: 1.6;
+}
+
+.pasos {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  position: relative;
+}
+
+.pasos::before {
+  content: '';
+  position: absolute; top: 36px; left: calc(33% - 24px); right: calc(33% - 24px);
+  height: 1px;
+  border-top: 1px dashed rgba(12,68,124,0.25);
+}
+
+.paso {
+  background: var(--cream); border-radius: 16px;
+  padding: 32px 28px; position: relative;
+  border: 1px solid var(--border);
+  transition: all .3s var(--ease);
+}
+.paso:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(12,68,124,0.1);
+  border-color: rgba(12,68,124,0.2);
+}
+
+.paso-num {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--blue); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display); font-size: 18px; font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.paso h3 {
+  font-family: var(--ff-display); font-size: 20px;
+  font-weight: 600; color: var(--ink); margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+
+.paso p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+.paso-tag {
+  display: inline-block; margin-top: 14px;
+  font-size: 10px; font-weight: 500; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--blue);
+  background: var(--blue-light); padding: 3px 8px; border-radius: 4px;
+}
+
+/* ── Qué incluye ────────────────────────────────────────────── */
+.incluye {
+  padding: 100px 5vw;
+  background: var(--cream);
+}
+
+.features-grid {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.feature {
+  background: white; border-radius: 14px;
+  padding: 28px; border: 1px solid var(--border);
+  transition: all .3s var(--ease);
+}
+.feature:hover {
+  border-color: rgba(12,68,124,0.2);
+  box-shadow: 0 8px 30px rgba(12,68,124,0.08);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--blue-light); color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 16px;
+}
+
+.feature h3 {
+  font-family: var(--ff-display); font-size: 17px;
+  font-weight: 600; color: var(--ink);
+  margin-bottom: 8px; letter-spacing: -.01em;
+}
+
+.feature p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ── Perfiles ───────────────────────────────────────────────── */
+.perfiles {
+  padding: 100px 5vw;
+  background: white;
+}
+
+.perfiles-grid {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.perfil {
+  border-radius: 16px; padding: 28px 24px;
+  border: 1px solid var(--border);
+  transition: all .3s var(--ease);
+  position: relative; overflow: hidden;
+}
+.perfil:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(12,68,124,0.1);
+  border-color: rgba(12,68,124,0.2);
+}
+
+.perfil-icon {
+  font-size: 28px; margin-bottom: 14px; display: block;
+}
+
+.perfil h3 {
+  font-family: var(--ff-display); font-size: 17px;
+  font-weight: 600; color: var(--ink);
+  margin-bottom: 8px; letter-spacing: -.01em;
+}
+
+.perfil-dolor {
+  font-size: 12px; font-weight: 500; color: var(--gold);
+  margin-bottom: 10px; line-height: 1.4;
+}
+
+.perfil p {
+  font-size: 13px; color: var(--muted); line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .perfiles-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .perfiles-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Normativa ──────────────────────────────────────────────── */
+.normativa {
+  padding: 80px 5vw;
+  background: var(--blue);
+  position: relative; overflow: hidden;
+}
+
+.normativa::after {
+  content: 'art. 6';
+  position: absolute; right: 5vw; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--ff-display); font-size: 180px; font-weight: 700;
+  color: rgba(255,255,255,0.04); line-height: 1;
+  pointer-events: none;
+}
+
+.normativa-inner {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: center; position: relative; z-index: 1;
+}
+
+.normativa-text h2 {
+  font-family: var(--ff-display); font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 600; color: white; line-height: 1.2;
+  letter-spacing: -.02em; margin-bottom: 16px;
+}
+
+.normativa-text p {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  line-height: 1.7; margin-bottom: 12px;
+}
+
+.normativa-campos {
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.campo-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px; border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.campo-art {
+  font-family: var(--ff-display); font-size: 13px;
+  font-weight: 600; color: var(--gold);
+  white-space: nowrap; min-width: 32px;
+}
+
+.campo-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.4; }
+
+.campo-resp {
+  margin-left: auto; font-size: 10px; font-weight: 500;
+  letter-spacing: .04em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 4px; white-space: nowrap;
+}
+.resp-c { background: rgba(29,158,117,0.25); color: #7DDFBE; }
+.resp-t { background: rgba(201,151,58,0.25); color: #F0C97A; }
+
+/* ── Pricing ────────────────────────────────────────────────── */
+.pricing {
+  padding: 100px 5vw;
+  background: white;
+}
+
+.pricing-grid {
+  max-width: 860px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+
+.plan {
+  border-radius: 16px; padding: 32px 28px;
+  border: 1px solid var(--border);
+  transition: all .3s var(--ease);
+  position: relative;
+}
+
+.plan:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 50px rgba(12,68,124,0.12);
+}
+
+.plan-popular {
+  background: var(--blue); border-color: var(--blue);
+}
+
+.plan-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: white;
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; padding: 4px 12px; border-radius: 10px;
+  white-space: nowrap;
+}
+
+.plan-name {
+  font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+}
+.plan-popular .plan-name { color: rgba(255,255,255,0.6); }
+
+.plan-price {
+  font-family: var(--ff-display); font-size: 42px;
+  font-weight: 700; color: var(--ink); letter-spacing: -.03em;
+  line-height: 1; margin-bottom: 4px;
+}
+.plan-popular .plan-price { color: white; }
+
+.plan-price span { font-size: 16px; font-weight: 400; }
+
+.plan-period {
+  font-size: 13px; color: var(--muted); margin-bottom: 24px;
+}
+.plan-popular .plan-period { color: rgba(255,255,255,0.6); }
+
+.plan-features {
+  list-style: none; display: flex;
+  flex-direction: column; gap: 10px; margin-bottom: 28px;
+}
+
+.plan-features li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: var(--text); line-height: 1.4;
+}
+.plan-popular .plan-features li { color: rgba(255,255,255,0.85); }
+
+.plan-features li::before {
+  content: '✓'; color: var(--blue); font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+.plan-popular .plan-features li::before { color: var(--gold); }
+
+.plan-btn {
+  display: block; text-align: center; text-decoration: none;
+  padding: 11px; border-radius: 8px; font-size: 14px;
+  font-weight: 500; transition: all .25s var(--ease);
+  border: 1px solid var(--border); color: var(--blue);
+}
+.plan-btn:hover {
+  background: var(--blue-light); border-color: rgba(12,68,124,0.2);
+}
+.plan-popular .plan-btn {
+  background: white; color: var(--blue); border-color: transparent;
+}
+.plan-popular .plan-btn:hover {
+  background: var(--blue-light);
+}
+
+/* ── FAQ ────────────────────────────────────────────────────── */
+.faq {
+  padding: 100px 5vw;
+  background: var(--cream);
+}
+
+.faq-grid {
+  max-width: 860px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+
+.faq-item {
+  background: white; border-radius: 14px;
+  padding: 24px 28px; border: 1px solid var(--border);
+  transition: border-color .3s;
+}
+.faq-item:hover { border-color: rgba(12,68,124,0.2); }
+
+.faq-q {
+  font-family: var(--ff-display); font-size: 15px;
+  font-weight: 600; color: var(--ink);
+  margin-bottom: 10px; letter-spacing: -.01em; line-height: 1.35;
+}
+
+.faq-a {
+  font-size: 13px; color: var(--muted); line-height: 1.65;
+}
+
+.faq-a a { color: var(--blue); text-decoration: none; }
+.faq-a a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .faq-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CTA final ──────────────────────────────────────────────── */
+.cta {
+  padding: 100px 5vw;
+  background: var(--cream);
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 620px; margin: 0 auto;
+}
+
+.cta h2 {
+  font-family: var(--ff-display); font-size: clamp(30px, 5vw, 50px);
+  font-weight: 700; color: var(--ink); line-height: 1.1;
+  letter-spacing: -.03em; margin-bottom: 20px;
+}
+
+.cta h2 em { font-style: italic; font-weight: 300; color: var(--blue); }
+
+.cta p {
+  font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 36px;
+}
+
+.cta-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+footer {
+  padding: 32px 5vw;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+
+.footer-logo {
+  font-family: var(--ff-display); font-size: 15px;
+  font-weight: 600; color: white; text-decoration: none;
+  letter-spacing: -.01em; opacity: .8;
+}
+
+.footer-norm {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+}
+
+.footer-links {
+  display: flex; gap: 20px;
+}
+.footer-links a {
+  font-size: 12px; color: rgba(255,255,255,0.45);
+  text-decoration: none; transition: color .2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+/* ── Sin animaciones de entrada ─────────────────────────────── */
+.reveal { opacity: 1; }
+
+/* ── Mockup DeCA ────────────────────────────────────────────── */
+.dcdt-preview {
+  max-width: 480px; margin: 56px auto 0;
+  background: white; border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(12,68,124,0.12);
+  overflow: hidden;
+}
+.dcdt-header {
+  background: var(--ink); padding: 14px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.dcdt-header-title {
+  font-size: 11px; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+}
+.dcdt-badge {
+  font-size: 10px; font-weight: 600; letter-spacing: .05em;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 10px;
+  background: rgba(29,158,117,0.25); color: #7DDFBE;
+}
+.dcdt-id {
+  padding: 10px 22px; background: var(--blue-light);
+  font-family: monospace; font-size: 12px; font-weight: 600;
+  color: var(--blue); letter-spacing: .04em;
+}
+.dcdt-body {
+  padding: 18px 22px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.dcdt-field label {
+  display: block; font-size: 10px; font-weight: 500; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
+}
+.dcdt-field span { font-size: 13px; color: var(--ink); font-weight: 500; }
+.dcdt-field.full { grid-column: 1 / -1; }
+.dcdt-footer {
+  padding: 14px 22px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.dcdt-qr {
+  width: 56px; height: 56px; flex-shrink: 0;
+  background: var(--ink); border-radius: 8px;
+  display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; padding: 6px;
+}
+.dcdt-qr span { background: white; border-radius: 1px; }
+.dcdt-qr span.b { background: #0A1628; }
+.dcdt-qr span.blue { background: #378ADD; border-radius: 50%; }
+.dcdt-meta { flex: 1; }
+.dcdt-hash { font-size: 10px; color: var(--muted); font-family: monospace; word-break: break-all; }
+.dcdt-dl {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 6px; font-size: 11px; font-weight: 500;
+  color: var(--blue); text-decoration: none;
+}
+.dcdt-dl:hover { text-decoration: underline; }
+
+/* ── Tabla documentos ───────────────────────────────────────── */
+.docs {
+  padding: 80px 5vw;
+  background: var(--ink);
+}
+.docs-inner { max-width: 860px; margin: 0 auto; }
+.docs .section-label { color: var(--gold); margin-bottom: 16px; }
+.docs h2 {
+  font-family: var(--ff-display); font-size: clamp(26px,3.5vw,38px);
+  font-weight: 600; color: white; line-height: 1.2;
+  letter-spacing: -.02em; margin-bottom: 36px;
+}
+.docs h2 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.5); }
+.docs-table { width: 100%; border-collapse: collapse; }
+.docs-table th {
+  font-size: 11px; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--gold);
+  padding: 10px 16px; text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.docs-table td {
+  padding: 14px 16px; font-size: 13px; color: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top;
+  line-height: 1.5;
+}
+.docs-table tr:last-child td { border-bottom: none; }
+.docs-table td:first-child { font-weight: 600; color: white; white-space: nowrap; }
+.docs-table td.hi { color: #7DDFBE; }
+@media (max-width: 600px) {
+  .docs-table th:nth-child(3), .docs-table td:nth-child(3) { display: none; }
+}
+
+/* ── Contacto ───────────────────────────────────────────────── */
+.contacto {
+  padding: 100px 5vw;
+  background: white;
+  scroll-margin-top: 60px;
+}
+.contacto-inner {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px;
+  align-items: start;
+}
+.contacto-text h2 {
+  font-family: var(--ff-display); font-size: clamp(28px,4vw,42px);
+  font-weight: 600; color: var(--ink); line-height: 1.15;
+  letter-spacing: -.02em; margin-bottom: 16px;
+}
+.contacto-text h2 em { font-style: italic; font-weight: 300; color: var(--blue); }
+.contacto-text p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+.contacto-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.contacto-bullets li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 14px; color: var(--text); line-height: 1.4;
+}
+.contacto-bullets li::before { content: '✓'; color: var(--blue); font-weight: 700; flex-shrink: 0; }
+.form-grid { display: flex; flex-direction: column; gap: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-field { display: flex; flex-direction: column; gap: 5px; }
+.form-field label { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: .03em; }
+.form-field input, .form-field select, .form-field textarea {
+  padding: 10px 14px; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 14px; font-family: var(--ff-body);
+  color: var(--ink); background: white; transition: border-color .2s; outline: none;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  border-color: var(--blue);
+}
+.form-field textarea { resize: vertical; min-height: 80px; }
+.form-submit {
+  background: var(--blue); color: white;
+  padding: 13px 28px; border-radius: 10px;
+  font-size: 15px; font-weight: 500; border: none;
+  cursor: pointer; transition: background .25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.form-submit:hover { background: var(--blue-mid); }
+.form-legal { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.form-legal a { color: var(--blue); text-decoration: none; }
+@media (max-width: 768px) {
+  .contacto-inner { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .problema-inner,
+  .normativa-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pasos { grid-template-columns: 1fr; }
+  .pasos::before { display: none; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .normativa::after { display: none; }
+}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M9CX3LKYQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M9CX3LKYQ5');
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="/logo.jpg" alt="" style="height:28px; width:auto;">
+    TrazaQR Transporte
+  </a>
+  <div class="nav-links">
+    <a href="#como">Cómo funciona</a>
+    <a href="#normativa">Normativa</a>
+    <a href="#precios">Precios</a>
+    <a href="#faq">FAQ</a>
+    <a href="#demo">Solicitar demo</a>
+    <a href="https://app.trazaqr.com" target="_blank" class="nav-cta">Acceder →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+
+    <div class="hero-tag">
+      Obligatorio desde el 5 de octubre de 2026
+    </div>
+
+    <h1>El Documento <em>Electrónico</em> de<br>Control Administrativo para tu flota — D<span class="deca-e">e</span>CA</h1>
+
+    <p class="hero-sub">
+      Genera el DeCA antes de salir a ruta. El conductor lleva el documento con
+      el QR incorporado en el móvil. La inspección verifica en segundos. Sin papel, sin app, sin hardware.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://app.trazaqr.com" target="_blank" class="btn-primary">
+        Acceder a la plataforma
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="mailto:info@trazaqr.com?subject=Demo TrazaQR Transporte" class="btn-secondary">
+        Solicitar demo
+      </a>
+    </div>
+
+    <div class="hero-deadline">
+      <span>Tiempo hasta la obligatoriedad</span>
+      <div class="deadline-bar"><div class="deadline-fill"></div></div>
+      <strong>5 oct 2026</strong>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problema">
+  <div class="problema-inner">
+    <div class="problema-text reveal">
+      <div class="section-label">La normativa</div>
+      <h2>La Ley de Movilidad Sostenible <em>obliga</em> a digitalizar el documento de control del transporte</h2>
+      <p>
+        La Resolución de 5 de junio de 2026, de la Dirección General de Transporte
+        por Carretera y Ferrocarril (BOE-A-2026-12784), desarrolla la Orden
+        FOM/2861/2012 y exige que todo transporte público de mercancías por
+        carretera en España lleve un DeCA (Documento Electrónico de Control
+        Administrativo) antes de iniciar el viaje.
+      </p>
+      <p>
+        El cargador contractual y el transportista efectivo son responsables si
+        el documento no se formaliza o no se lleva a bordo antes de salir a
+        ruta, cada uno de los datos que le corresponden según el art. 7.
+      </p>
+    </div>
+    <div class="problema-stats reveal">
+      <div class="stat-card">
+        <div class="stat-num">5 oct</div>
+        <div class="stat-label">Fecha límite de obligatoriedad. Todos los transportes públicos de mercancías por carretera.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">*</div>
+        <div class="stat-label">No aplica a mudanzas, vehículos averiados en transporte especial, paquetería de bultos reducidos ni transporte privado complementario.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">art. 6</div>
+        <div class="stat-label">Campos obligatorios del documento: cargador, transportista, ruta, mercancía, fecha y vehículo.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1 año</div>
+        <div class="stat-label">Período mínimo de conservación del documento digital (art. 9).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="como" id="como">
+  <div class="section-header reveal">
+    <div class="section-label" style="color: var(--gold);">Flujo operativo</div>
+    <h2>Tres pasos. <em>Menos de dos minutos.</em></h2>
+    <p>El cargador genera el documento antes de la carga. El conductor lo lleva en el móvil. La inspección verifica el QR en carretera.</p>
+  </div>
+
+  <div class="pasos">
+    <div class="paso reveal">
+      <div class="paso-num">1</div>
+      <h3>Cargador genera el DeCA</h3>
+      <p>Rellena los campos del art. 6, pulsa emitir. El sistema calcula el hash SHA-256 y genera el QR único de verificación.</p>
+      <span class="paso-tag">Antes de la carga</span>
+    </div>
+    <div class="paso reveal">
+      <div class="paso-num">2</div>
+      <h3>Conductor lleva el documento</h3>
+      <p>Escanea el QR desde cualquier móvil. Ve el documento completo, registra incidencias y confirma la entrega en destino.</p>
+      <span class="paso-tag">Sin instalar nada</span>
+    </div>
+    <div class="paso reveal">
+      <div class="paso-num">3</div>
+      <h3>Inspección verifica</h3>
+      <p>El agente introduce el código o escanea el QR. Ve el documento en tiempo real con el historial de eventos y la integridad verificada.</p>
+    </div>
+  </div>
+
+  <!-- Mockup visual del DeCA -->
+  <div class="dcdt-preview reveal">
+    <div class="dcdt-header">
+      <span class="dcdt-header-title">DeCA · Documento Electrónico de Control Administrativo</span>
+      <span class="dcdt-badge">✓ Emitido</span>
+    </div>
+    <div class="dcdt-id">TZQ-2026-004821 · SHA256: a3f8c1…</div>
+    <div class="dcdt-body">
+      <div class="dcdt-field">
+        <label>Cargador</label>
+        <span>Frutas López S.L.</span>
+      </div>
+      <div class="dcdt-field">
+        <label>NIF</label>
+        <span>B-12345678</span>
+      </div>
+      <div class="dcdt-field">
+        <label>Transportista</label>
+        <span>LogiTrans S.L.</span>
+      </div>
+      <div class="dcdt-field">
+        <label>Matrícula</label>
+        <span>1234 ABC · R-5678</span>
+      </div>
+      <div class="dcdt-field full">
+        <label>Origen → Destino</label>
+        <span>Almería → Mercamadrid (Madrid)</span>
+      </div>
+      <div class="dcdt-field">
+        <label>Mercancía</label>
+        <span>Palets hortofrutícola · 14 t</span>
+      </div>
+      <div class="dcdt-field">
+        <label>Fecha carga</label>
+        <span>26/06/2026 · 06:00 h</span>
+      </div>
+    </div>
+    <div class="dcdt-footer">
+      <div class="dcdt-qr">
+        <span></span><span></span><span></span><span class="b"></span><span></span><span class="b"></span><span></span>
+        <span></span><span class="b"></span><span></span><span></span><span></span><span></span><span class="b"></span>
+        <span></span><span></span><span class="blue"></span><span></span><span class="b"></span><span></span><span></span>
+        <span class="b"></span><span></span><span></span><span class="b"></span><span></span><span class="b"></span><span></span>
+        <span></span><span class="b"></span><span></span><span></span><span></span><span></span><span class="b"></span>
+        <span></span><span></span><span class="b"></span><span></span><span class="b"></span><span></span><span></span>
+        <span class="b"></span><span></span><span></span><span class="b"></span><span></span><span></span><span class="b"></span>
+      </div>
+      <div class="dcdt-meta">
+        <div class="dcdt-hash">Integridad verificada · TrazaQR Transporte</div>
+        <a href="/dcdt-muestra.pdf" download class="dcdt-dl">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Descargar PDF de muestra
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ INCLUYE -->
+<section class="incluye">
+  <div class="section-header reveal">
+    <div class="section-label" style="color: var(--gold);">Funcionalidades</div>
+    <h2>Todo lo que exige la ley. <em>Nada que complique las operaciones.</em></h2>
+    <p>Diseñado para empresas de transporte y cargadores que necesitan cumplir la normativa sin complicar las operaciones.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature reveal">
+      <div class="feature-icon">📋</div>
+      <h3>Formulario normativo</h3>
+      <p>Campos art. 6 separados por responsabilidad legal. Validación en tiempo real. Imposible emitir un documento incompleto.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">⬡</div>
+      <h3>QR único por expedición</h3>
+      <p>Cada documento genera un QR con URL pública de verificación, incorporado al PDF. El conductor lleva el documento completo en el móvil, sin instalar ninguna app.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">🔒</div>
+      <h3>Integridad SHA-256</h3>
+      <p>Hash calculado al emitir e inmutable. Acredita que el documento existía antes del inicio del transporte.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">📍</div>
+      <h3>Geolocalización de eventos</h3>
+      <p>Inicio de transporte, incidencias y entrega quedan registrados con timestamp y coordenadas GPS del dispositivo.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">⚠️</div>
+      <h3>Alertas de retraso</h3>
+      <p>Email automático cuando una expedición supera la fecha de descarga prevista sin confirmación de entrega.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">📊</div>
+      <h3>Panel y exportación CSV</h3>
+      <p>Historial completo de expediciones con filtros por estado, matrícula y fechas. Exportación para contabilidad y auditoría.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">🔄</div>
+      <h3>Rectificación trazada</h3>
+      <p>Si cambia el vehículo, el remolque o el destino durante el trayecto, se registra una nueva versión con el historial completo de cambios. El QR siempre muestra la situación actual.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">📄</div>
+      <h3>PDF nativo digital</h3>
+      <p>Documento generado como PDF nativo (no escaneado), de menos de 5 MB, con metadatos de fecha y hora de creación, conforme a la Resolución de 5 de junio de 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERFILES -->
+<section class="perfiles">
+  <div class="section-header reveal">
+    <div class="section-label" style="color: var(--gold);">Para quién es</div>
+    <h2>Una solución para <em>cada actor del transporte</em></h2>
+    <p>El DeCA afecta a quien contrata, organiza o ejecuta el transporte. TrazaQR sirve a todos desde una sola plataforma.</p>
+  </div>
+
+  <div class="perfiles-grid">
+    <div class="perfil reveal">
+      <span class="perfil-icon">🏭</span>
+      <h3>Cargadores contractuales</h3>
+      <div class="perfil-dolor">Problema: respondes de los datos del DeCA que te corresponden si están mal</div>
+      <p>Genera el documento antes de que el camión salga. Centraliza todas tus expediciones y comparte el QR con el transportista en segundos.</p>
+    </div>
+    <div class="perfil reveal">
+      <span class="perfil-icon">🚛</span>
+      <h3>Transportistas y flotas</h3>
+      <div class="perfil-dolor">Problema: llevar papeles en cabina es un riesgo en inspección</div>
+      <p>El conductor lleva el documento con el QR incorporado en el móvil. Sin papel, sin app instalada. Lo muestra en segundos ante cualquier agente de tráfico.</p>
+    </div>
+    <div class="perfil reveal">
+      <span class="perfil-icon">🧾</span>
+      <h3>Gestorías y asesorías</h3>
+      <div class="perfil-dolor">Problema: gestionar documentación de muchos clientes a la vez</div>
+      <p>Con el plan Flota gestiona múltiples empresas desde un único acceso. Historial ordenado, exportación CSV y soporte prioritario incluido.</p>
+    </div>
+    <div class="perfil reveal">
+      <span class="perfil-icon">🧑‍💼</span>
+      <h3>Autónomos</h3>
+      <div class="perfil-dolor">Problema: cumplir la normativa sin complicar la operativa diaria</div>
+      <p>El plan Autónomo por 9,90€/mes cubre hasta 75 expediciones. Alta en 5 minutos, sin formación previa. Cumple desde el primer transporte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NORMATIVA -->
+<section class="normativa" id="normativa">
+  <div class="normativa-inner">
+    <div class="normativa-text reveal">
+      <div class="section-label">Referencia legal</div>
+      <h2>Cada campo del art. 6, cubierto y asignado</h2>
+      <p>
+        TrazaQR Transporte cumple el formato digital &mdash; PDF nativo, QR y URL
+        de descarga &mdash; exigido por la Resolución de 5 de junio de 2026, de
+        la Dirección General de Transporte por Carretera y Ferrocarril
+        (BOE-A-2026-12784), e implementa todos los campos obligatorios del
+        art. 6 de la Orden FOM/2861/2012 (consolidada a 28/03/2026, modificada
+        por la Orden TRM/282/2026).
+      </p>
+      <p>
+        El sistema asigna cada campo a su responsable legal — cargador o
+        transportista — siguiendo el art. 7. En caso de inspección o disputa,
+        la responsabilidad queda documentada desde el momento de la emisión.
+      </p>
+    </div>
+    <div class="normativa-campos reveal">
+      <div class="campo-row">
+        <span class="campo-art">a)</span>
+        <span class="campo-desc">Nombre, NIF y domicilio del cargador contractual</span>
+        <span class="campo-resp resp-c">Cargador</span>
+      </div>
+      <div class="campo-row">
+        <span class="campo-art">b)</span>
+        <span class="campo-desc">Nombre y NIF del transportista efectivo</span>
+        <span class="campo-resp resp-c">Cargador</span>
+      </div>
+      <div class="campo-row">
+        <span class="campo-art">c)</span>
+        <span class="campo-desc">Origen y destino del transporte</span>
+        <span class="campo-resp resp-c">Cargador</span>
+      </div>
+      <div class="campo-row">
+        <span class="campo-art">d)</span>
+        <span class="campo-desc">Descripción y peso de la mercancía</span>
+        <span class="campo-resp resp-c">Cargador</span>
+      </div>
+      <div class="campo-row">
+        <span class="campo-art">e)</span>
+        <span class="campo-desc">Autorización especial de circulación (si aplica)</span>
+        <span class="campo-resp resp-t">Transportista</span>
+      </div>
+      <div class="campo-row">
+        <span class="campo-art">f)</span>
+        <span class="campo-desc">Fecha de realización del transporte</span>
+        <span class="campo-resp resp-t">Transportista</span>
+      </div>
+      <div class="campo-row">
+        <span class="campo-art">g)</span>
+        <span class="campo-desc">Matrícula del vehículo y remolque</span>
+        <span class="campo-resp resp-t">Transportista</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="pricing" id="precios">
+  <div class="section-header reveal">
+    <div class="section-label" style="color: var(--gold);">Tarifas</div>
+    <h2>Precio fijo al mes. <em>Tú sabes lo que pagas.</em></h2>
+    <p>Sin calculadoras, sin tramos, sin letra pequeña. Elige tu plan y listo.</p>
+  </div>
+
+  <p style="text-align:center;font-size:13px;color:var(--muted);margin:-32px auto 48px;max-width:500px;">
+    Sin permanencia · <a href="https://app.trazaqr.com/registro" style="color:var(--blue);">Alta en 5 minutos</a>
+  </p>
+  <div class="pricing-grid" style="grid-template-columns: repeat(4, 1fr);">
+
+    <!-- Plan Lanzamiento -->
+    <div class="plan reveal" style="border: 2px solid var(--green, #1D9E75); position: relative;">
+      <div class="plan-badge" style="background: #1D9E75;">🎁 Gratis lanzamiento</div>
+      <div class="plan-name">Lanzamiento</div>
+      <div class="plan-price">0<span>€</span></div>
+      <div class="plan-period">· 10 expediciones incluidas</div>
+      <ul class="plan-features">
+        <li>10 expediciones emitidas</li>
+        <li>100% funcionalidad completa</li>
+        <li>QR verificable sin app</li>
+        <li>Integridad SHA-256</li>
+      </ul>
+      <a href="https://app.trazaqr.com/registro" class="plan-btn" style="background: #1D9E75;">Activar gratis</a>
+    </div>
+
+    <!-- Plan Autónomo -->
+    <div class="plan reveal">
+      <div class="plan-name">Autónomo</div>
+      <div class="plan-price">9<span style="font-size:22px;font-weight:500">,90€</span></div>
+      <div class="plan-period">/ mes · hasta 75 expediciones</div>
+      <ul class="plan-features">
+        <li>75 expediciones emitidas / mes</li>
+        <li>QR verificable sin app</li>
+        <li>Historial completo (art. 9)</li>
+        <li>Exportación CSV</li>
+        <li>Sin permanencia</li>
+      </ul>
+      <a href="https://app.trazaqr.com/registro" class="plan-btn">Empezar</a>
+    </div>
+
+    <!-- Plan Pyme -->
+    <div class="plan plan-popular reveal">
+      <div class="plan-badge">Más popular</div>
+      <div class="plan-name">Pyme</div>
+      <div class="plan-price">24<span style="font-size:22px;font-weight:500">,90€</span></div>
+      <div class="plan-period">/ mes · hasta 300 expediciones</div>
+      <ul class="plan-features">
+        <li>300 expediciones emitidas / mes</li>
+        <li>QR verificable sin app</li>
+        <li>Historial completo (art. 9)</li>
+        <li>Alertas de retraso por email</li>
+        <li>Exportación CSV · Sin permanencia</li>
+      </ul>
+      <a href="https://app.trazaqr.com/registro" class="plan-btn">Empezar</a>
+    </div>
+
+    <!-- Plan Flota -->
+    <div class="plan reveal">
+      <div class="plan-name">Flota</div>
+      <div class="plan-price">49<span style="font-size:22px;font-weight:500">,90€</span></div>
+      <div class="plan-period">/ mes · expediciones ilimitadas</div>
+      <ul class="plan-features">
+        <li>Expediciones ilimitadas</li>
+        <li>1 empresa / razón social</li>
+        <li>Panel de inspección para clientes</li>
+        <li>Soporte prioritario</li>
+        <li>Onboarding incluido</li>
+      </ul>
+      <a href="https://app.trazaqr.com/registro" class="plan-btn">Empezar</a>
+    </div>
+
+  </div>
+
+  <!-- Plan Gestoría -->
+  <div class="reveal" style="margin-top:24px;background:linear-gradient(135deg,#0D2B55,#0C447C);border-radius:16px;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">Gestoría / Operador</div>
+      <div style="font-size:20px;font-weight:600;color:#fff;margin-bottom:4px;">Gestiona los DeCA de todos tus clientes desde una sola cuenta</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.65);max-width:520px;">Expediciones ilimitadas por empresa · Factura a cada cliente por separado · Onboarding y soporte incluidos</div>
+    </div>
+    <div style="text-align:center;flex-shrink:0;">
+      <div style="font-size:36px;font-weight:700;color:#fff;line-height:1;">15<span style="font-size:18px;font-weight:400">€</span></div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:16px;">por empresa / mes</div>
+      <a href="mailto:info@trazaqr.com?subject=TrazaQR Gestoria" class="plan-btn" style="background:var(--gold);color:#0A1628;font-weight:600;white-space:nowrap;">Solicitar información</a>
+    </div>
+  </div>
+
+  <!-- Nota comparativa -->
+  <p style="text-align:center;font-size:12px;color:var(--muted);margin:24px auto 0;max-width:560px;">
+    ¿Pagas por documento con tu proveedor actual? Con TrazaQR Autónomo son <strong>0,13 €/expedición</strong> — precio fijo, sin compromisos anuales.
+  </p>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-header reveal">
+    <div class="section-label" style="color: var(--gold);">Preguntas frecuentes</div>
+    <h2>Lo que nos preguntan <em>antes de empezar</em></h2>
+    <p>Si tu duda no está aquí, escríbenos a <a href="mailto:info@trazaqr.com" style="color:var(--blue);">info@trazaqr.com</a>.</p>
+  </div>
+
+  <div class="faq-grid">
+    <div class="faq-item reveal">
+      <div class="faq-q">¿El DeCA sustituye al albarán o a la carta de porte?</div>
+      <div class="faq-a">No. El DeCA (Documento Electrónico de Control Administrativo) es un documento de control administrativo para la inspección de tráfico. El albarán acredita la entrega y la carta de porte documenta el contrato de transporte. Son documentos distintos con funciones distintas.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Quién genera el DeCA, el cargador o el transportista?</div>
+      <div class="faq-a">Según el art. 7 de la Orden FOM/2861/2012 (modificado por la Orden TRM/282/2026), los campos a–d (cargador, transportista, ruta, mercancía) son responsabilidad del cargador contractual. Los campos e–g (vehículo, fecha, autorización especial) corresponden al transportista. TrazaQR asigna cada campo al responsable correcto.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿El conductor necesita instalar alguna app?</div>
+      <div class="faq-a">No. El conductor accede al documento escaneando el QR con la cámara del móvil. Se abre en el navegador — sin descargas, sin registro, sin contraseña. En caso de inspección puede mostrar la pantalla directamente al agente.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Qué pasa si durante el trayecto cambia el vehículo?</div>
+      <div class="faq-a">Desde la app se registra el cambio de vehículo o remolque como un evento trazado. El QR sigue siendo el mismo y el inspector ve la situación actualizada en tiempo real, con el historial del cambio documentado.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Cuánto tiempo hay que conservar el DeCA?</div>
+      <div class="faq-a">El art. 9 de la normativa exige conservar el documento durante al menos 1 año. TrazaQR mantiene el historial completo de expediciones durante todo el período de tu suscripción, disponible para descarga o auditoría en cualquier momento.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Funciona el QR sin conexión a internet?</div>
+      <div class="faq-a">El conductor puede descargar el PDF del documento para llevarlo sin conexión. La verificación del QR por parte del inspector sí requiere conexión, ya que consulta el documento en tiempo real para comprobar que no ha sido modificado.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Puedo gestionar varias empresas o delegaciones?</div>
+      <div class="faq-a">Sí, con el plan Gestoría puedes operar múltiples empresas o delegaciones desde una sola cuenta a 15€/empresa/mes. Ideal para gestorías que gestionan documentación de varios clientes, o para grupos de transporte con varias razones sociales. <a href="mailto:info@trazaqr.com?subject=TrazaQR Gestoria" style="color:var(--blue);">Escríbenos</a> y te lo configuramos.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Qué pasa con mis datos si cancelo la suscripción?</div>
+      <div class="faq-a">Antes de cancelar puedes exportar todo tu historial en CSV. Los documentos emitidos quedan accesibles mediante su URL pública durante el período de conservación legal (1 año desde la emisión), aunque la cuenta esté cancelada.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO / DEMO -->
+<section class="contacto" id="demo">
+  <div class="contacto-inner">
+    <div class="contacto-text reveal">
+      <div class="section-label" style="color:var(--gold);">Solicitar demo</div>
+      <h2>Te mostramos cómo<br>funciona <em>en tu operación</em></h2>
+      <p>Sesión corta de 20 minutos: emisión de un DeCA real, verificación del QR y preguntas sobre tu caso concreto. Sin compromiso.</p>
+      <ul class="contacto-bullets">
+        <li>Alta en 5 minutos</li>
+        <li>30 días gratis para probar con expediciones reales</li>
+        <li>Soporte en español por email y WhatsApp</li>
+        <li>Cancelación en cualquier momento</li>
+      </ul>
+    </div>
+    <form class="form-grid reveal" action="https://formsubmit.co/info@trazaqr.com" method="POST">
+      <input type="hidden" name="_subject" value="Demo TrazaQR Transporte">
+      <input type="hidden" name="_next" value="https://trazaqr.com/?gracias=1">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Nombre *</label>
+          <input type="text" name="nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="form-field">
+          <label>Empresa *</label>
+          <input type="text" name="empresa" required placeholder="Nombre empresa">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Email *</label>
+          <input type="email" name="email" required placeholder="tu@empresa.com">
+        </div>
+        <div class="form-field">
+          <label>Teléfono</label>
+          <input type="tel" name="telefono" placeholder="+34 600 000 000">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Perfil</label>
+        <select name="perfil">
+          <option value="">Selecciona tu perfil…</option>
+          <option>Cargador contractual</option>
+          <option>Transportista / flota</option>
+          <option>Gestoría o asesoría</option>
+          <option>Autónomo</option>
+          <option>Operador logístico</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Mensaje (opcional)</label>
+        <textarea name="mensaje" placeholder="Cuéntanos cuántas expediciones gestionáis al mes, número de vehículos…"></textarea>
+      </div>
+      <button type="submit" class="form-submit">
+        Solicitar demo gratuita
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="form-legal">Al enviar aceptas nuestra <a href="/privacidad">política de privacidad</a>. Solo usamos tus datos para responder a tu solicitud.</p>
+    </form>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta">
+  <div class="cta-inner reveal">
+    <h2>Listo antes<br>del <em>5 de octubre</em></h2>
+    <p>
+      Alta en 5 minutos. Sin instalación. Sin formación para el conductor.
+      Tu flota cumple la normativa desde el primer día.
+    </p>
+    <div class="cta-actions">
+      <a href="https://app.trazaqr.com" target="_blank" class="btn-primary">
+        Acceder ahora
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#demo" class="btn-secondary">Solicitar demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo" style="display:flex;align-items:center;gap:8px;">
+    <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;opacity:.8">
+      <rect width="28" height="28" rx="6" fill="white" fill-opacity="0.15"/>
+      <rect x="4" y="4" width="8" height="8" rx="1.5" fill="white"/>
+      <rect x="5.5" y="5.5" width="5" height="5" rx="0.8" fill="#0A1628"/>
+      <rect x="7" y="7" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="16" y="4" width="8" height="8" rx="1.5" fill="white"/>
+      <rect x="17.5" y="5.5" width="5" height="5" rx="0.8" fill="#0A1628"/>
+      <rect x="19" y="7" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="4" y="16" width="8" height="8" rx="1.5" fill="white"/>
+      <rect x="5.5" y="17.5" width="5" height="5" rx="0.8" fill="#0A1628"/>
+      <rect x="7" y="19" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="16" y="16" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="19" y="16" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="22" y="16" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="16" y="19" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="22" y="19" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="19" y="22" width="2" height="2" rx="0.3" fill="white"/>
+      <rect x="22" y="22" width="2" height="2" rx="0.3" fill="white"/>
+      <circle cx="19" cy="19" r="2.5" stroke="#378ADD" stroke-width="1.2" fill="none"/>
+      <rect x="18.2" y="18.2" width="1.6" height="1.6" rx="0.3" fill="#378ADD"/>
+    </svg>
+    TrazaQR Transporte
+  </a>
+  <div class="footer-norm">Resolución 5/06/2026 (BOE-A-2026-12784) · Orden FOM/2861/2012 · Orden TRM/282/2026 · Obligatorio desde 05/10/2026</div>
+  <div class="footer-links">
+    <a href="mailto:info@trazaqr.com">info@trazaqr.com</a>
+    <a href="https://app.trazaqr.com" target="_blank">Plataforma</a>
+    <a href="#faq">FAQ</a>
+    <a href="/privacidad">Privacidad</a>
+  </div>
+</footer>
+
+
+<script>
+const observer = new IntersectionObserver(
+  (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
+  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+)
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+</script>
+
+<script>
+// ── Eventos de conversión GA4 ─────────────────────────────────────────────
+
+// 1. Envío del formulario de demo
+const form = document.querySelector('form[action*="formsubmit"]')
+if (form) {
+  form.addEventListener('submit', () => {
+    gtag('event', 'generate_lead', {
+      event_category: 'formulario',
+      event_label: 'demo_request'
+    })
+  })
+}
+
+// 2. Clic en "Acceder ahora" (cualquier enlace a app.trazaqr.com)
+document.querySelectorAll('a[href*="app.trazaqr.com"]').forEach(el => {
+  el.addEventListener('click', () => {
+    gtag('event', 'cta_click', {
+      event_category: 'conversion',
+      event_label: el.textContent.trim().substring(0, 50)
+    })
+  })
+})
+
+// 3. Descarga del PDF de muestra
+document.querySelectorAll('a[href*="dcdt-muestra.pdf"]').forEach(el => {
+  el.addEventListener('click', () => {
+    gtag('event', 'file_download', {
+      event_category: 'contenido',
+      event_label: 'dcdt-muestra.pdf'
+    })
+  })
+})
+
+// 4. Clic en "Solicitar demo" (nav y sección contacto)
+document.querySelectorAll('a[href="#demo"]').forEach(el => {
+  el.addEventListener('click', () => {
+    gtag('event', 'demo_intent', {
+      event_category: 'interes',
+      event_label: el.closest('nav') ? 'nav' : 'cta'
+    })
+  })
+})
+</script>
+
+<script>
+// ── Confirmación tras enviar el formulario (?gracias=1) ──────────────────
+if (new URLSearchParams(location.search).get('gracias') === '1') {
+  const b = document.createElement('div')
+  b.textContent = '✓ Solicitud recibida. Te contestamos en menos de 24h laborables.'
+  b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#1D9E75;color:#fff;' +
+    'text-align:center;padding:14px 20px;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:500;'
+  document.body.appendChild(b)
+  history.replaceState(null, '', location.pathname)
+  setTimeout(() => { b.style.transition = 'opacity .6s'; b.style.opacity = '0'; setTimeout(() => b.remove(), 700) }, 8000)
+}
+</script>
+
+</body>
+</html>
