@@ -830,13 +830,70 @@ footer {
   .normativa::after { display: none; }
 }
 </style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M9CX3LKYQ5"></script>
+<!-- Cookies (RGPD/LSSI): Google Analytics SOLO se carga si el visitante acepta.
+     La elección se guarda en localStorage ('tqr_cookies': 'si'/'no') y se puede
+     cambiar desde el enlace "Cookies" del pie de página. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-M9CX3LKYQ5');
+(function () {
+  var KEY = 'tqr_cookies';
+
+  function cargarGA() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M9CX3LKYQ5';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-M9CX3LKYQ5');
+  }
+
+  function borrarCookiesGA() {
+    // Borrado best-effort de las cookies de GA al retirar el consentimiento
+    var caducar = ';Max-Age=0;path=/;domain=.trazaqr.com';
+    document.cookie = '_ga=' + caducar;
+    document.cookie = '_ga_M9CX3LKYQ5=' + caducar;
+  }
+
+  function guardar(valor) {
+    try { localStorage.setItem(KEY, valor); } catch (e) {}
+    var b = document.getElementById('banner-cookies');
+    if (b) b.remove();
+    if (valor === 'si') { cargarGA(); }
+    else { borrarCookiesGA(); if (window.dataLayer) location.reload(); }
+  }
+
+  function mostrarBanner() {
+    if (document.getElementById('banner-cookies')) return;
+    var div = document.createElement('div');
+    div.id = 'banner-cookies';
+    div.setAttribute('role', 'dialog');
+    div.setAttribute('aria-label', 'Aviso de cookies');
+    div.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0A1628;color:#fff;padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-size:14px;line-height:1.5;box-shadow:0 -4px 16px rgba(10,22,40,.25);';
+    div.innerHTML =
+      '<span style="max-width:640px;">Usamos cookies de análisis (Google Analytics) para saber cómo se usa esta web. Solo se instalan si aceptas. <a href="/privacidad#cookies" style="color:#9fc3ee;text-decoration:underline;">Más información</a></span>' +
+      '<span style="display:flex;gap:10px;flex-shrink:0;">' +
+      '<button id="ck-rechazar" style="background:transparent;color:#fff;border:1.5px solid #fff;border-radius:8px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;">Rechazar</button>' +
+      '<button id="ck-aceptar" style="background:#fff;color:#0A1628;border:1.5px solid #fff;border-radius:8px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;">Aceptar</button>' +
+      '</span>';
+    document.body.appendChild(div);
+    document.getElementById('ck-aceptar').addEventListener('click', function () { guardar('si'); });
+    document.getElementById('ck-rechazar').addEventListener('click', function () { guardar('no'); });
+  }
+
+  // Enlace "Cookies" del pie: permite cambiar la elección en cualquier momento
+  window.tqrCambiarCookies = function (ev) {
+    if (ev) ev.preventDefault();
+    mostrarBanner();
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var eleccion = null;
+    try { eleccion = localStorage.getItem(KEY); } catch (e) {}
+    if (eleccion === 'si') { cargarGA(); }
+    else if (eleccion !== 'no') { mostrarBanner(); }
+  });
+})();
 </script>
 </head>
 <body>
@@ -1423,6 +1480,7 @@ footer {
     <a href="https://app.trazaqr.com" target="_blank">Plataforma</a>
     <a href="#faq">FAQ</a>
     <a href="/privacidad">Privacidad</a>
+    <a href="#" onclick="tqrCambiarCookies(event)">Cookies</a>
   </div>
 </footer>
 
