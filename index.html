@@ -1380,10 +1380,9 @@ footer {
         <li>Cancelación en cualquier momento</li>
       </ul>
     </div>
-    <form class="form-grid reveal" action="https://formsubmit.co/info@trazaqr.com" method="POST">
-      <input type="hidden" name="_subject" value="Demo TrazaQR Transporte">
-      <input type="hidden" name="_next" value="https://trazaqr.com/?gracias=1">
-      <input type="hidden" name="_captcha" value="false">
+    <form class="form-grid reveal" action="https://dtqjxckfohncwjsqfnab.supabase.co/functions/v1/captura-lead" method="POST">
+      <!-- Honeypot anti-spam: oculto para humanos; si un bot lo rellena, la función lo descarta. -->
+      <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
         <div class="form-field">
           <label>Nombre *</label>
