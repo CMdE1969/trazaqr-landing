@@ -901,12 +901,6 @@ footer {
     document.getElementById('ck-rechazar').addEventListener('click', function () { guardar('no'); });
   }
 
-  // Enlace "Cookies" del pie: permite cambiar la elección en cualquier momento
-  window.tqrCambiarCookies = function (ev) {
-    if (ev) ev.preventDefault();
-    mostrarBanner();
-  };
-
   document.addEventListener('DOMContentLoaded', function () {
     var eleccion = null;
     try { eleccion = localStorage.getItem(KEY); } catch (e) {}
