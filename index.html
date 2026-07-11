@@ -874,8 +874,8 @@ footer {
     div.innerHTML =
       '<span style="max-width:640px;">Usamos cookies de análisis (Google Analytics) para saber cómo se usa esta web. Solo se instalan si aceptas. <a href="/privacidad#cookies" style="color:#9fc3ee;text-decoration:underline;">Más información</a></span>' +
       '<span style="display:flex;gap:10px;flex-shrink:0;">' +
-      '<button id="ck-rechazar" style="background:transparent;color:#fff;border:1.5px solid #fff;border-radius:8px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;">Rechazar</button>' +
       '<button id="ck-aceptar" style="background:#fff;color:#0A1628;border:1.5px solid #fff;border-radius:8px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;">Aceptar</button>' +
+'<button id="ck-rechazar" style="background:transparent;color:#fff;border:1.5px solid #fff;border-radius:8px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;">Rechazar</button>' +
       '</span>';
     document.body.appendChild(div);
     document.getElementById('ck-aceptar').addEventListener('click', function () { guardar('si'); });
