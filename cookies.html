@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/jpeg" href="/logo.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Cookies — TrazaQR Transporte</title>
+<meta name="robots" content="noindex">
+<style>
+  body { font-family: system-ui, sans-serif; font-size: 15px; line-height: 1.7; color: #1a1a18; background: #F7F5F0; margin: 0; padding: 20px; }
+  .container { max-width: 760px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 2.5rem 3rem; border: 0.5px solid #e8e8e5; }
+  h1 { font-size: 24px; font-weight: 600; color: #0C447C; margin-bottom: 6px; }
+  h2 { font-size: 16px; font-weight: 600; color: #0C447C; margin-top: 2rem; margin-bottom: 8px; border-bottom: 0.5px solid #e8e8e5; padding-bottom: 6px; }
+  p { margin-bottom: 12px; color: #333; }
+  .meta { font-size: 13px; color: #888; margin-bottom: 2rem; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 14px; }
+  th { background: #E6F1FB; color: #0C447C; padding: 8px 12px; text-align: left; font-weight: 600; }
+  td { padding: 8px 12px; border-bottom: 0.5px solid #f0f0ee; vertical-align: top; }
+  .highlight { background: #F1EFE8; border-left: 3px solid #0C447C; padding: 12px 16px; border-radius: 4px; margin-bottom: 1rem; font-size: 14px; }
+  a { color: #0C447C; }
+  footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid #e8e8e5; font-size: 12px; color: #aaa; }
+  .estado { font-weight: 600; }
+  .botones { display: flex; gap: 10px; margin: 12px 0 4px; }
+  .botones button { font-size: 14px; padding: 9px 18px; border-radius: 8px; cursor: pointer; border: 1px solid #0C447C; }
+  .btn-si { background: #0C447C; color: #fff; }
+  .btn-no { background: #fff; color: #0C447C; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Política de Cookies</h1>
+  <div class="meta">TrazaQR Transporte · Última actualización: julio 2026 · Versión 1.0</div>
+
+  <p>Esta web utiliza únicamente cookies de análisis (Google Analytics), y solo si las aceptas expresamente. No usamos cookies publicitarias ni de seguimiento de terceros.</p>
+
+  <h2>Cookies que utilizamos</h2>
+  <table>
+    <tr><th>Cookie</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr>
+    <tr><td><code>_ga</code></td><td>Análisis (Google Analytics)</td><td>Distinguir visitantes de forma anónima para estadísticas de uso</td><td>Hasta 2 años</td></tr>
+    <tr><td><code>_ga_M9CX3LKYQ5</code></td><td>Análisis (Google Analytics)</td><td>Mantener el estado de la sesión de medición</td><td>Hasta 2 años</td></tr>
+  </table>
+  <p>Además, guardamos tu elección de consentimiento en el almacenamiento local de tu navegador (<code>tqr_cookies</code>). Este dato es estrictamente técnico, no sale de tu dispositivo y está exento de consentimiento.</p>
+
+  <h2>Quién trata los datos</h2>
+  <p>Las cookies de análisis son de Google Analytics (Google Ireland Ltd.). Solo se instalan si pulsas "Aceptar" en el aviso de cookies. Si las rechazas, no se carga ningún script de Google y tu visita no se mide.</p>
+
+  <h2>Cambiar tu elección</h2>
+  <div class="highlight">
+    Tu elección actual: <span class="estado" id="estado-cookies">—</span>
+    <div class="botones">
+      <button class="btn-si" onclick="elegir('si')">Aceptar cookies de análisis</button>
+      <button class="btn-no" onclick="elegir('no')">Rechazarlas</button>
+    </div>
+  </div>
+  <p>Al retirar el consentimiento dejamos de cargar Google Analytics y eliminamos sus cookies de este navegador. También puedes borrarlas manualmente desde la configuración de tu navegador.</p>
+
+  <h2>Más información</h2>
+  <p>El detalle del tratamiento de datos personales está en nuestra <a href="/privacidad">Política de Privacidad</a>. Para cualquier duda: <a href="mailto:info@trazaqr.com">info@trazaqr.com</a>.</p>
+
+  <footer>TrazaQR Transporte · <a href="/">trazaqr.com</a> · <a href="/aviso-legal">Aviso legal</a> · <a href="/privacidad">Privacidad</a> · <a href="/terminos">Términos</a></footer>
+</div>
+
+<script>
+(function () {
+  var KEY = 'tqr_cookies';
+
+  function pintarEstado() {
+    var v = null;
+    try { v = localStorage.getItem(KEY); } catch (e) {}
+    var el = document.getElementById('estado-cookies');
+    el.textContent = v === 'si' ? 'Aceptadas' : (v === 'no' ? 'Rechazadas' : 'Sin decidir (se te preguntará al visitar la web)');
+  }
+
+  window.elegir = function (valor) {
+    try { localStorage.setItem(KEY, valor); } catch (e) {}
+    if (valor === 'no') {
+      var caducar = ';Max-Age=0;path=/;domain=.trazaqr.com';
+      document.cookie = '_ga=' + caducar;
+      document.cookie = '_ga_M9CX3LKYQ5=' + caducar;
+    }
+    pintarEstado();
+  };
+
+  document.addEventListener('DOMContentLoaded', pintarEstado);
+})();
+</script>
+
+</body>
+</html>
