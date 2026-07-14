@@ -374,7 +374,7 @@ nav {
           <li class="paso-item">
             <div>
               <strong>Pulsa "Emitir documento"</strong>
-              <span>El sistema calcula el hash SHA-256, genera el QR único y registra el timestamp de emisión. El documento queda disponible inmediatamente para el conductor.</span>
+              <span>El sistema calcula el hash SHA-256, genera el <strong>PDF oficial del DeCA</strong> y lo almacena en el repositorio con una URL única. El QR del documento (incluido en el propio PDF) descarga directamente ese PDF — tal y como exige la Resolución de 5 de junio de 2026. El documento queda disponible de inmediato para el conductor y para la inspección.</span>
             </div>
           </li>
         </ol>
@@ -426,6 +426,11 @@ nav {
           El conductor solo necesita escanear el QR con la cámara del móvil. No hay que instalar ninguna aplicación.
         </div>
 
+        <div class="nota-aviso">
+          <strong>Dos códigos QR, dos usos distintos</strong>
+          El <strong>QR del DeCA</strong> va impreso en el PDF oficial: al escanearlo se <strong>descarga el documento</strong> — es el que usa la inspección en carretera. El <strong>enlace del conductor</strong> (QR de verificación) abre la vista de operación en el móvil: iniciar transporte, registrar incidencias y confirmar la entrega. Esta sección describe el segundo.
+        </div>
+
         <ol class="pasos-lista">
           <li class="paso-item">
             <div>
@@ -463,6 +468,12 @@ nav {
               <span>Al llegar, pulsa "Confirmar entrega en destino". El sistema registra la hora real de entrega y cierra el ciclo del documento.</span>
             </div>
           </li>
+          <li class="paso-item">
+            <div>
+              <strong>Descarga el PDF oficial como respaldo</strong>
+              <span>Con el botón "↓ Descargar DeCA (PDF)" el conductor guarda el documento en su móvil. Recomendado como respaldo para inspecciones en zonas sin cobertura: el PDF descargado incluye su QR.</span>
+            </div>
+          </li>
         </ol>
 <div class="captura">
   <img src="/img/Cap-2-1.png" alt="Vista del conductor en móvil">
@@ -492,38 +503,32 @@ nav {
 
         <div class="nota">
           <strong>Sin registro. Sin login. Sin repositorio ministerial.</strong>
-          El agente inspector solo necesita el código DeCA o escanear el QR. El Ministerio de Transportes confirmó que no es necesario registrar el repositorio en ningún sistema oficial.
+          El agente escanea el QR del DeCA y <strong>descarga directamente el PDF oficial</strong> — sin menús, botones ni autenticación, como exige la Resolución de 5 de junio de 2026. El Ministerio de Transportes confirmó que no es necesario registrar el repositorio en ningún sistema oficial.
         </div>
 
         <ol class="pasos-lista">
           <li class="paso-item">
             <div>
-              <strong>El inspector accede a la URL de verificación</strong>
-              <span>Desde el QR del conductor o accediendo directamente a <strong>app.trazaqr.com/verificar</strong>.</span>
-            </div>
-          </li>
-          <li class="paso-item">
-            <div>
-              <strong>Introduce el código DeCA</strong>
-              <span>Formato DECA-XXXX-XXXXX (los códigos DCD- antiguos siguen siendo válidos). El conductor puede dictarlo o mostrarlo en pantalla.</span>
-            </div>
-          </li>
-          <li class="paso-item">
-            <div>
-              <strong>Pulsa "Verificar"</strong>
-              <span>El sistema muestra inmediatamente todos los datos del documento, el historial de eventos y la verificación del hash SHA-256.</span>
+              <strong>El inspector escanea el QR del DeCA</strong>
+              <span>Desde la copia del conductor (PDF en el móvil o impreso en papel, siempre con su QR). La petición descarga el PDF oficial directamente desde el repositorio en la tablet del agente.</span>
             </div>
           </li>
           <li class="paso-item">
             <div>
               <strong>El inspector comprueba los datos</strong>
-              <span>Verifica que los datos del documento coinciden con el vehículo y la mercancía. La vista muestra claramente qué campos son responsabilidad del cargador y cuáles del transportista.</span>
+              <span>Verifica que origen, destino, mercancía, vehículo y transportista efectivo del documento coinciden con el transporte que tiene delante.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Verificación online complementaria (opcional)</strong>
+              <span>En <strong>app.trazaqr.com/verificar</strong>, introduciendo el código del documento — formato DECA-XXXX-XXXXX (los códigos DCD- antiguos siguen siendo válidos) — se consultan además el historial de eventos en tiempo real y la verificación del hash SHA-256.</span>
             </div>
           </li>
           <li class="paso-item">
             <div>
               <strong>Registro opcional de la inspección</strong>
-              <span>El inspector puede introducir su nombre o número de agente para dejar constancia de la verificación en el historial del documento.</span>
+              <span>Desde la verificación online, el inspector puede introducir su nombre o número de agente para dejar constancia de la verificación en el historial del documento.</span>
             </div>
           </li>
         </ol>
@@ -573,7 +578,7 @@ nav {
           <li class="paso-item">
             <div>
               <strong>Ver el QR de una expedición</strong>
-              <span>Pulsa el botón "QR" en la fila para ver y compartir el código QR de verificación. Usa "↗" para abrir la vista pública en una nueva pestaña.</span>
+              <span>Pulsa el botón "QR" en la fila para ver y compartir el <strong>enlace del conductor</strong> (vista de operación). Usa "↗" para abrir la vista pública en una nueva pestaña. El QR oficial del DeCA — el que descarga el PDF para inspección — está en el propio PDF, accesible desde el detalle de la expedición.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -699,8 +704,14 @@ nav {
           </li>
           <li class="paso-item">
             <div>
-              <strong>Descarga el PDF</strong>
-              <span>Pulsa "↓ Descargar PDF" para generar e imprimir el documento completo. El PDF incluye todos los campos del art. 6, el historial de eventos y el QR de verificación.</span>
+              <strong>Descarga el PDF oficial</strong>
+              <span>Pulsa "↓ Descargar PDF" para obtener el <strong>documento oficial almacenado en el repositorio</strong> — el mismo que descarga la inspección al escanear su QR. Incluye todos los campos del art. 6, el QR del DeCA y los metadatos de creación y modificación exigidos.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Regenera el PDF si hay modificaciones</strong>
+              <span>Si cambian datos tras la emisión (p. ej. cambio de vehículo), pulsa "Regenerar PDF" e indica el <strong>motivo</strong> (obligatorio). El documento actualizado conserva el mismo QR, mantiene la información anterior y añade una sección de modificaciones con fecha y motivo. Las expediciones emitidas antes de esta funcionalidad pueden generar su PDF oficial con el mismo botón.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -720,11 +731,10 @@ nav {
 
         <div class="nota">
           <strong>Conservación obligatoria</strong>
-          La normativa (art. 9 Orden FOM/2861/2012) exige conservar el DeCA durante al menos 1 año desde la entrega. TrazaQR calcula automáticamente la fecha de archivo de cada expedición y la muestra en el detalle.
+          La normativa exige que el QR siga descargando el documento hasta al menos <strong>7 días naturales</strong> tras finalizar el servicio (Resolución de 5 de junio de 2026) y conservar el DeCA durante al menos <strong>1 año</strong> (art. 9 Orden FOM/2861/2012). TrazaQR cumple ambos plazos automáticamente: el PDF permanece en el repositorio y la fecha de archivo de cada expedición se muestra en el detalle.
         </div>
 
     </section>
-  </div> <!-- /layout -->
 
     <!-- FOOTER -->
     <div style="text-align:center;padding:2rem 0;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:1rem">
@@ -733,4 +743,8 @@ nav {
       · <a href="https://trazaqr.com" style="color:var(--blue)">trazaqr.com</a>
     </div>
 
-  </m
+  </main>
+</div> <!-- /layout -->
+
+</body>
+</html>
