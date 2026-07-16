@@ -1396,7 +1396,7 @@ footer {
         <li>Cancelación en cualquier momento</li>
       </ul>
     </div>
-    <form class="form-grid reveal" action="https://dtqjxckfohncwjsqfnab.supabase.co/functions/v1/captura-lead" method="POST">
+    <form id="form-contacto" class="form-grid reveal" action="https://dtqjxckfohncwjsqfnab.supabase.co/functions/v1/captura-lead" method="POST">
       <!-- Honeypot anti-spam: oculto para humanos; si un bot lo rellena, la función lo descarta. -->
       <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
@@ -1516,7 +1516,10 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 // ── Eventos de conversión GA4 ─────────────────────────────────────────────
 
 // 1. Envío del formulario de demo
-const form = document.querySelector('form[action*="formsubmit"]')
+// (antes buscaba form[action*="formsubmit"]: dejó de encontrar el formulario
+// al migrar el envío a la Edge Function captura-lead, rompiendo el evento
+// en silencio. Se referencia ahora por id, estable frente a cambios de action.)
+const form = document.querySelector('#form-contacto')
 if (form) {
   form.addEventListener('submit', () => {
     gtag('event', 'generate_lead', {
