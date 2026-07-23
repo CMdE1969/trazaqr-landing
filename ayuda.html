@@ -379,6 +379,12 @@ nav {
           </li>
           <li class="paso-item">
             <div>
+              <strong>¿Varios envíos en un mismo documento? Actívalo antes de emitir</strong>
+              <span>Si el transporte agrupa varios env&iacute;os con el mismo cargador contractual y el mismo transportista efectivo, activa "Varios env&iacute;os en este documento". Se abren filas (m&iacute;nimo dos) para indicar origen, destino, mercanc&iacute;a y peso de cada env&iacute;o por separado; puedes a&ntilde;adir o quitar filas. Los campos de origen, destino y mercanc&iacute;a de la cabecera se rellenan solos a partir del desglose. La secuencia de las filas no implica un orden de ejecuci&oacute;n del transporte (Resoluci&oacute;n de 5 de junio de 2026, apartado Sexto). Si no se activa, el documento funciona como un env&iacute;o &uacute;nico, igual que siempre.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
               <strong>Pulsa "Emitir documento"</strong>
               <span>El sistema calcula el hash SHA-256, genera el <strong>PDF oficial del DeCA</strong> y lo almacena en el repositorio con una URL única. El QR del documento (incluido en el propio PDF) descarga directamente ese PDF — tal y como exige la Resolución de 5 de junio de 2026. El documento queda disponible de inmediato para el conductor y para la inspección.</span>
             </div>
@@ -392,9 +398,9 @@ nav {
   <img src="/img/Cap-1-4.png" alt="Formulario de nueva expedición - Observaciones" style="width:24%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
 </div>
         </div>
-<div class="captura" style="display:flex; gap:8px; overflow-x:auto; border:none; background:none; padding:0;">
-  <img src="/img/Cap-2-1.png" alt="Documento emitido - datos del cargador y transportista" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
-  <img src="/img/Cap-2-2.png" alt="Documento emitido - fechas, vehículo y hash SHA-256" style="width:49%; border-radius:8px; border:1px solid var(--border); box-shadow:0 4px 16px rgba(12,68,124,0.08);">
+<div class="captura">
+  <img src="/img/Cap-6-2.png" alt="Ejemplo de DeCA emitido con varios envíos: datos del cargador, transportista, fechas, desglose de envíos y hash SHA-256">
+  <div class="captura-label" style="margin-top:8px">Ejemplo de un DeCA emitido, en este caso con varios envíos agrupados en el mismo documento</div>
 </div>
 
         <h3 style="font-size:14px;font-weight:600;color:var(--ink);margin:1.25rem 0 .75rem">Campos obligatorios por responsabilidad</h3>
@@ -453,7 +459,7 @@ nav {
           <li class="paso-item">
             <div>
               <strong>El conductor introduce su nombre</strong>
-              <span>Opcional pero recomendado — queda registrado en el historial de eventos del documento.</span>
+              <span>Opcional, y se adjunta a cada acción que se registre (inicio, incidencia o entrega). El móvil lo recuerda entre expediciones, así que solo hace falta escribirlo una vez. Si se intenta continuar sin nombre, la app pide confirmación antes de registrar la acción igualmente.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -471,7 +477,7 @@ nav {
           <li class="paso-item">
             <div>
               <strong>Confirma la entrega en destino</strong>
-              <span>Al llegar, pulsa "Confirmar entrega en destino". El sistema registra la hora real de entrega y cierra el ciclo del documento.</span>
+              <span>Al llegar, pulsa "Confirmar entrega en destino". Puede firmar con el dedo en la pantalla para acreditar la recepción — la firma es opcional, también hay un botón para confirmar sin firma. El sistema registra la hora real de entrega y cierra el ciclo del documento.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -482,11 +488,11 @@ nav {
           </li>
         </ol>
 <div class="captura">
-  <img src="/img/Cap-2-1.png" alt="Vista del conductor en móvil">
+  <img src="/img/Cap-2-1.png" alt="Vista del conductor en móvil antes de iniciar transporte, con el campo de nombre y el botón Iniciar transporte">
 </div>
         </div>
 <div class="captura">
-  <img src="/img/Cap-2-2.png" alt="Confirmación de entrega">
+  <img src="/img/Cap-2-2.png" alt="Confirmación de entrega en destino, documento en estado Entregado">
 </div>
 
         <div class="nota-aviso">
@@ -599,7 +605,7 @@ nav {
 </div>
         </div>
 <div class="captura">
-  <img src="/img/Cap-4-2.png" alt="Modal del QR de verificación">
+  <img src="/img/Cap-4-2.png" alt="Modal QR conductor con los botones Copiar enlace, WhatsApp y Abrir">
 </div>
 
     </section>
