@@ -1082,7 +1082,7 @@ footer {
       </div>
       <div class="dcdt-meta">
         <div class="dcdt-hash">Integridad verificada · TrazaQR Transporte</div>
-        <a href="/dcdt-muestra.pdf" download class="dcdt-dl">
+        <a href="/ejemplo-deca-trazaqr.pdf" download="Ejemplo DeCA TrazaQR.pdf" class="dcdt-dl">
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Descargar PDF de muestra
         </a>
@@ -1540,11 +1540,11 @@ document.querySelectorAll('a[href*="app.trazaqr.com"]').forEach(el => {
 })
 
 // 3. Descarga del PDF de muestra
-document.querySelectorAll('a[href*="dcdt-muestra.pdf"]').forEach(el => {
+document.querySelectorAll('a[href*="ejemplo-deca-trazaqr.pdf"]').forEach(el => {
   el.addEventListener('click', () => {
     gtag('event', 'file_download', {
       event_category: 'contenido',
-      event_label: 'dcdt-muestra.pdf'
+      event_label: 'ejemplo-deca-trazaqr.pdf'
     })
   })
 })
