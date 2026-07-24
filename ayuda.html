@@ -280,30 +280,42 @@ nav {
 
     <a href="#proceso-1" class="sidebar-link active">
       <div class="sidebar-num">1</div>
-      El Dashboard
+      Iniciar sesión
     </a>
     <a href="#proceso-2" class="sidebar-link">
       <div class="sidebar-num">2</div>
-      Crear una expedición
+      El Dashboard
     </a>
     <a href="#proceso-3" class="sidebar-link">
       <div class="sidebar-num">3</div>
-      El conductor y el QR
+      Ciclo de vida de una expedición
     </a>
     <a href="#proceso-4" class="sidebar-link">
       <div class="sidebar-num">4</div>
-      Verificación de inspección
+      Crear una expedición
     </a>
     <a href="#proceso-5" class="sidebar-link">
       <div class="sidebar-num">5</div>
-      Panel de expediciones
+      Importar por CSV/Excel
     </a>
     <a href="#proceso-6" class="sidebar-link">
       <div class="sidebar-num">6</div>
-      Alertas de retraso
+      El conductor y el QR
     </a>
     <a href="#proceso-7" class="sidebar-link">
       <div class="sidebar-num">7</div>
+      Verificación de inspección
+    </a>
+    <a href="#proceso-8" class="sidebar-link">
+      <div class="sidebar-num">8</div>
+      Panel de expediciones
+    </a>
+    <a href="#proceso-9" class="sidebar-link">
+      <div class="sidebar-num">9</div>
+      Alertas de retraso
+    </a>
+    <a href="#proceso-10" class="sidebar-link">
+      <div class="sidebar-num">10</div>
       Detalle y exportación
     </a>
 
@@ -332,6 +344,77 @@ nav {
     <section class="proceso" id="proceso-1">
       <div class="proceso-header">
         <div class="proceso-num">1</div>
+        <div>
+          <h2>Iniciar sesión y recuperar la contraseña</h2>
+          <p>Acceder a la aplicación y qué hacer si olvidas tu contraseña</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin-bottom:0.75rem">Iniciar sesión</h3>
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Entra en la pantalla de acceso de TrazaQR</strong>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Escribe tu email y tu contraseña</strong>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Completa la verificación de seguridad</strong>
+              <span>Si te la pide.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Pulsa para entrar</strong>
+            </div>
+          </li>
+        </ol>
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.5rem 0 0.75rem">He olvidado mi contraseña</h3>
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Pulsa "¿Olvidaste tu contraseña?"</strong>
+              <span>En la pantalla de acceso.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Escribe tu email y confirma</strong>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Recibirás un correo con un enlace</strong>
+              <span>Para restablecer la contraseña.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Abre el enlace y define tu nueva contraseña</strong>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Vuelve a la pantalla de acceso</strong>
+              <span>E inicia sesión con la contraseña nueva.</span>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 2 -->
+    <section class="proceso" id="proceso-2">
+      <div class="proceso-header">
+        <div class="proceso-num">2</div>
         <div>
           <h2>El Dashboard: la pantalla de resumen</h2>
           <p>Qué ves al entrar en la aplicación y para qué sirve cada dato</p>
@@ -392,10 +475,41 @@ nav {
       </div>
     </section>
 
-    <!-- PROCESO 2 -->
-    <section class="proceso" id="proceso-2">
+    <!-- PROCESO 3 -->
+    <section class="proceso" id="proceso-3">
       <div class="proceso-header">
-        <div class="proceso-num">2</div>
+        <div class="proceso-num">3</div>
+        <div>
+          <h2>El ciclo de vida de una expedición</h2>
+          <p>Los estados por los que pasa cada documento, en su orden natural</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <table class="tabla-campos">
+          <thead>
+            <tr><th>Estado</th><th>Qué significa</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge-o">BORRADOR</span></td><td>La expedición está creada pero todavía no se ha emitido. Se puede seguir editando o completar más tarde. Aún no tiene validez como documento oficial.</td></tr>
+            <tr><td><span class="badge-t">EMITIDO</span></td><td>El DeCA se ha generado en PDF con su código QR y su huella digital (hash). Es el documento oficial del transporte.</td></tr>
+            <tr><td><span class="badge-o" style="background:#FBF0DC;color:#8A5A00">EN TRÁNSITO</span></td><td>El conductor ha marcado el inicio del transporte desde su móvil.</td></tr>
+            <tr><td><span class="badge-c">ENTREGADO</span></td><td>El conductor ha confirmado la entrega, con firma opcional.</td></tr>
+            <tr><td><span class="badge-o">ARCHIVADO</span></td><td>La expedición queda guardada como histórico, conservada según el plazo legal.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="nota">
+          Las secciones siguientes recorren este ciclo paso a paso: cómo crear la expedición, cómo la usa el conductor y cómo consultar o exportar el documento en cualquier momento.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 4 -->
+    <section class="proceso" id="proceso-4">
+      <div class="proceso-header">
+        <div class="proceso-num">4</div>
         <div>
           <h2>Crear y emitir una expedición</h2>
           <p>Cómo generar el DeCA antes de iniciar el transporte</p>
@@ -490,10 +604,82 @@ nav {
 
     </section>
 
-    <!-- PROCESO 3 -->
-    <section class="proceso" id="proceso-3">
+    <!-- PROCESO 5 -->
+    <section class="proceso" id="proceso-5">
       <div class="proceso-header">
-        <div class="proceso-num">3</div>
+        <div class="proceso-num">5</div>
+        <div>
+          <h2>Importar varias expediciones por CSV o Excel</h2>
+          <p>Crear muchos borradores de golpe en lugar de uno a uno</p>
+        </div>
+      </div>
+      <div class="proceso-body">
+
+        <div class="nota-aviso">
+          <strong>Importante y tranquilizador</strong>
+          Todas las filas importadas entran como <strong>BORRADOR</strong>. Nunca se emiten automáticamente. Importas, revisas cada borrador y lo emites tú cuando quieras. No hay riesgo de emitir algo por error.
+        </div>
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.25rem 0 0.75rem">Dónde está</h3>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          En la página de Expediciones, arriba a la derecha, hay tres botones: <strong>"↓ Exportar CSV"</strong> (descarga las expediciones actuales, respetando los filtros aplicados), <strong>"Plantilla import"</strong> (descarga un CSV con las columnas correctas y una fila de ejemplo) y <strong>"↑ Importar CSV/Excel"</strong> (sube tu fichero para crear los borradores).
+        </p>
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.25rem 0 0.75rem">Cómo importar, paso a paso</h3>
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Descarga la plantilla</strong>
+              <span>Pulsa "Plantilla import" y abre el fichero. Verás la cabecera correcta y una fila de ejemplo. Un CSV exportado desde la propia app también sirve como plantilla.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Rellena una fila por expedición</strong>
+              <span>Borra la fila de ejemplo. Guarda el fichero como .xlsx (recomendado) o .csv.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Pulsa "↑ Importar CSV/Excel"</strong>
+              <span>Y selecciona el fichero.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Revisa el resumen</strong>
+              <span>Total de filas, cuántas se crearon y, si hubo problemas, la lista de errores por fila (p. ej. "Fila 3: Campo obligatorio").</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Revisa y emite los borradores creados</strong>
+              <span>Aparecen en el listado de expediciones: ábrelas, revísalas y emítelas cuando estén correctas.</span>
+            </div>
+          </li>
+        </ol>
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.25rem 0 0.75rem">Columnas obligatorias</h3>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          Cargador, NIF Cargador (formato válido) y Domicilio Cargador; Transportista y NIF Transportista (formato válido); Origen y Destino; Mercancía (descripción); Peso en kg o Magnitud alternativa (al menos uno de los dos); Fecha de carga y Fecha de descarga prevista (posterior a la de carga); Matrícula de tractor; y Matrícula de remolque, solo obligatoria si Articulado = Sí.
+        </p>
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.25rem 0 0.75rem">Formato de los datos</h3>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          Separador CSV: punto y coma (;), codificación UTF-8 (con .xlsx no hay que preocuparse de esto). Fechas en formato dd/MM/aaaa HH:mm (ej. 20/07/2026 08:00). Peso como número, con coma o punto decimal. Articulado: escribe "Sí" para afirmativo; cualquier otra cosa se toma como "No". El NIF/CIF se normaliza solo.
+        </p>
+
+        <div class="nota">
+          Consejo: empieza probando con 2-3 filas para comprobar que el formato encaja, y luego sube el lote entero. Revisa siempre los borradores antes de emitir: la importación crea, pero la emisión la decides tú.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESO 6 -->
+    <section class="proceso" id="proceso-6">
+      <div class="proceso-header">
+        <div class="proceso-num">6</div>
         <div>
           <h2>El conductor y el QR</h2>
           <p>Cómo el conductor accede al documento desde el móvil sin instalar nada</p>
@@ -570,10 +756,10 @@ nav {
 
     </section>
 
-    <!-- PROCESO 4 -->
-    <section class="proceso" id="proceso-4">
+    <!-- PROCESO 7 -->
+    <section class="proceso" id="proceso-7">
       <div class="proceso-header">
-        <div class="proceso-num">4</div>
+        <div class="proceso-num">7</div>
         <div>
           <h2>Verificación de inspección</h2>
           <p>Cómo la DGT o la Guardia Civil de Tráfico verifica el documento en carretera</p>
@@ -619,10 +805,10 @@ nav {
 
     </section>
 
-    <!-- PROCESO 5 -->
-    <section class="proceso" id="proceso-5">
+    <!-- PROCESO 8 -->
+    <section class="proceso" id="proceso-8">
       <div class="proceso-header">
-        <div class="proceso-num">5</div>
+        <div class="proceso-num">8</div>
         <div>
           <h2>Panel de expediciones</h2>
           <p>Cómo gestionar, filtrar y exportar el historial de documentos</p>
@@ -678,10 +864,10 @@ nav {
 
     </section>
 
-    <!-- PROCESO 6 -->
-    <section class="proceso" id="proceso-6">
+    <!-- PROCESO 9 -->
+    <section class="proceso" id="proceso-9">
       <div class="proceso-header">
-        <div class="proceso-num">6</div>
+        <div class="proceso-num">9</div>
         <div>
           <h2>Alertas de retraso</h2>
           <p>Cómo configurar notificaciones automáticas por email cuando una entrega se retrasa</p>
@@ -746,10 +932,10 @@ nav {
 
     </section>
 
-    <!-- PROCESO 7 -->
-    <section class="proceso" id="proceso-7">
+    <!-- PROCESO 10 -->
+    <section class="proceso" id="proceso-10">
       <div class="proceso-header">
-        <div class="proceso-num">7</div>
+        <div class="proceso-num">10</div>
         <div>
           <h2>Detalle de expedición y exportación PDF</h2>
           <p>Cómo ver el historial completo de una expedición y descargar el documento</p>
@@ -815,6 +1001,13 @@ nav {
         </div>
 
     </section>
+
+    <!-- MANUAL DESCARGABLE -->
+    <div style="text-align:center;background:var(--blue-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem">
+      <div style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin-bottom:.4rem">¿Prefieres leerlo todo seguido?</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Esta misma guía, completa, en un único PDF para consultar en pantalla o imprimir.</p>
+      <a href="/manual-usuario-trazaqr.pdf" target="_blank" rel="noreferrer" style="display:inline-block;background:var(--blue);color:white;font-weight:600;font-size:14px;padding:10px 20px;border-radius:8px;text-decoration:none">↓ Descargar manual completo (PDF)</a>
+    </div>
 
     <!-- FOOTER -->
     <div style="text-align:center;padding:2rem 0;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:1rem">
