@@ -697,8 +697,8 @@ nav {
         </div>
 
         <div class="nota-aviso">
-          <strong>Dos códigos QR, dos usos distintos</strong>
-          El <strong>QR del DeCA</strong> va impreso en el PDF oficial: al escanearlo se <strong>descarga el documento</strong> — es el que usa la inspección en carretera. El <strong>enlace del conductor</strong> (QR de verificación) abre la vista de operación en el móvil: iniciar transporte, registrar incidencias y confirmar la entrega. Esta sección describe el segundo.
+          <strong>Tres piezas, tres usos distintos</strong>
+          El <strong>QR del DeCA</strong> va impreso en el PDF oficial: al escanearlo se <strong>descarga el documento</strong> — es el que usa la inspección en carretera. El <strong>enlace del conductor</strong> es un enlace personal y con clave de seguridad propia de cada expedición: es el único que permite <strong>operar</strong> — iniciar transporte, registrar incidencias y confirmar la entrega. La <strong>verificación pública</strong> (introduciendo el código en app.trazaqr.com/verificar, o el enlace equivalente) es de <strong>solo consulta</strong>: cualquiera puede ver los datos, el historial y el hash, pero no puede operar nada. Esta sección describe el enlace del conductor.
         </div>
 
         <ol class="pasos-lista">
@@ -792,7 +792,7 @@ nav {
           <li class="paso-item">
             <div>
               <strong>Verificación online complementaria (opcional)</strong>
-              <span>En <strong>app.trazaqr.com/verificar</strong>, introduciendo el código del documento — formato DECA-XXXX-XXXXX (los códigos DCD- antiguos siguen siendo válidos) — se consultan además el historial de eventos en tiempo real y la verificación del hash SHA-256.</span>
+              <span>En <strong>app.trazaqr.com/verificar</strong>, introduciendo el código del documento — formato DECA-XXXX-XXXXX (los códigos DCD- antiguos siguen siendo válidos) — se consultan además el historial de eventos en tiempo real y la verificación del hash SHA-256. Es una pantalla de <strong>solo consulta</strong>: no permite iniciar transporte, registrar incidencias ni confirmar entregas — esas acciones solo están disponibles desde el enlace personal del conductor.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -848,7 +848,7 @@ nav {
           <li class="paso-item">
             <div>
               <strong>Ver el QR de una expedición</strong>
-              <span>Pulsa el botón "QR" en la fila para ver y compartir el <strong>enlace del conductor</strong> (vista de operación). Usa "↗" para abrir la vista pública en una nueva pestaña. El QR oficial del DeCA — el que descarga el PDF para inspección — está en el propio PDF, accesible desde el detalle de la expedición.</span>
+              <span>Pulsa el botón "QR" en la fila para ver y compartir el <strong>enlace del conductor</strong> (con su clave de seguridad, para operar: iniciar, incidencias, entrega). Usa "↗" para abrirlo directamente en una nueva pestaña. El QR oficial del DeCA — el que descarga el PDF para inspección — está en el propio PDF, accesible desde el detalle de la expedición. La verificación pública de solo consulta se comparte por separado, desde el detalle de la expedición.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -987,7 +987,13 @@ nav {
           <li class="paso-item">
             <div>
               <strong>Comparte la URL de verificación</strong>
-              <span>Pulsa "⬡ Copiar URL verificación" para copiar el enlace público del documento. Útil para enviar a clientes o adjuntar en emails.</span>
+              <span>Pulsa "⬡ Copiar URL verificación" para copiar el enlace público de solo consulta del documento (sin clave de conductor). Útil para enviar a clientes o adjuntar en emails: quien lo reciba puede ver los datos, el historial y el hash, pero no puede operar nada.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Comparte el enlace del conductor</strong>
+              <span>Más abajo en el detalle, el bloque "Enlace del conductor — operar" tiene su propio QR, "Copiar enlace", "Abrir" y "Enlace + QR" (para email). A diferencia de la URL de verificación, este enlace lleva la clave de seguridad de la expedición y es el único que permite iniciar transporte, registrar incidencias y confirmar la entrega — compártelo solo con el conductor de este transporte.</span>
             </div>
           </li>
         </ol>
