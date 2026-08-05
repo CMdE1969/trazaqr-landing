@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="icon" type="image/jpeg" href="/logo.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Estás obligado al DeCA? Compruébalo en 1 minuto — TrazaQR</title>
+<meta name="description" content="Cuatro preguntas y te decimos si tu transporte está obligado a llevar el DeCA desde el 5 de octubre de 2026, con la referencia exacta del BOE. Gratis y sin registro.">
+<link rel="canonical" href="https://trazaqr.com/comprobador">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="TrazaQR Transporte">
+<meta property="og:url" content="https://trazaqr.com/comprobador">
+<meta property="og:title" content="¿Estás obligado al DeCA? Compruébalo en 1 minuto">
+<meta property="og:description" content="Cuatro preguntas y te decimos si tu transporte está obligado al DeCA desde el 5 de octubre de 2026, citando el BOE. Gratis y sin registro.">
+<meta property="og:image" content="https://trazaqr.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="¿Estás obligado al DeCA? Compruébalo en 1 minuto">
+<meta name="twitter:description" content="Cuatro preguntas y te decimos si tu transporte está obligado al DeCA. Gratis, sin registro.">
+<meta name="twitter:image" content="https://trazaqr.com/og-image.png">
+
+<style>
+@font-face { font-family:'Fraunces'; font-style:normal; font-weight:300 700; font-display:swap; src:url('/fonts/fraunces-variable.woff2') format('woff2'); }
+@font-face { font-family:'Fraunces'; font-style:italic; font-weight:300; font-display:swap; src:url('/fonts/fraunces-italic.woff2') format('woff2'); }
+@font-face { font-family:'DM Sans'; font-style:normal; font-weight:400 500; font-display:swap; src:url('/fonts/dm-sans-variable.woff2') format('woff2'); }
+</style>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:#0A1628; --blue:#0C447C; --blue-mid:#185FA5; --blue-light:#E6F1FB;
+  --gold:#C9973A; --gold-light:#FDF3E0; --cream:#F7F5F0; --white:#FFFFFF;
+  --text:#1E2B3C; --muted:#6B7B8D; --border:rgba(12,68,124,0.12);
+  --green:#085041; --green-light:#E1F5EE;
+  --ff-display:'Fraunces', Georgia, serif; --ff-body:'DM Sans', system-ui, sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+body { font-family:var(--ff-body); color:var(--text); background:var(--cream); line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color:var(--blue); }
+
+nav { background:var(--white); border-bottom:1px solid var(--border); padding:14px 24px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:600; font-size:15px; }
+.nav-logo img { width:30px; height:30px; border-radius:6px; }
+.nav-right { display:flex; align-items:center; gap:18px; font-size:14px; }
+.nav-tel { text-decoration:none; color:var(--blue); font-weight:600; white-space:nowrap; }
+.nav-cta { text-decoration:none; background:var(--blue); color:#fff; padding:9px 16px; border-radius:8px; font-weight:500; font-size:14px; white-space:nowrap; }
+
+.wrap { max-width:720px; margin:0 auto; padding:48px 24px 80px; }
+
+.eyebrow { font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+h1 { font-family:var(--ff-display); font-weight:400; font-size:clamp(28px,5vw,42px); line-height:1.15; color:var(--ink); margin-bottom:14px; }
+h1 em { font-style:italic; color:var(--blue); }
+.lead { font-size:17px; color:var(--muted); max-width:56ch; }
+
+.card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:32px; margin-top:28px; }
+
+.progress { display:flex; gap:6px; margin-bottom:24px; }
+.progress span { height:4px; flex:1; border-radius:2px; background:var(--border); transition:background .3s var(--ease); }
+.progress span.on { background:var(--blue); }
+
+.q { font-family:var(--ff-display); font-size:23px; font-weight:400; line-height:1.3; color:var(--ink); margin-bottom:8px; }
+.q-help { font-size:14px; color:var(--muted); margin-bottom:22px; }
+
+.opts { display:flex; flex-direction:column; gap:10px; }
+.opt { text-align:left; width:100%; background:var(--white); border:1.5px solid var(--border); border-radius:10px;
+       padding:15px 18px; font-family:inherit; font-size:15px; color:var(--text); cursor:pointer;
+       transition:border-color .18s var(--ease), background .18s var(--ease); }
+.opt:hover { border-color:var(--blue); background:var(--blue-light); }
+.opt strong { display:block; font-weight:500; margin-bottom:2px; }
+.opt span { display:block; font-size:13px; color:var(--muted); line-height:1.4; }
+
+.back { margin-top:20px; background:none; border:none; font-family:inherit; font-size:14px; color:var(--muted); cursor:pointer; padding:4px 0; }
+.back:hover { color:var(--blue); text-decoration:underline; }
+
+.verdict { border-radius:12px; padding:22px 24px; margin-bottom:24px; }
+.verdict.si { background:var(--gold-light); border:1.5px solid var(--gold); }
+.verdict.no { background:var(--green-light); border:1.5px solid var(--green); }
+.verdict-tag { font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; margin-bottom:8px; }
+.verdict.si .verdict-tag { color:#8A6420; }
+.verdict.no .verdict-tag { color:var(--green); }
+.verdict h2 { font-family:var(--ff-display); font-weight:400; font-size:25px; line-height:1.25; color:var(--ink); margin-bottom:10px; }
+.verdict p { font-size:15px; }
+
+.norma { background:var(--cream); border-left:3px solid var(--blue); border-radius:0 8px 8px 0; padding:14px 18px; margin:18px 0; font-size:14px; }
+.norma b { color:var(--ink); }
+.cita { font-style:italic; color:var(--text); }
+
+.bloque { margin-top:22px; }
+.bloque h3 { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:8px; }
+.bloque p, .bloque li { font-size:14.5px; color:var(--text); }
+.bloque ul { padding-left:20px; display:flex; flex-direction:column; gap:6px; margin-top:6px; }
+
+.ctas { display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+.btn { text-decoration:none; padding:13px 22px; border-radius:9px; font-size:15px; font-weight:500; display:inline-block; }
+.btn-main { background:var(--blue); color:#fff; }
+.btn-alt { background:var(--white); color:var(--blue); border:1.5px solid var(--border); }
+
+.captura { margin-top:26px; padding-top:24px; border-top:1px solid var(--border); }
+.captura h3 { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+.captura p { font-size:14px; color:var(--muted); margin-bottom:14px; }
+.f-row { display:flex; gap:10px; flex-wrap:wrap; }
+.f-row input { flex:1 1 200px; padding:11px 13px; border:1.5px solid var(--border); border-radius:8px; font-family:inherit; font-size:15px; color:var(--text); background:var(--white); }
+.f-row input:focus { outline:none; border-color:var(--blue); }
+.f-row button { padding:11px 20px; border:none; border-radius:8px; background:var(--blue); color:#fff; font-family:inherit; font-size:15px; font-weight:500; cursor:pointer; }
+.consent { display:flex; gap:9px; align-items:flex-start; margin-top:12px; font-size:12.5px; color:var(--muted); line-height:1.45; }
+.consent input { margin-top:2px; flex-shrink:0; }
+.hp { position:absolute; left:-9999px; opacity:0; }
+
+.aviso { margin-top:30px; font-size:12.5px; color:var(--muted); line-height:1.5; }
+
+footer { border-top:1px solid var(--border); background:var(--white); padding:26px 24px; text-align:center; font-size:13px; color:var(--muted); }
+footer a { color:var(--muted); margin:0 8px; }
+
+.hide { display:none; }
+@media (max-width:600px){ .card{padding:24px 20px;} .wrap{padding:32px 18px 60px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="/logo.jpg" alt="TrazaQR">TrazaQR Transporte</a>
+  <div class="nav-right">
+    <a href="tel:+34610880061" class="nav-tel">610 880 061</a>
+    <a href="https://app.trazaqr.com/registro" class="nav-cta">60 días gratis</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="eyebrow">Herramienta gratuita · sin registro</div>
+  <h1>¿Tu transporte está <em>obligado</em> al DeCA?</h1>
+  <p class="lead">Cuatro preguntas y te lo decimos, citando el artículo exacto del BOE. Desde el 5 de octubre de 2026 el documento de control debe ser electrónico — pero no todos los transportes están obligados.</p>
+
+  <!-- ============ PREGUNTAS ============ -->
+  <div class="card" id="quiz">
+    <div class="progress" id="prog"><span class="on"></span><span></span><span></span><span></span></div>
+    <div id="preguntas"></div>
+    <button class="back hide" id="btn-back">← Volver a la pregunta anterior</button>
+  </div>
+
+  <!-- ============ RESULTADO ============ -->
+  <div class="card hide" id="resultado"></div>
+
+  <p class="aviso">
+    Esta herramienta es orientativa y se basa en la Orden FOM/2861/2012 (texto consolidado a 28/03/2026), el art. 222 del RD 1211/1990, la disposición transitoria octava de la Ley 9/2025 de Movilidad Sostenible y la Resolución de 5 de junio de 2026 (BOE-A-2026-12784). No sustituye al asesoramiento jurídico ni a la consulta de la norma. No guardamos ninguna respuesta: el cálculo se hace en tu navegador.
+  </p>
+</div>
+
+<footer>
+  <div>TrazaQR Transporte · <a href="tel:+34610880061">610 880 061</a> · <a href="mailto:info@trazaqr.com">info@trazaqr.com</a></div>
+  <div style="margin-top:8px;">
+    <a href="/">Inicio</a><a href="/ayuda">Ayuda</a><a href="/aviso-legal">Aviso legal</a><a href="/terminos">Términos</a><a href="/privacidad">Privacidad</a><a href="/cookies">Cookies</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // GA solo si el visitante aceptó cookies en la landing (misma clave: tqr_cookies)
+  function ev(nombre, params) {
+    try {
+      if (localStorage.getItem('tqr_cookies') === 'si' && typeof gtag === 'function') gtag('event', nombre, params || {});
+    } catch (e) {}
+  }
+
+  var PREGUNTAS = [
+    {
+      q: '¿Qué tipo de transporte realizas?',
+      help: 'Público es transportar mercancía de terceros a cambio de un precio. Privado complementario es mover mercancía de tu propia empresa como apoyo a tu actividad principal.',
+      opts: [
+        { t: 'Transporte público', s: 'Transporto mercancía para otros y cobro por ello', next: 1 },
+        { t: 'Transporte privado complementario', s: 'Muevo mercancía de mi propia empresa con mis vehículos', res: 'privado' }
+      ]
+    },
+    {
+      q: '¿Dónde están el origen y el destino?',
+      help: 'Se refiere al envío concreto, no a dónde tienes la sede.',
+      opts: [
+        { t: 'Los dos en España', s: 'Transporte nacional, o cabotaje dentro del territorio español', next: 2 },
+        { t: 'Uno de los dos fuera de España', s: 'Transporte internacional, aunque parte del recorrido sea por España', res: 'internacional' }
+      ]
+    },
+    {
+      q: '¿Necesitas autorización de transporte para realizarlo?',
+      help: 'Es la llamada tarjeta de transporte: MDP o MDL. Si operas legalmente como transportista público, normalmente la tienes.',
+      opts: [
+        { t: 'Sí, tengo tarjeta MDP o MDL', s: 'El transporte requiere título habilitante de la Administración', next: 3 },
+        { t: 'No la necesito', s: 'El transporte no requiere autorización previa de la Administración', res: 'sin-titulo' },
+        { t: 'No estoy seguro', s: 'Seguimos y te lo aclaramos al final', next: 3, dudaTitulo: true }
+      ]
+    },
+    {
+      q: '¿El envío es alguno de estos casos?',
+      help: 'Son las exenciones del art. 2 de la Orden FOM/2861/2012.',
+      opts: [
+        { t: 'Una mudanza', s: '', res: 'exento-mudanza' },
+        { t: 'Un vehículo accidentado o averiado', s: 'Transportado en un vehículo especial (grúa o similar)', res: 'exento-averiado' },
+        { t: 'Paquetería o reparto de pocos bultos', s: 'Bultos que una persona puede manipular sin más ayuda que las herramientas del vehículo', res: 'exento-paqueteria' },
+        { t: 'Ninguno de estos', s: 'Carga completa, grupaje, carga fraccionada, distribución…', res: 'obligado' }
+      ]
+    }
+  ];
+
+  var NORMA_COMUN =
+    '<div class="norma"><b>De dónde sale la fecha:</b> la disposición transitoria octava de la Ley 9/2025, de 3 de diciembre, de Movilidad Sostenible fija que el documento de control sea necesariamente digital a los diez meses de su entrada en vigor, es decir el <b>5 de octubre de 2026</b>. Las características técnicas están en la Resolución de 5 de junio de 2026 (<b>BOE-A-2026-12784</b>).</div>';
+
+  var RESULTADOS = {
+    obligado: {
+      clase: 'si', tag: 'Sí, estás obligado',
+      h: 'Tu transporte necesita el DeCA a partir del 5 de octubre de 2026',
+      p: 'Es transporte público de mercancías por carretera de ámbito interior y no encaja en ninguna de las exenciones del art. 2 de la Orden FOM/2861/2012. Desde esa fecha el documento de control debe ser electrónico: en papel deja de ser válido.',
+      cuerpo:
+        NORMA_COMUN +
+        '<div class="bloque"><h3>No hay periodo de gracia</h3><p>El Ministerio de Transportes lo dice literalmente en su página oficial del DeCA: <span class="cita">«No está prevista en las normas ninguna fase adicional, más allá del 5 de octubre, donde no se sancione la obligación de digitalización.»</span></p></div>' +
+        '<div class="bloque"><h3>Quién responde de qué</h3><p>La responsabilidad se reparte entre el cargador contractual y el transportista efectivo (art. 7):</p><ul>' +
+        '<li><b>El cargador contractual</b> responde de sus datos y los del transportista, del origen y destino, y de la naturaleza y peso de la mercancía.</li>' +
+        '<li><b>El transportista efectivo</b> responde de la autorización especial de circulación, la fecha del transporte y la matrícula del vehículo y del remolque.</li>' +
+        '<li>Ambos responden de que el documento exista y viaje a bordo.</li></ul></div>' +
+        '<div class="bloque"><h3>Tres detalles que suelen pasarse por alto</h3><ul>' +
+        '<li><b>Un documento por envío</b>, no por cliente ni por jornada. En contratos de transporte continuado hay tantos documentos como envíos (art. 3.2).</li>' +
+        '<li><b>El grupaje y la carga fraccionada no están exentos.</b> No figuran entre las exenciones del art. 2, así que también necesitan su DeCA.</li>' +
+        '<li><b>Tu carta de porte puede servir</b> como documento de control si contiene todos los datos del art. 6 (art. 2.2) — pero desde el 5 de octubre tendrá que ser electrónica, así que en papel ya no vale.</li></ul></div>'
+    },
+    privado: {
+      clase: 'no', tag: 'No, no estás obligado al DeCA',
+      h: 'El transporte privado complementario queda fuera',
+      p: 'La Orden FOM/2861/2012 solo es exigible en los transportes <b>públicos</b> de mercancías por carretera (art. 1). Si mueves mercancía de tu propia empresa como complemento de tu actividad, no necesitas el DeCA.',
+      cuerpo:
+        '<div class="bloque"><h3>Ojo, sí tienes que llevar documentación</h3><p>Aunque no sea el DeCA, en el transporte privado complementario debes llevar a bordo documentación suficiente para acreditar los apartados a), c) y d) del art. 102.2 de la Ley 16/1987 (LOTT): que la mercancía es tuya o forma parte de tu actividad, y que el vehículo y el conductor están integrados en tu empresa.</p></div>' +
+        '<div class="bloque"><h3>Si además haces algún porte para terceros</h3><p>Ese porte concreto sí sería transporte público y sí necesitaría su DeCA. La obligación se mira envío a envío, no empresa a empresa.</p></div>'
+    },
+    internacional: {
+      clase: 'no', tag: 'No, no estás obligado al DeCA',
+      h: 'El transporte internacional se rige por los convenios, no por el DeCA',
+      p: 'El DeCA aplica al transporte interior y al cabotaje dentro de España. En los transportes internacionales se emplean los documentos de control de los convenios suscritos por España, aunque parte del recorrido discurra por territorio español.',
+      cuerpo:
+        '<div class="bloque"><h3>Y el eCMR, ¿es obligatorio?</h3><p>No. El Ministerio lo aclara expresamente: el 5 de octubre de 2026 lo que pasa a ser obligatorio es el DeCA para transporte interior. El CMR electrónico no se vuelve obligatorio en esa fecha.</p></div>' +
+        '<div class="bloque"><h3>Si también haces transporte nacional o cabotaje</h3><p>Entonces esos envíos sí necesitan DeCA. Muchas empresas combinan ambos: la obligación se mira envío a envío.</p></div>'
+    },
+    'sin-titulo': {
+      clase: 'no', tag: 'Probablemente no',
+      h: 'Los transportes que no requieren autorización quedan exentos',
+      p: 'El art. 2.1.a) de la Orden FOM/2861/2012 excluye los transportes para cuya realización no sea preceptivo obtener un título habilitante de la Administración.',
+      cuerpo:
+        '<div class="bloque"><h3>Confírmalo antes de darlo por hecho</h3><p>Es la exención que más se confunde. Si transportas mercancía de terceros a cambio de un precio, lo normal es que necesites tarjeta de transporte (MDL o MDP) y entonces <b>sí</b> estarías obligado. Si tienes dudas, consúltalo con tu gestoría o en el registro del Ministerio antes de decidir.</p></div>'
+    },
+    'exento-mudanza': {
+      clase: 'no', tag: 'No, no estás obligado al DeCA',
+      h: 'Las mudanzas están exentas',
+      p: 'El art. 2.1.b) de la Orden FOM/2861/2012 excluye expresamente los transportes de mudanza.',
+      cuerpo: '<div class="bloque"><h3>Si además haces otros portes</h3><p>Los envíos que no sean mudanza sí necesitan su DeCA. La exención es por tipo de envío, no por empresa.</p></div>'
+    },
+    'exento-averiado': {
+      clase: 'no', tag: 'No, no estás obligado al DeCA',
+      h: 'El transporte de vehículos accidentados o averiados está exento',
+      p: 'El art. 2.1.c) excluye el transporte de vehículos accidentados o averiados realizado en vehículos especiales.',
+      cuerpo: '<div class="bloque"><h3>Ojo al matiz</h3><p>La exención exige que se haga <b>en vehículos especiales</b>. Si transportas vehículos en un camión portacoches convencional como actividad ordinaria, eso no es esta exención y sí necesitas DeCA.</p></div>'
+    },
+    'exento-paqueteria': {
+      clase: 'no', tag: 'No, no estás obligado al DeCA',
+      h: 'La paquetería de bultos reducidos está exenta',
+      p: 'El art. 2.1.d) excluye los servicios de paquetería y similares que impliquen recogida o reparto de un número reducido de bultos fácilmente manipulables por una persona sin más ayuda que las máquinas o herramientas que lleve el vehículo.',
+      cuerpo: '<div class="bloque"><h3>Dónde está la frontera</h3><p>La clave es que los bultos sean pocos y manipulables por una persona. <b>El grupaje y la carga fraccionada no entran en esta exención</b> y sí necesitan DeCA. Si haces las dos cosas, la obligación se mira envío a envío.</p></div>'
+    }
+  };
+
+  var paso = 0, historial = [], dudaTitulo = false;
+  var $preg = document.getElementById('preguntas');
+  var $quiz = document.getElementById('quiz');
+  var $res  = document.getElementById('resultado');
+  var $back = document.getElementById('btn-back');
+  var $prog = document.getElementById('prog');
+
+  function pintarProgreso() {
+    var s = $prog.children;
+    for (var i = 0; i < s.length; i++) s[i].className = i <= paso ? 'on' : '';
+  }
+
+  function pintarPregunta(i) {
+    var p = PREGUNTAS[i];
+    var html = '<div class="q">' + p.q + '</div><div class="q-help">' + p.help + '</div><div class="opts">';
+    for (var k = 0; k < p.opts.length; k++) {
+      var o = p.opts[k];
+      html += '<button class="opt" data-i="' + k + '"><strong>' + o.t + '</strong>' + (o.s ? '<span>' + o.s + '</span>' : '') + '</button>';
+    }
+    $preg.innerHTML = html + '</div>';
+    paso = i;
+    pintarProgreso();
+    $back.className = historial.length ? 'back' : 'back hide';
+  }
+
+  $preg.addEventListener('click', function (e) {
+    var b = e.target.closest('.opt');
+    if (!b) return;
+    var o = PREGUNTAS[paso].opts[+b.dataset.i];
+    if (o.dudaTitulo) dudaTitulo = true;
+    historial.push(paso);
+    if (o.res) mostrarResultado(o.res);
+    else pintarPregunta(o.next);
+  });
+
+  $back.addEventListener('click', function () {
+    if (!historial.length) return;
+    $res.className = 'card hide';
+    $quiz.className = 'card';
+    pintarPregunta(historial.pop());
+  });
+
+  function mostrarResultado(clave) {
+    var r = RESULTADOS[clave];
+    var obligado = clave === 'obligado';
+
+    var extra = (dudaTitulo && obligado)
+      ? '<div class="bloque"><h3>Sobre tu duda con la tarjeta de transporte</h3><p>Has indicado que no estabas seguro de si necesitas autorización. Si resultara que tu actividad no requiere título habilitante, quedarías fuera por el art. 2.1.a). Puedes comprobarlo en el registro público del Ministerio o preguntando a tu gestoría.</p></div>'
+      : '';
+
+    var ctas = obligado
+      ? '<div class="ctas"><a class="btn btn-main" href="https://app.trazaqr.com/registro" data-cta="registro">Empezar 60 días gratis, sin tarjeta</a><a class="btn btn-alt" href="/#como">Ver cómo funciona</a></div>'
+      : '<div class="ctas"><a class="btn btn-alt" href="/">Conocer TrazaQR</a><a class="btn btn-alt" href="tel:+34610880061">Consultar mi caso: 610 880 061</a></div>';
+
+    var captura = obligado
+      ? '<div class="captura">' +
+        '<h3>¿Quieres que te escribamos?</h3>' +
+        '<p>Déjanos tu email y te contestamos con el resultado y las referencias del BOE. Si la normativa cambia algo antes del 5 de octubre, te avisamos.</p>' +
+        '<form id="f-lead">' +
+        '<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+        '<input type="hidden" name="perfil" value="Comprobador DeCA — resultado: obligado">' +
+        '<input type="hidden" name="mensaje" value="Ha usado el comprobador y le sale OBLIGADO. Pide que le escribamos con el resultado y las referencias del BOE.">' +
+        '<div class="f-row">' +
+        '<input type="text" name="nombre" placeholder="Nombre" autocomplete="name">' +
+        '<input type="email" name="email" placeholder="Tu email" required autocomplete="email">' +
+        '<button type="submit">Escribidme</button>' +
+        '</div>' +
+        '<label class="consent"><input type="checkbox" required>Acepto que TrazaQR use mi email para contestarme y enviarme información sobre el DeCA. Puedo darme de baja en cualquier momento. <a href="/privacidad">Política de privacidad</a>.</label>' +
+        '</form>' +
+        '<div id="f-ok" class="hide" style="background:var(--green-light);border:1.5px solid var(--green);border-radius:10px;padding:16px 18px;font-size:14.5px;">' +
+        '<b style="color:var(--green);">Recibido.</b> Te escribimos al email que nos has dejado. Mientras tanto puedes empezar la prueba de 60 días sin tarjeta y sin compromiso.</div>' +
+        '</div>'
+      : '';
+
+    $res.innerHTML =
+      '<div class="verdict ' + r.clase + '">' +
+        '<div class="verdict-tag">' + r.tag + '</div>' +
+        '<h2>' + r.h + '</h2><p>' + r.p + '</p>' +
+      '</div>' + r.cuerpo + extra + ctas + captura +
+      '<button class="back" id="btn-reiniciar">← Empezar de nuevo</button>';
+
+    $quiz.className = 'card hide';
+    $res.className = 'card';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    ev('comprobador_resultado', { resultado: clave, obligado: obligado });
+
+    document.getElementById('btn-reiniciar').addEventListener('click', reiniciar);
+    var cta = $res.querySelector('[data-cta="registro"]');
+    if (cta) cta.addEventListener('click', function () { ev('cta_click', { origen: 'comprobador', destino: 'registro' }); });
+    var form = document.getElementById('f-lead');
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      fetch('https://dtqjxckfohncwjsqfnab.supabase.co/functions/v1/captura-lead', {
+        method: 'POST', mode: 'no-cors', body: new FormData(form)
+      }).then(fin, fin);
+      function fin() {
+        form.className = 'hide';
+        document.getElementById('f-ok').className = '';
+        ev('generate_lead', { origen: 'comprobador' });
+      }
+    });
+  }
+
+  function reiniciar() {
+    historial = []; dudaTitulo = false;
+    $res.className = 'card hide';
+    $quiz.className = 'card';
+    pintarPregunta(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  pintarPregunta(0);
+  ev('comprobador_inicio', {});
+})();
+</script>
+
+</body>
+</html>
