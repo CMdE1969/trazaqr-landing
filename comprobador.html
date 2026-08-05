@@ -323,19 +323,22 @@ footer a { color:var(--muted); margin:0 8px; }
 
     var captura = obligado
       ? '<div class="captura">' +
-        '<h3>¿Te lo enviamos por email?</h3>' +
-        '<p>Te mandamos este resultado con las referencias del BOE y una guía breve para llegar preparado al 5 de octubre.</p>' +
-        '<form method="POST" action="https://dtqjxckfohncwjsqfnab.supabase.co/functions/v1/captura-lead">' +
+        '<h3>¿Quieres que te escribamos?</h3>' +
+        '<p>Déjanos tu email y te contestamos con el resultado y las referencias del BOE. Si la normativa cambia algo antes del 5 de octubre, te avisamos.</p>' +
+        '<form id="f-lead">' +
         '<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
         '<input type="hidden" name="perfil" value="Comprobador DeCA — resultado: obligado">' +
-        '<input type="hidden" name="mensaje" value="Solicita la guía del DeCA desde el comprobador de obligación.">' +
+        '<input type="hidden" name="mensaje" value="Ha usado el comprobador y le sale OBLIGADO. Pide que le escribamos con el resultado y las referencias del BOE.">' +
         '<div class="f-row">' +
         '<input type="text" name="nombre" placeholder="Nombre" autocomplete="name">' +
         '<input type="email" name="email" placeholder="Tu email" required autocomplete="email">' +
-        '<button type="submit">Enviármelo</button>' +
+        '<button type="submit">Escribidme</button>' +
         '</div>' +
-        '<label class="consent"><input type="checkbox" required>Acepto que TrazaQR use mi email para enviarme esta guía e información sobre el DeCA. Puedo darme de baja en cualquier momento. <a href="/privacidad">Política de privacidad</a>.</label>' +
-        '</form></div>'
+        '<label class="consent"><input type="checkbox" required>Acepto que TrazaQR use mi email para contestarme y enviarme información sobre el DeCA. Puedo darme de baja en cualquier momento. <a href="/privacidad">Política de privacidad</a>.</label>' +
+        '</form>' +
+        '<div id="f-ok" class="hide" style="background:var(--green-light);border:1.5px solid var(--green);border-radius:10px;padding:16px 18px;font-size:14.5px;">' +
+        '<b style="color:var(--green);">Recibido.</b> Te escribimos al email que nos has dejado. Mientras tanto puedes empezar la prueba de 60 días sin tarjeta y sin compromiso.</div>' +
+        '</div>'
       : '';
 
     $res.innerHTML =
@@ -354,8 +357,20 @@ footer a { color:var(--muted); margin:0 8px; }
     document.getElementById('btn-reiniciar').addEventListener('click', reiniciar);
     var cta = $res.querySelector('[data-cta="registro"]');
     if (cta) cta.addEventListener('click', function () { ev('cta_click', { origen: 'comprobador', destino: 'registro' }); });
-    var form = $res.querySelector('form');
-    if (form) form.addEventListener('submit', function () { ev('generate_lead', { origen: 'comprobador' }); });
+    var form = document.getElementById('f-lead');
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      fetch('https://dtqjxckfohncwjsqfnab.supabase.co/functions/v1/captura-lead', {
+        method: 'POST', mode: 'no-cors', body: new FormData(form)
+      }).then(fin, fin);
+      function fin() {
+        form.className = 'hide';
+        document.getElementById('f-ok').className = '';
+        ev('generate_lead', { origen: 'comprobador' });
+      }
+    });
   }
 
   function reiniciar() {
