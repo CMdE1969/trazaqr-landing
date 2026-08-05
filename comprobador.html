@@ -203,25 +203,12 @@ footer a { color:var(--muted); margin:0 8px; }
     }
   ];
 
-  var NORMA_COMUN =
-    '<div class="norma"><b>De dónde sale la fecha:</b> la disposición transitoria octava de la Ley 9/2025, de 3 de diciembre, de Movilidad Sostenible fija que el documento de control sea necesariamente digital a los diez meses de su entrada en vigor, es decir el <b>5 de octubre de 2026</b>. Las características técnicas están en la Resolución de 5 de junio de 2026 (<b>BOE-A-2026-12784</b>).</div>';
-
   var RESULTADOS = {
     obligado: {
       clase: 'si', tag: 'Sí, estás obligado',
       h: 'Tu transporte necesita el DeCA a partir del 5 de octubre de 2026',
-      p: 'Es transporte público de mercancías por carretera de ámbito interior y no encaja en ninguna de las exenciones del art. 2 de la Orden FOM/2861/2012. Desde esa fecha el documento de control debe ser electrónico: en papel deja de ser válido.',
-      cuerpo:
-        NORMA_COMUN +
-        '<div class="bloque"><h3>No hay periodo de gracia</h3><p>El Ministerio de Transportes lo dice literalmente en su página oficial del DeCA: <span class="cita">«No está prevista en las normas ninguna fase adicional, más allá del 5 de octubre, donde no se sancione la obligación de digitalización.»</span></p></div>' +
-        '<div class="bloque"><h3>Quién responde de qué</h3><p>La responsabilidad se reparte entre el cargador contractual y el transportista efectivo (art. 7):</p><ul>' +
-        '<li><b>El cargador contractual</b> responde de sus datos y los del transportista, del origen y destino, y de la naturaleza y peso de la mercancía.</li>' +
-        '<li><b>El transportista efectivo</b> responde de la autorización especial de circulación, la fecha del transporte y la matrícula del vehículo y del remolque.</li>' +
-        '<li>Ambos responden de que el documento exista y viaje a bordo.</li></ul></div>' +
-        '<div class="bloque"><h3>Tres detalles que suelen pasarse por alto</h3><ul>' +
-        '<li><b>Un documento por envío</b>, no por cliente ni por jornada. En contratos de transporte continuado hay tantos documentos como envíos (art. 3.2).</li>' +
-        '<li><b>El grupaje y la carga fraccionada no están exentos.</b> No figuran entre las exenciones del art. 2, así que también necesitan su DeCA.</li>' +
-        '<li><b>Tu carta de porte puede servir</b> como documento de control si contiene todos los datos del art. 6 (art. 2.2) — pero desde el 5 de octubre tendrá que ser electrónica, así que en papel ya no vale.</li></ul></div>'
+      p: '',
+      cuerpo: ''
     },
     privado: {
       clase: 'no', tag: 'No, no estás obligado al DeCA',
@@ -313,7 +300,7 @@ footer a { color:var(--muted); margin:0 8px; }
     var obligado = clave === 'obligado';
 
     var extra = (dudaTitulo && obligado)
-      ? '<div class="bloque"><h3>Sobre tu duda con la tarjeta de transporte</h3><p>Has indicado que no estabas seguro de si necesitas autorización. Si resultara que tu actividad no requiere título habilitante, quedarías fuera por el art. 2.1.a). Puedes comprobarlo en el registro público del Ministerio o preguntando a tu gestoría.</p></div>'
+      ? '<p style="font-size:14px;color:var(--muted);margin:-8px 0 20px;">Dijiste que no estabas seguro de la tarjeta de transporte. Si al final no la necesitas, quedarías fuera de la obligación — te lo aclaramos también en el correo.</p>'
       : '';
 
     var ctas = obligado
@@ -321,9 +308,9 @@ footer a { color:var(--muted); margin:0 8px; }
       : '<div class="ctas"><a class="btn btn-alt" href="/">Conocer TrazaQR</a><a class="btn btn-alt" href="tel:+34610880061">Consultar mi caso: 610 880 061</a></div>';
 
     var captura = obligado
-      ? '<div class="captura">' +
-        '<h3>¿Quieres que te escribamos?</h3>' +
-        '<p>Déjanos tu email y te contestamos con el resultado y las referencias del BOE. Si la normativa cambia algo antes del 5 de octubre, te avisamos.</p>' +
+      ? '<div class="captura" style="border-top:none;padding-top:0;margin-top:0;">' +
+        '<h3 style="font-family:var(--ff-display);font-size:21px;font-weight:400;margin-bottom:6px;">¿Te mandamos la normativa y tu resultado por correo?</h3>' +
+        '<p>Qué dice el BOE, quién responde de qué y los tres detalles que más se pasan por alto. Sin coste y sin compromiso.</p>' +
         '<form id="f-lead">' +
         '<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
         '<input type="hidden" name="perfil" value="Comprobador DeCA — resultado: obligado">' +
@@ -340,12 +327,18 @@ footer a { color:var(--muted); margin:0 8px; }
         '</div>'
       : '';
 
-    $res.innerHTML =
+    var veredicto =
       '<div class="verdict ' + r.clase + '">' +
         '<div class="verdict-tag">' + r.tag + '</div>' +
-        '<h2>' + r.h + '</h2><p>' + r.p + '</p>' +
-      '</div>' + r.cuerpo + extra + ctas + captura +
-      '<button class="back" id="btn-reiniciar">← Empezar de nuevo</button>';
+        '<h2 style="margin-bottom:0">' + r.h + '</h2>' +
+        (r.p ? '<p style="margin-top:10px">' + r.p + '</p>' : '') +
+      '</div>';
+
+    $res.innerHTML = obligado
+      ? veredicto + extra + captura + ctas +
+        '<button class="back" id="btn-reiniciar">← Empezar de nuevo</button>'
+      : veredicto + r.cuerpo + ctas +
+        '<button class="back" id="btn-reiniciar">← Empezar de nuevo</button>';
 
     $quiz.className = 'card hide';
     $res.className = 'card';
