@@ -109,7 +109,9 @@ h1 em { font-style:italic; color:var(--blue); }
 .f-row button { padding:11px 20px; border:none; border-radius:8px; background:var(--blue); color:#fff; font-family:inherit; font-size:15px; font-weight:500; cursor:pointer; }
 .consent { display:flex; gap:9px; align-items:flex-start; margin-top:12px; font-size:12.5px; color:var(--muted); line-height:1.45; }
 .consent input { margin-top:2px; flex-shrink:0; }
-.hp { position:absolute; left:-9999px; opacity:0; }
+/* Honeypot: display:none igual que en index.html. NO usar posicionamiento
+   fuera de pantalla — Chrome autorrellena esos campos y descarta el lead. */
+.hp { display:none !important; }
 
 .aviso { margin-top:30px; font-size:12.5px; color:var(--muted); line-height:1.5; }
 
@@ -313,6 +315,8 @@ footer a { color:var(--muted); margin:0 8px; }
         '<p>Qué dice el BOE, quién responde de qué y los tres detalles que más se pasan por alto. Sin coste y sin compromiso.</p>' +
         '<form id="f-lead">' +
         '<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+        '<input type="hidden" name="auto" value="deca-obligado">' +
+        '<input type="hidden" name="duda" value="' + (dudaTitulo ? '1' : '0') + '">' +
         '<input type="hidden" name="perfil" value="Comprobador DeCA — resultado: obligado">' +
         '<input type="hidden" name="mensaje" value="COMPROBADOR — resultado: OBLIGADO. Pendiente de contestarle con el resultado, las referencias del BOE y el enlace a la prueba de 60 dias sin tarjeta: https://app.trazaqr.com/registro">' +
         '<div class="f-row">' +
