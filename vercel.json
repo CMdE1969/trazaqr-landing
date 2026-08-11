@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/comprobador", "destination": "/deca/estoy-obligado", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

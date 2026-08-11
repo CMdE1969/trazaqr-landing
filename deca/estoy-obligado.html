@@ -4,20 +4,20 @@
 <link rel="icon" type="image/jpeg" href="/logo.jpg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¿Estás obligado al DeCA? Compruébalo en 1 minuto — TrazaQR</title>
-<meta name="description" content="Cuatro preguntas y te decimos si tu transporte está obligado a llevar el DeCA desde el 5 de octubre de 2026, con la referencia exacta del BOE. Gratis y sin registro.">
-<link rel="canonical" href="https://trazaqr.com/comprobador">
+<title>¿Estoy obligado al DeCA? Compruébalo en 1 minuto | TrazaQR</title>
+<meta name="description" content="Comprueba en pocos pasos si tu transporte está obligado a utilizar el Documento Electrónico de Control Administrativo (DeCA) a partir del 5 de octubre de 2026.">
+<link rel="canonical" href="https://trazaqr.com/deca/estoy-obligado">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="TrazaQR Transporte">
-<meta property="og:url" content="https://trazaqr.com/comprobador">
-<meta property="og:title" content="¿Estás obligado al DeCA? Compruébalo en 1 minuto">
-<meta property="og:description" content="Cuatro preguntas y te decimos si tu transporte está obligado al DeCA desde el 5 de octubre de 2026, citando el BOE. Gratis y sin registro.">
+<meta property="og:url" content="https://trazaqr.com/deca/estoy-obligado">
+<meta property="og:title" content="¿Estoy obligado al DeCA? Compruébalo en 1 minuto">
+<meta property="og:description" content="Comprueba en pocos pasos si tu transporte está obligado a utilizar el Documento Electrónico de Control Administrativo (DeCA) a partir del 5 de octubre de 2026.">
 <meta property="og:image" content="https://trazaqr.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="¿Estás obligado al DeCA? Compruébalo en 1 minuto">
-<meta name="twitter:description" content="Cuatro preguntas y te decimos si tu transporte está obligado al DeCA. Gratis, sin registro.">
+<meta name="twitter:title" content="¿Estoy obligado al DeCA? Compruébalo en 1 minuto">
+<meta name="twitter:description" content="Comprueba en pocos pasos si tu transporte está obligado a utilizar el Documento Electrónico de Control Administrativo (DeCA) a partir del 5 de octubre de 2026.">
 <meta name="twitter:image" content="https://trazaqr.com/og-image.png">
 
 <style>
@@ -126,12 +126,73 @@ footer a { color:var(--muted); margin:0 8px; }
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Comprobador DeCA — ¿Estoy obligado?",
-  "url": "https://trazaqr.com/comprobador",
+  "url": "https://trazaqr.com/deca/estoy-obligado",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-  "description": "Cuatro preguntas para saber si tu transporte está obligado a llevar el DeCA desde el 5 de octubre de 2026, citando el BOE. Gratis y sin registro."
+  "description": "Comprueba en pocos pasos si tu transporte está obligado a utilizar el Documento Electrónico de Control Administrativo (DeCA) a partir del 5 de octubre de 2026."
 }
+</script>
+<!-- Cookies (RGPD/LSSI): Google Analytics SOLO se carga si el visitante acepta.
+     La elección se guarda en localStorage ('tqr_cookies': 'si'/'no') y se puede
+     cambiar desde el enlace "Cookies" del pie de página. Mismo bloque que index.html:
+     esta página es de entrada directa (SEO) y necesita cargar GA por sí misma,
+     no hereda nada de index.html al ser un sitio multipágina sin JS compartido. -->
+<script>
+(function () {
+  var KEY = 'tqr_cookies';
+
+  function cargarGA() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M9CX3LKYQ5';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-M9CX3LKYQ5');
+  }
+
+  function borrarCookiesGA() {
+    // Borrado best-effort de las cookies de GA al retirar el consentimiento
+    var caducar = ';Max-Age=0;path=/;domain=.trazaqr.com';
+    document.cookie = '_ga=' + caducar;
+    document.cookie = '_ga_M9CX3LKYQ5=' + caducar;
+  }
+
+  function guardar(valor) {
+    try { localStorage.setItem(KEY, valor); } catch (e) {}
+    var b = document.getElementById('banner-cookies');
+    if (b) b.remove();
+    if (valor === 'si') { cargarGA(); }
+    else { borrarCookiesGA(); if (window.dataLayer) location.reload(); }
+  }
+
+  function mostrarBanner() {
+    if (document.getElementById('banner-cookies')) return;
+    var div = document.createElement('div');
+    div.id = 'banner-cookies';
+    div.setAttribute('role', 'dialog');
+    div.setAttribute('aria-label', 'Aviso de cookies');
+    div.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0A1628;color:#fff;padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;font-size:14px;line-height:1.5;box-shadow:0 -4px 16px rgba(10,22,40,.25);';
+    div.innerHTML =
+      '<span style="max-width:640px;">Usamos cookies de análisis (Google Analytics) para saber cómo se usa esta web. Solo se instalan si aceptas. <a href="/privacidad#cookies" style="color:#9fc3ee;text-decoration:underline;">Más información</a></span>' +
+      '<span style="display:flex;gap:10px;flex-shrink:0;">' +
+      '<button id="ck-aceptar" style="background:#fff;color:#0A1628;border:1.5px solid #fff;border-radius:8px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;">Aceptar</button>' +
+'<button id="ck-rechazar" style="background:transparent;color:#fff;border:1.5px solid #fff;border-radius:8px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;">Rechazar</button>' +
+      '</span>';
+    document.body.appendChild(div);
+    document.getElementById('ck-aceptar').addEventListener('click', function () { guardar('si'); });
+    document.getElementById('ck-rechazar').addEventListener('click', function () { guardar('no'); });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var eleccion = null;
+    try { eleccion = localStorage.getItem(KEY); } catch (e) {}
+    if (eleccion === 'si') { cargarGA(); }
+    else if (eleccion !== 'no') { mostrarBanner(); }
+  });
+})();
 </script>
 </head>
 <body>
@@ -148,7 +209,7 @@ footer a { color:var(--muted); margin:0 8px; }
 
   <div class="eyebrow">Gratis · sin registro · 1 minuto</div>
   <h1>¿Tu transporte está <em>obligado</em> al DeCA?</h1>
-  <p class="lead">Completa 4 preguntas y te lo decimos.</p>
+  <p class="lead">Comprueba en pocos pasos si tu transporte está sujeto al Documento Electrónico de Control Administrativo (DeCA). Responde a estas preguntas y te mostraremos el resultado según las características de tu transporte.</p>
 
   <!-- ============ PREGUNTAS ============ -->
   <div class="card" id="quiz">
@@ -163,6 +224,24 @@ footer a { color:var(--muted); margin:0 8px; }
   <p class="aviso">
     Esta herramienta es orientativa y se basa en la Orden FOM/2861/2012 (texto consolidado a 28/03/2026), el art. 222 del RD 1211/1990, la disposición transitoria octava de la Ley 9/2025 de Movilidad Sostenible y la Resolución de 5 de junio de 2026 (BOE-A-2026-12784). No sustituye al asesoramiento jurídico ni a la consulta de la norma. No guardamos ninguna respuesta: el cálculo se hace en tu navegador.
   </p>
+
+  <!-- ============ CONTENIDO ESTÁTICO (SEO / IA) ============
+       Visible y rastreable sin interactuar con el formulario. Breve a propósito:
+       el objetivo de esta URL sigue siendo comprobar y convertir, no ser un artículo. -->
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);">
+    <div class="bloque" style="margin-top:0;">
+      <h3>¿Qué comprueba esta herramienta?</h3>
+      <p>El comprobador te ayuda a identificar si el transporte que realizas está sujeto al Documento Electrónico de Control Administrativo (DeCA) según las características que indiques.</p>
+    </div>
+    <div class="bloque">
+      <h3>¿Desde cuándo es obligatorio el DeCA?</h3>
+      <p>El Documento Electrónico de Control Administrativo será exigible en formato electrónico a partir del 5 de octubre de 2026 para los transportes sujetos a esta obligación.</p>
+    </div>
+    <div class="bloque">
+      <h3>¿Quién es responsable del DeCA?</h3>
+      <p>Cargador contractual y transportista efectivo son responsables de que exista el documento. Ambos pueden acordar quién se encarga de generarlo.</p>
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -217,11 +296,59 @@ footer a { color:var(--muted); margin:0 8px; }
     }
   ];
 
+  // --- Atribución de primer toque, una vez por sesión de navegador -----------
+  // Simple a propósito (sin modelos multi-toque): responde a "¿de dónde vienen
+  // los leads?" para poder cruzarlo luego con quién se registra y quién paga.
+  function escAttr(s) {
+    return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function capturarAtribucion() {
+    var KEY = 'tqr_atrib';
+    try {
+      var guardada = sessionStorage.getItem(KEY);
+      if (guardada) return JSON.parse(guardada);
+    } catch (e) {}
+
+    var params = new URLSearchParams(location.search);
+    var utmSource = params.get('utm_source') || '';
+    var utmMedium = params.get('utm_medium') || '';
+    var utmCampaign = params.get('utm_campaign') || '';
+    var ref = document.referrer || '';
+    var refHost = '';
+    try { refHost = ref ? new URL(ref).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+
+    var source = utmSource;
+    var medium = utmMedium;
+    if (!source) {
+      if (!refHost) { source = 'direct'; medium = medium || 'none'; }
+      else if (/(^|\.)google\./.test(refHost)) { source = 'google'; medium = medium || 'organic'; }
+      else if (/(^|\.)bing\./.test(refHost)) { source = 'bing'; medium = medium || 'organic'; }
+      else if (/(^|\.)(chatgpt\.com|openai\.com)$/.test(refHost)) { source = 'chatgpt'; medium = medium || 'referral'; }
+      else if (/(^|\.)youtube\.com$/.test(refHost)) { source = 'youtube'; medium = medium || 'referral'; }
+      else if (/(^|\.)instagram\.com$/.test(refHost)) { source = 'instagram'; medium = medium || 'social'; }
+      else { source = refHost; medium = medium || 'referral'; }
+    }
+
+    var atrib = {
+      source: source,
+      medium: medium,
+      campaign: utmCampaign,
+      landing_page: location.pathname,
+      referrer: refHost
+    };
+    try { sessionStorage.setItem(KEY, JSON.stringify(atrib)); } catch (e) {}
+    return atrib;
+  }
+
+  var ATRIB = capturarAtribucion();
+
   var RESULTADOS = {
     obligado: {
       clase: 'si', tag: 'Sí, estás obligado',
-      h: 'Tu transporte necesita el DeCA a partir del 5 de octubre de 2026',
-      p: '',
+      h: 'Sí: según tus respuestas, tu transporte está sujeto al DeCA',
+      p: 'A partir del 5 de octubre de 2026 deberás disponer del Documento Electrónico de Control Administrativo (DeCA) para estos transportes.',
+      p2: 'Cargador contractual y transportista efectivo son responsables de que exista un único DeCA. Podéis acordar quién lo genera y, si lo prefieres, puedes gestionarlo tú como transportista.',
       cuerpo: ''
     },
     privado: {
@@ -318,23 +445,29 @@ footer a { color:var(--muted); margin:0 8px; }
       : '';
 
     var ctas = obligado
-      ? '<div class="ctas"><a class="btn btn-main" href="https://app.trazaqr.com/registro" data-cta="registro">Empezar 60 días gratis, sin tarjeta</a><a class="btn btn-alt" href="/#como">Ver cómo funciona</a></div>'
+      ? '<div class="ctas"><a class="btn btn-main" href="https://app.trazaqr.com/registro" data-cta="registro">Empezar 60 días gratis, sin tarjeta</a><a class="btn btn-alt" href="/#como" data-cta="como-funciona">Ver cómo funciona</a></div>' +
+        '<p style="font-size:12.5px;color:var(--muted);margin-top:8px;">Crea y gestiona tus DeCA con TrazaQR.</p>'
       : '<div class="ctas"><a class="btn btn-alt" href="/">Conocer TrazaQR</a><a class="btn btn-alt" href="tel:+34610880061">Consultar mi caso: 610 880 061</a></div>';
 
     var captura = obligado
-      ? '<div class="captura" style="border-top:none;padding-top:0;margin-top:0;">' +
-        '<h3 style="font-family:var(--ff-display);font-size:21px;font-weight:400;margin-bottom:6px;">¿Te mandamos la normativa y tu resultado por correo?</h3>' +
-        '<p>Qué dice el BOE, quién responde de qué y los tres detalles que más se pasan por alto. Sin coste y sin compromiso.</p>' +
+      ? '<div class="captura">' +
+        '<h3 style="font-family:var(--ff-display);font-size:21px;font-weight:400;margin-bottom:6px;">¿Prefieres informarte primero?</h3>' +
+        '<p>Te enviamos por email tu resultado, la normativa aplicable y una explicación sencilla de los puntos que debes tener en cuenta para cumplir con el DeCA.</p>' +
         '<form id="f-lead">' +
         '<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
         '<input type="hidden" name="auto" value="deca-obligado">' +
         '<input type="hidden" name="duda" value="' + (dudaTitulo ? '1' : '0') + '">' +
         '<input type="hidden" name="perfil" value="Comprobador DeCA — resultado: obligado">' +
         '<input type="hidden" name="mensaje" value="COMPROBADOR — resultado: OBLIGADO. Pendiente de contestarle con el resultado, las referencias del BOE y el enlace a la prueba de 60 dias sin tarjeta: https://app.trazaqr.com/registro">' +
+        '<input type="hidden" name="source" value="' + escAttr(ATRIB.source) + '">' +
+        '<input type="hidden" name="medium" value="' + escAttr(ATRIB.medium) + '">' +
+        '<input type="hidden" name="campaign" value="' + escAttr(ATRIB.campaign) + '">' +
+        '<input type="hidden" name="landing_page" value="' + escAttr(ATRIB.landing_page) + '">' +
+        '<input type="hidden" name="referrer" value="' + escAttr(ATRIB.referrer) + '">' +
         '<div class="f-row">' +
         '<input type="text" name="nombre" placeholder="Nombre" autocomplete="name">' +
         '<input type="email" name="email" placeholder="Tu email" required autocomplete="email">' +
-        '<button type="submit">Escribidme</button>' +
+        '<button type="submit">Enviarme mi resultado y la normativa</button>' +
         '</div>' +
         '<label class="consent"><input type="checkbox" required>Acepto que TrazaQR use mi email para contestarme y enviarme información sobre el DeCA. Puedo darme de baja en cualquier momento. <a href="/privacidad">Política de privacidad</a>.</label>' +
         '</form>' +
@@ -348,10 +481,14 @@ footer a { color:var(--muted); margin:0 8px; }
         '<div class="verdict-tag">' + r.tag + '</div>' +
         '<h2 style="margin-bottom:0">' + r.h + '</h2>' +
         (r.p ? '<p style="margin-top:10px">' + r.p + '</p>' : '') +
+        (r.p2 ? '<p style="margin-top:10px">' + r.p2 + '</p>' : '') +
       '</div>';
 
+    // Orden pedido por el Dir. de Marketing: el momento de mayor intención es
+    // justo tras el veredicto, así que los CTA de conversión van antes que la
+    // captación de email (antes era al revés).
     $res.innerHTML = obligado
-      ? veredicto + extra + captura + ctas +
+      ? veredicto + extra + ctas + captura +
         '<button class="back" id="btn-reiniciar">← Empezar de nuevo</button>'
       : veredicto + r.cuerpo + ctas +
         '<button class="back" id="btn-reiniciar">← Empezar de nuevo</button>';
@@ -360,11 +497,14 @@ footer a { color:var(--muted); margin:0 8px; }
     $res.className = 'card';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    ev('comprobador_resultado', { resultado: clave, obligado: obligado });
+    ev('comprobador_completado', { resultado: clave, obligado: obligado });
+    ev(obligado ? 'comprobador_obligado' : 'comprobador_no_obligado', { resultado: clave, source: ATRIB.source, medium: ATRIB.medium });
 
     document.getElementById('btn-reiniciar').addEventListener('click', reiniciar);
     var cta = $res.querySelector('[data-cta="registro"]');
-    if (cta) cta.addEventListener('click', function () { ev('cta_click', { origen: 'comprobador', destino: 'registro' }); });
+    if (cta) cta.addEventListener('click', function () { ev('cta_registro_desde_comprobador', { source: ATRIB.source, medium: ATRIB.medium, campaign: ATRIB.campaign }); });
+    var ctaComo = $res.querySelector('[data-cta="como-funciona"]');
+    if (ctaComo) ctaComo.addEventListener('click', function () { ev('cta_como_funciona_desde_comprobador', {}); });
     var form = document.getElementById('f-lead');
     if (form) form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -376,6 +516,7 @@ footer a { color:var(--muted); margin:0 8px; }
       function fin() {
         form.className = 'hide';
         document.getElementById('f-ok').className = '';
+        ev('lead_email_desde_comprobador', { source: ATRIB.source, medium: ATRIB.medium, campaign: ATRIB.campaign });
         ev('generate_lead', { origen: 'comprobador' });
       }
     });
@@ -390,7 +531,15 @@ footer a { color:var(--muted); margin:0 8px; }
   }
 
   pintarPregunta(0);
-  ev('comprobador_inicio', {});
+  // Este script se ejecuta en línea durante el parseo del documento, antes de
+  // que el loader de GA del <head> (que espera a DOMContentLoaded) haya podido
+  // definir window.gtag. Sin este retraso, el primer evento se perdía siempre,
+  // incluso con el consentimiento ya dado en una visita anterior.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { ev('comprobador_inicio', { source: ATRIB.source, medium: ATRIB.medium }); });
+  } else {
+    ev('comprobador_inicio', { source: ATRIB.source, medium: ATRIB.medium });
+  }
 })();
 </script>
 
