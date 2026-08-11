@@ -1047,7 +1047,7 @@ footer {
   <div class="nav-links">
     <a href="#como">Cómo funciona</a>
     <a href="#normativa">Normativa</a>
-    <a href="/comprobador">¿Estoy obligado?</a>
+    <a href="/deca/estoy-obligado">¿Estoy obligado?</a>
     <a href="#precios">Precios</a>
     <a href="#faq">FAQ</a>
     <a href="https://wa.me/34610880061" target="_blank" rel="noopener" class="nav-wa" aria-label="Escríbenos por WhatsApp al 610 880 061"><svg width="17" height="17" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>610 880 061</a>
@@ -1066,7 +1066,7 @@ footer {
 
     <h1>El Documento <em>Electrónico</em> de<br>Control Administrativo para tu flota — D<span class="deca-e">e</span>CA</h1>
 
-    <a href="/comprobador" class="btn-comprobar">
+    <a href="/deca/estoy-obligado" class="btn-comprobar">
       ¿Estoy obligado? Pulsa para saberlo
       <svg width="15" height="15" viewBox="0 0 14 14" fill="none">
         <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1316,7 +1316,7 @@ footer {
       <div style="font-family:var(--ff-display);font-size:24px;font-weight:400;color:#fff;line-height:1.25;margin-bottom:8px;">¿Tu transporte está obligado al DeCA?</div>
       <div style="font-size:14px;color:rgba(255,255,255,0.7);max-width:52ch;">No todos lo están. Responde cuatro preguntas y te lo decimos citando el artículo exacto del BOE. Tarda un minuto y no pedimos ningún dato.</div>
     </div>
-    <a href="/comprobador" class="plan-btn" style="background:var(--gold);color:#0A1628;font-weight:600;white-space:nowrap;flex-shrink:0;padding:13px 26px;">Comprobar ahora →</a>
+    <a href="/deca/estoy-obligado" class="plan-btn" style="background:var(--gold);color:#0A1628;font-weight:600;white-space:nowrap;flex-shrink:0;padding:13px 26px;">Comprobar ahora →</a>
   </div>
 </section>
 
@@ -1525,6 +1525,12 @@ footer {
     <form id="form-contacto" class="form-grid reveal" action="https://dtqjxckfohncwjsqfnab.supabase.co/functions/v1/captura-lead" method="POST">
       <!-- Honeypot anti-spam: oculto para humanos; si un bot lo rellena, la función lo descarta. -->
       <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- Atribución (rellenada por JS, ver script "Atribución de origen" más abajo) -->
+      <input type="hidden" name="source" id="attr-source" value="">
+      <input type="hidden" name="medium" id="attr-medium" value="">
+      <input type="hidden" name="campaign" id="attr-campaign" value="">
+      <input type="hidden" name="landing_page" id="attr-landing_page" value="">
+      <input type="hidden" name="referrer" id="attr-referrer" value="">
       <div class="form-row">
         <div class="form-field">
           <label>Nombre *</label>
@@ -1636,6 +1642,61 @@ const observer = new IntersectionObserver(
   { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
 )
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+</script>
+
+<script>
+// ── Atribución de origen del formulario de demo ───────────────────────────
+// Mismo criterio que en /deca/estoy-obligado (comprobador): primer toque,
+// una vez por sesión de navegador, guardado en sessionStorage bajo la misma
+// clave para que sea consistente si el visitante pasa de una página a otra.
+// No hay JS compartido entre páginas (sitio multipágina), así que se duplica.
+(function () {
+  var KEY = 'tqr_atrib';
+
+  function capturarAtribucion() {
+    try {
+      var guardada = sessionStorage.getItem(KEY);
+      if (guardada) return JSON.parse(guardada);
+    } catch (e) {}
+
+    var params = new URLSearchParams(location.search);
+    var utmSource = params.get('utm_source') || '';
+    var utmMedium = params.get('utm_medium') || '';
+    var utmCampaign = params.get('utm_campaign') || '';
+    var ref = document.referrer || '';
+    var refHost = '';
+    try { refHost = ref ? new URL(ref).hostname.replace(/^www\./, '') : ''; } catch (e) {}
+
+    var source = utmSource;
+    var medium = utmMedium;
+    if (!source) {
+      if (!refHost) { source = 'direct'; medium = medium || 'none'; }
+      else if (/(^|\.)google\./.test(refHost)) { source = 'google'; medium = medium || 'organic'; }
+      else if (/(^|\.)bing\./.test(refHost)) { source = 'bing'; medium = medium || 'organic'; }
+      else if (/(^|\.)(chatgpt\.com|openai\.com)$/.test(refHost)) { source = 'chatgpt'; medium = medium || 'referral'; }
+      else if (/(^|\.)youtube\.com$/.test(refHost)) { source = 'youtube'; medium = medium || 'referral'; }
+      else if (/(^|\.)instagram\.com$/.test(refHost)) { source = 'instagram'; medium = medium || 'social'; }
+      else { source = refHost; medium = medium || 'referral'; }
+    }
+
+    var atrib = {
+      source: source,
+      medium: medium,
+      campaign: utmCampaign,
+      landing_page: location.pathname,
+      referrer: refHost
+    };
+    try { sessionStorage.setItem(KEY, JSON.stringify(atrib)); } catch (e) {}
+    return atrib;
+  }
+
+  var atrib = capturarAtribucion();
+  var campos = { source: 'attr-source', medium: 'attr-medium', campaign: 'attr-campaign', landing_page: 'attr-landing_page', referrer: 'attr-referrer' };
+  for (var k in campos) {
+    var el = document.getElementById(campos[k]);
+    if (el) el.value = atrib[k] || '';
+  }
+})();
 </script>
 
 <script>
