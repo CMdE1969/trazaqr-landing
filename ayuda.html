@@ -74,11 +74,13 @@ nav {
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; color: white;
 }
-.nav-back {
-  font-size: 13px; color: var(--muted); text-decoration: none;
-  margin-left: auto; display: flex; align-items: center; gap: 4px;
+.back-link {
+  font-size: 13px; font-weight: 500; color: var(--blue); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 16px;
 }
-.nav-back:hover { color: var(--blue); }
+.back-link:hover { text-decoration: underline; }
+.back-arrow { font-size: 20px; line-height: 1; }
 
 /* ── LAYOUT ─────────────────────────────────────────────────── */
 .layout {
@@ -270,7 +272,6 @@ nav {
     <img src="/logo.jpg" alt="TrazaQR" style="width:28px;height:28px;border-radius:6px;object-fit:cover;">
     TrazaQR Transporte
   </a>
-  <a href="https://app.trazaqr.com" class="nav-back">← Volver a la app</a>
 </nav>
 <div class="layout">
 
@@ -338,6 +339,8 @@ nav {
 
   <!-- CONTENIDO -->
   <main class="content">
+
+    <a href="https://app.trazaqr.com" class="back-link"><span class="back-arrow">←</span> Volver a la app</a>
 
     <div class="help-hero">
       <h1>Centro de ayuda</h1>
