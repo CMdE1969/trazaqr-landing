@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://trazaqr.com/</loc>
     <lastmod>2026-08-06</lastmod>
@@ -7,6 +8,25 @@
   <url>
     <loc>https://trazaqr.com/deca/estoy-obligado</loc>
     <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://trazaqr.com/academia</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://trazaqr.com/academia/deca</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+  <url>
+    <loc>https://trazaqr.com/academia/deca/quien-esta-obligado</loc>
+    <lastmod>2026-08-13</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://trazaqr.com/img/quien-esta-obligado-deca.webp</video:thumbnail_loc>
+      <video:title>¿Quién está obligado al DeCA? Cargadores y transportistas | TrazaQR</video:title>
+      <video:description>Qué transportes están sujetos al DeCA, quiénes son responsables y qué casos quedan fuera.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/NLSOv8h9Eho</video:player_loc>
+      <video:duration>87</video:duration>
+    </video:video>
   </url>
   <url>
     <loc>https://trazaqr.com/ayuda</loc>
