@@ -62,6 +62,17 @@
     </video:video>
   </url>
   <url>
+    <loc>https://trazaqr.com/academia/deca/transporte-internacional</loc>
+    <lastmod>2026-08-15</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://trazaqr.com/assets/academia/deca/transporte-internacional.webp</video:thumbnail_loc>
+      <video:title>¿El DeCA es obligatorio en transporte internacional? | Academia TrazaQR</video:title>
+      <video:description>El DeCA no se aplica al transporte internacional como tal. Cuándo una operación internacional puede incluir un transporte nacional independiente que sí esté sujeto al documento de control.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/NdtHx1F5TUg</video:player_loc>
+      <video:duration>110</video:duration>
+    </video:video>
+  </url>
+  <url>
     <loc>https://trazaqr.com/ayuda</loc>
     <lastmod>2026-08-06</lastmod>
   </url>
