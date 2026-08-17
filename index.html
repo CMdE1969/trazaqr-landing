@@ -956,10 +956,10 @@ footer {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿El DeCA sustituye al albarán o a la carta de porte?",
+      "name": "¿Puede un albarán o una carta de porte servir también como DeCA?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. El DeCA (Documento Electrónico de Control Administrativo) es un documento de control administrativo para la inspección de tráfico. El albarán acredita la entrega y la carta de porte documenta el contrato de transporte. Son documentos distintos con funciones distintas."
+        "text": "Sí, puede. El albarán, la carta de porte y el DeCA tienen funciones diferentes, pero un documento que ya utilice la empresa puede servir también para cumplir la función del Documento Electrónico de Control Administrativo si incorpora todos los datos y requisitos exigidos al DeCA, incluido el QR y el acceso al PDF correspondiente. Si no cumple esos requisitos, seguirá siendo necesario disponer del documento de control correspondiente."
       }
     },
     {
@@ -967,7 +967,7 @@ footer {
       "name": "¿Quién genera el DeCA, el cargador o el transportista?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Según el art. 7 de la Orden FOM/2861/2012 (modificado por la Orden TRM/282/2026), los campos a–d (cargador, transportista, ruta, mercancía) son responsabilidad del cargador contractual. Los campos e–g (vehículo, fecha, autorización especial) corresponden al transportista. TrazaQR asigna cada campo al responsable correcto."
+        "text": "El cargador contractual y el transportista efectivo son responsables de que exista el documento, pero no tienen que generar un DeCA cada uno. Debe existir un único documento y las partes pueden acordar quién lo prepara. Puede generarlo el cargador, el transportista o un tercero encargado de la gestión. Si existen datos incorrectos, la responsabilidad sobre cada conjunto de datos se distribuye conforme al artículo 7 de la Orden FOM/2861/2012."
       }
     },
     {
@@ -975,7 +975,7 @@ footer {
       "name": "¿El conductor necesita instalar alguna app?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. El conductor accede al documento escaneando el QR con la cámara del móvil. Se abre en el navegador — sin descargas, sin registro, sin contraseña. En caso de inspección puede mostrar la pantalla directamente al agente."
+        "text": "No necesita instalar ninguna app. El conductor debe disponer de una copia del DeCA durante el transporte, que puede ser digital o impresa y debe incorporar el QR. TrazaQR permite gestionar el documento sin instalar una aplicación específica en el dispositivo del conductor."
       }
     },
     {
@@ -999,7 +999,7 @@ footer {
       "name": "¿Funciona el QR sin conexión a internet?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "El conductor puede descargar el PDF del documento para llevarlo sin conexión. La verificación del QR por parte del inspector sí requiere conexión, ya que consulta el documento en tiempo real para comprobar que no ha sido modificado."
+        "text": "El conductor puede llevar una copia del documento ya descargada en su dispositivo o una copia impresa con QR. El acceso mediante el QR requiere conexión al repositorio, pero una falta puntual de cobertura no significa que el DeCA no exista. La normativa exige además mantener disponible el acceso mediante QR durante los siete días naturales posteriores a la finalización del transporte."
       }
     },
     {
@@ -1110,24 +1110,26 @@ footer {
       <p>
         La Resolución de 5 de junio de 2026, de la Dirección General de Transporte
         por Carretera y Ferrocarril (BOE-A-2026-12784), desarrolla la Orden
-        FOM/2861/2012 y exige que todo transporte público de mercancías por
-        carretera en España lleve un DeCA (Documento Electrónico de Control
-        Administrativo) antes de iniciar el viaje.
+        FOM/2861/2012 y exige que los transportes públicos de mercancías por
+        carretera sujetos al documento de control administrativo dispongan del
+        Documento Electrónico de Control Administrativo (DeCA) cuando se
+        realizan en el ámbito nacional, incluido el cabotaje.
       </p>
       <p>
-        El cargador contractual y el transportista efectivo son responsables si
-        el documento no se formaliza o no se lleva a bordo antes de salir a
-        ruta, cada uno de los datos que le corresponden según el art. 7.
+        El cargador contractual y el transportista efectivo son responsables de
+        que exista el documento de control. Si el documento existe pero
+        contiene datos incorrectos, la responsabilidad sobre cada grupo de
+        datos se distribuye conforme al artículo 7 de la Orden FOM/2861/2012.
       </p>
     </div>
     <div class="problema-stats reveal">
       <div class="stat-card">
         <div class="stat-num">5 oct</div>
-        <div class="stat-label">Fecha límite de obligatoriedad. Todos los transportes públicos de mercancías por carretera.</div>
+        <div class="stat-label">Formato digital obligatorio para los transportes sujetos al documento de control administrativo.</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">*</div>
-        <div class="stat-label">No aplica a mudanzas, vehículos averiados en transporte especial, paquetería de bultos reducidos ni transporte privado complementario.</div>
+        <div class="stat-label">Entre los transportes que pueden quedar fuera de esta obligación se encuentran mudanzas, vehículos averiados en transporte especial, paquetería de bultos reducidos y el transporte privado complementario.</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">art. 6</div>
@@ -1146,15 +1148,15 @@ footer {
   <div class="section-header reveal">
     <div class="section-label" style="color: var(--gold);">Flujo operativo</div>
     <h2>Tres pasos. <em>Menos de dos minutos.</em></h2>
-    <p>El cargador genera el documento antes de la carga. El conductor lo lleva en el móvil. La inspección verifica el QR en carretera.</p>
+    <p>Antes de iniciar el servicio se genera el DeCA. El conductor dispone del documento con su QR y, en caso de control, el agente puede acceder al PDF correspondiente.</p>
   </div>
 
   <div class="pasos">
     <div class="paso reveal">
       <div class="paso-num">1</div>
-      <h3>Cargador genera el DeCA</h3>
-      <p>Rellena los campos del art. 6, pulsa emitir. El sistema calcula el hash SHA-256 y genera el QR único de verificación.</p>
-      <span class="paso-tag">Antes de la carga</span>
+      <h3>Genera el DeCA</h3>
+      <p>La parte encargada de gestionar el documento completa los datos necesarios y emite el DeCA antes del inicio del servicio.</p>
+      <span class="paso-tag">Antes del inicio del servicio</span>
     </div>
     <div class="paso reveal">
       <div class="paso-num">2</div>
@@ -1165,7 +1167,7 @@ footer {
     <div class="paso reveal">
       <div class="paso-num">3</div>
       <h3>Inspección verifica</h3>
-      <p>El agente introduce el código o escanea el QR. Ve el documento en tiempo real con el historial de eventos y la integridad verificada.</p>
+      <p>El agente escanea el QR para acceder al PDF correspondiente al transporte desde el repositorio donde está alojado.</p>
     </div>
   </div>
 
@@ -1248,8 +1250,8 @@ footer {
     </div>
     <div class="feature reveal">
       <div class="feature-icon">🔒</div>
-      <h3>Integridad SHA-256</h3>
-      <p>Hash calculado al emitir e inmutable. Acredita que el documento existía antes del inicio del transporte.</p>
+      <h3>Huella de integridad</h3>
+      <p>TrazaQR calcula una huella SHA-256 a partir de los datos del documento cada vez que se emite o regenera. Cada versión conserva su propia huella en el histórico, aportando un registro adicional de trazabilidad interna.</p>
     </div>
     <div class="feature reveal">
       <div class="feature-icon">📍</div>
@@ -1284,7 +1286,7 @@ footer {
   <div class="section-header reveal">
     <div class="section-label" style="color: var(--gold);">Para quién es</div>
     <h2>Una solución para <em>cada actor del transporte</em></h2>
-    <p>El DeCA afecta a quien contrata, organiza o ejecuta el transporte. TrazaQR sirve a todos desde una sola plataforma.</p>
+    <p>TrazaQR está diseñado para cargadores contractuales, transportistas efectivos, autónomos y empresas de transporte que necesitan gestionar transportes sujetos al DeCA.</p>
   </div>
 
   <div class="perfiles-grid">
@@ -1297,7 +1299,7 @@ footer {
     <div class="perfil reveal">
       <span class="perfil-icon">🚛</span>
       <h3>Transportistas y flotas</h3>
-      <div class="perfil-dolor">Problema: llevar papeles en cabina es un riesgo en inspección</div>
+      <div class="perfil-dolor">Problema: disponer siempre del DeCA correcto y actualizado durante el transporte</div>
       <p>El conductor lleva el documento con el QR incorporado en el móvil. Sin papel, sin app instalada. Lo muestra en segundos ante cualquier agente de tráfico.</p>
     </div>
     <div class="perfil reveal">
@@ -1487,16 +1489,16 @@ footer {
 
   <div class="faq-grid">
     <div class="faq-item reveal">
-      <div class="faq-q">¿El DeCA sustituye al albarán o a la carta de porte?</div>
-      <div class="faq-a">No. El DeCA (Documento Electrónico de Control Administrativo) es un documento de control administrativo para la inspección de tráfico. El albarán acredita la entrega y la carta de porte documenta el contrato de transporte. Son documentos distintos con funciones distintas.</div>
+      <div class="faq-q">¿Puede un albarán o una carta de porte servir también como DeCA?</div>
+      <div class="faq-a">Sí, puede. El albarán, la carta de porte y el DeCA tienen funciones diferentes, pero un documento que ya utilice la empresa puede servir también para cumplir la función del Documento Electrónico de Control Administrativo si incorpora todos los datos y requisitos exigidos al DeCA, incluido el QR y el acceso al PDF correspondiente. Si no cumple esos requisitos, seguirá siendo necesario disponer del documento de control correspondiente.</div>
     </div>
     <div class="faq-item reveal">
       <div class="faq-q">¿Quién genera el DeCA, el cargador o el transportista?</div>
-      <div class="faq-a">Según el art. 7 de la Orden FOM/2861/2012 (modificado por la Orden TRM/282/2026), los campos a–d (cargador, transportista, ruta, mercancía) son responsabilidad del cargador contractual. Los campos e–g (vehículo, fecha, autorización especial) corresponden al transportista. TrazaQR asigna cada campo al responsable correcto.</div>
+      <div class="faq-a">El cargador contractual y el transportista efectivo son responsables de que exista el documento, pero no tienen que generar un DeCA cada uno. Debe existir un único documento y las partes pueden acordar quién lo prepara. Puede generarlo el cargador, el transportista o un tercero encargado de la gestión. Si existen datos incorrectos, la responsabilidad sobre cada conjunto de datos se distribuye conforme al artículo 7 de la Orden FOM/2861/2012.</div>
     </div>
     <div class="faq-item reveal">
       <div class="faq-q">¿El conductor necesita instalar alguna app?</div>
-      <div class="faq-a">No. El conductor accede al documento escaneando el QR con la cámara del móvil. Se abre en el navegador — sin descargas, sin registro, sin contraseña. En caso de inspección puede mostrar la pantalla directamente al agente.</div>
+      <div class="faq-a">No necesita instalar ninguna app. El conductor debe disponer de una copia del DeCA durante el transporte, que puede ser digital o impresa y debe incorporar el QR. TrazaQR permite gestionar el documento sin instalar una aplicación específica en el dispositivo del conductor.</div>
     </div>
     <div class="faq-item reveal">
       <div class="faq-q">¿Qué pasa si durante el trayecto cambia el vehículo?</div>
@@ -1508,7 +1510,7 @@ footer {
     </div>
     <div class="faq-item reveal">
       <div class="faq-q">¿Funciona el QR sin conexión a internet?</div>
-      <div class="faq-a">El conductor puede descargar el PDF del documento para llevarlo sin conexión. La verificación del QR por parte del inspector sí requiere conexión, ya que consulta el documento en tiempo real para comprobar que no ha sido modificado.</div>
+      <div class="faq-a">El conductor puede llevar una copia del documento ya descargada en su dispositivo o una copia impresa con QR. El acceso mediante el QR requiere conexión al repositorio, pero una falta puntual de cobertura no significa que el DeCA no exista. La normativa exige además mantener disponible el acceso mediante QR durante los siete días naturales posteriores a la finalización del transporte.</div>
     </div>
     <div class="faq-item reveal">
       <div class="faq-q">¿Puedo gestionar varias empresas o razones sociales?</div>
@@ -1636,7 +1638,7 @@ footer {
     </svg>
     TrazaQR Transporte
   </a>
-  <div class="footer-norm">Resolución 5/06/2026 (BOE-A-2026-12784) · Orden FOM/2861/2012 · Orden TRM/282/2026 · Obligatorio desde 05/10/2026</div>
+  <div class="footer-norm">Resolución 5/06/2026 (BOE-A-2026-12784) · Orden FOM/2861/2012 · Orden TRM/282/2026 · Documento de control en formato digital obligatorio desde 05/10/2026 cuando resulte exigible</div>
   <div class="footer-links">
     <a href="mailto:info@trazaqr.com">info@trazaqr.com</a>
     <a href="https://app.trazaqr.com" target="_blank">Plataforma</a>
