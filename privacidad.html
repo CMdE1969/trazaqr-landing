@@ -182,7 +182,7 @@
       </tr>
       <tr>
         <td><strong>Vercel Inc.</strong></td>
-        <td>Hosting de la aplicación</td>
+        <td>Hosting de la aplicación (app.trazaqr.com) y de la web pública (trazaqr.com)</td>
         <td>EE.UU. / UE</td>
         <td>DPF UE-EE.UU. + SCCs</td>
       </tr>
@@ -194,7 +194,7 @@
       </tr>
       <tr>
         <td><strong>Hostinger UAB</strong></td>
-        <td>Hosting de la landing page</td>
+        <td>Gestión de DNS del dominio y correo electrónico corporativo (buzón info@trazaqr.com)</td>
         <td>UE (Lituania)</td>
         <td>Entidad UE — RGPD directamente aplicable</td>
       </tr>
@@ -212,9 +212,9 @@
     <li><strong>Cifrado en reposo:</strong> Base de datos cifrada por Supabase.</li>
     <li><strong>Control de acceso:</strong> Row Level Security (RLS) en PostgreSQL — cada empresa solo accede a sus propios datos.</li>
     <li><strong>Autenticación:</strong> JWT con rotación de tokens y protección anti-replay.</li>
-    <li><strong>Integridad documental:</strong> Hash SHA-256 calculado al emitir cada documento, inmutable.</li>
+    <li><strong>Huella de integridad:</strong> huella SHA-256 calculada a partir de los datos del documento en cada emisión o regeneración, con registro histórico de cada versión como medida adicional de trazabilidad interna.</li>
     <li><strong>Headers de seguridad:</strong> HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy.</li>
-    <li><strong>Copias de seguridad:</strong> Backups automáticos semanales por Hostinger.</li>
+    <li><strong>Copias de seguridad:</strong> Backups automáticos diarios en Supabase (plan de pago).</li>
   </ul>
 
   <h2>7. Derechos de los interesados</h2>
