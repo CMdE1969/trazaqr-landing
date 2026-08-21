@@ -437,6 +437,35 @@ body {
           </li>
         </ol>
 
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.5rem 0 0.75rem">Primer acceso: la guía de bienvenida</h3>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          La primera vez que entras en la aplicación (tras confirmar tu email), TrazaQR te muestra una guía de bienvenida de <strong>3 pasos</strong>, con indicador "Paso X de 3" y navegación "← Anterior" / "Siguiente →" (el último paso pasa a "Empezar"). Puedes recorrerla entera o saltar directamente a crear tu primera expedición desde el propio paso 1.
+        </p>
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Paso 1 — Crea tu primera expedición</strong>
+              <span>Explica qué es el DeCA y cómo se emite. Incluye un atajo directo — "Crear mi primera expedición ahora" — que lleva al formulario de nueva expedición sin esperar a terminar la guía.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Paso 2 — Comparte con el conductor y confirma la entrega</strong>
+              <span>Explica cómo el conductor accede al DeCA con el enlace o el QR, inicia el transporte, registra incidencias y confirma la entrega (con firma opcional) — y que esa confirmación queda registrada dentro de TrazaQR como justificante de la entrega.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Paso 3 — Alertas de retraso</strong>
+              <span>Explica cómo activar los avisos automáticos cuando una entrega se retrasa respecto a la fecha prevista de descarga.</span>
+            </div>
+          </li>
+        </ol>
+        <div class="nota-aviso">
+          <strong>¿Y si ya la cerré?</strong>
+          La guía de bienvenida solo aparece de forma automática la primera vez. Esta sección de Ayuda recoge el mismo contenido — los procesos siguientes lo explican con más detalle.
+        </div>
+
       </div>
     </section>
 
@@ -585,7 +614,7 @@ body {
           <li class="paso-item">
             <div>
               <strong>Introduce fechas y matrícula</strong>
-              <span>Fecha de carga, fecha prevista de descarga y matrícula del vehículo (art. 6.f-g). Si es conjunto articulado, activa el checkbox para añadir la matrícula del semirremolque.</span>
+              <span>Fecha de realización del transporte y matrícula del vehículo (art. 6.f-g). La fecha prevista de descarga es opcional — se usa para el seguimiento de la expedición y las alertas de retraso, pero no es un dato exigido por el DeCA. Si es conjunto articulado, activa el checkbox para añadir la matrícula del semirremolque.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -625,7 +654,7 @@ body {
             <tr><td>art. 6.c</td><td>Origen y destino</td><td><span class="badge-c">Cargador</span></td></tr>
             <tr><td>art. 6.d</td><td>Descripción y peso de la mercancía</td><td><span class="badge-c">Cargador</span></td></tr>
             <tr><td>art. 6.e</td><td>Autorización especial (si aplica)</td><td><span class="badge-t">Transportista</span></td></tr>
-            <tr><td>art. 6.f</td><td>Fechas de carga y descarga</td><td><span class="badge-t">Transportista</span></td></tr>
+            <tr><td>art. 6.f</td><td>Fecha de realización del transporte (obligatoria); fecha prevista de descarga (opcional)</td><td><span class="badge-t">Transportista</span></td></tr>
             <tr><td>art. 6.g</td><td>Matrícula del vehículo</td><td><span class="badge-t">Transportista</span></td></tr>
             <tr><td>art. 6.h</td><td>Observaciones</td><td><span class="badge-o">Opcional</span></td></tr>
           </tbody>
@@ -760,7 +789,7 @@ body {
           <li class="paso-item">
             <div>
               <strong>Confirma la entrega en destino</strong>
-              <span>Al llegar, pulsa "Confirmar entrega en destino". Puede firmar con el dedo en la pantalla para acreditar la recepción — la firma es opcional, también hay un botón para confirmar sin firma. El sistema registra la hora real de entrega y cierra el ciclo del documento.</span>
+              <span>Al llegar, pulsa "Confirmar entrega en destino". Puede firmar con el dedo en la pantalla para acreditar la recepción — la firma es opcional, también hay un botón para confirmar sin firma. El sistema registra la hora real de entrega, con o sin firma, y esa confirmación queda dentro de TrazaQR como justificante de la entrega — un respaldo adicional al margen de cualquier otro documento de entrega que se use habitualmente. Con eso se cierra el ciclo del documento.</span>
             </div>
           </li>
           <li class="paso-item">
