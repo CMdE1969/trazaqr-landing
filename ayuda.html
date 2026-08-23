@@ -758,8 +758,8 @@ body {
         <ol class="pasos-lista">
           <li class="paso-item">
             <div>
-              <strong>El cargador comparte el QR con el conductor</strong>
-              <span>Desde la pantalla de confirmación de emisión, el cargador puede mostrar el QR en pantalla, enviarlo por WhatsApp o imprimir la página.</span>
+              <strong>El cargador comparte el enlace con el conductor</strong>
+              <span>Desde la pantalla de confirmación de emisión, el QR y el enlace del conductor ya están listos: se pueden copiar con un clic o descargar el PDF del DeCA. Para enviarlo también por WhatsApp, por email o para imprimirlo directamente, hazlo desde <a href="#compartir-conductor" style="color:var(--blue);font-weight:500">el panel "Comparte el acceso con el conductor"</a> — disponible también desde el panel de expediciones y desde la ficha de detalle.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -803,8 +803,48 @@ body {
   <img src="/img/Cap-2-1.png" alt="Vista del conductor en móvil antes de iniciar transporte, con el campo de nombre y el botón Iniciar transporte">
 </div>
         </div>
+
+        <h3 id="compartir-conductor" style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.5rem 0 0.75rem;scroll-margin-top:80px">El panel "Comparte el acceso con el conductor"</h3>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          Es el mismo panel, con las mismas opciones, en los tres sitios donde puedes compartir el enlace del conductor: la pantalla de confirmación tras emitir, el botón <strong>"Compartir"</strong> del panel de expediciones (proceso 8) y la ficha de detalle (proceso 10). Reúne en un único sitio:
+        </p>
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Copiar enlace</strong>
+              <span>Copia el enlace personal del conductor al portapapeles, listo para pegar donde quieras.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>WhatsApp</strong>
+              <span>Abre WhatsApp con el enlace ya escrito en el mensaje.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Enviar por email</strong>
+              <span>Copia el enlace en formato listo para pegar directamente en un correo.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Descargar DeCA</strong>
+              <span>Descarga el PDF oficial del documento.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Imprimir DeCA</strong>
+              <span>Manda a imprimir directamente el PDF oficial vigente.</span>
+            </div>
+          </li>
+        </ol>
+        <div class="nota">
+          A diferencia de versiones anteriores de esta pantalla, aquí ya no se muestra ningún QR propio — el QR queda reservado al PDF oficial y a la cabecera de la ficha de detalle, para no repetirlo sin necesidad.
+        </div>
 <div class="captura">
-  <img src="/img/Cap-2-2.png" alt="Confirmación de entrega en destino, documento en estado Entregado">
+  <img src="/img/Cap-2-2.png" alt="Panel Comparte el acceso con el conductor: copiar enlace, WhatsApp, enviar por email, descargar DeCA e imprimir DeCA">
 </div>
 
         <div class="nota-aviso">
@@ -901,8 +941,20 @@ body {
           </li>
           <li class="paso-item">
             <div>
-              <strong>Ver el QR de una expedición</strong>
-              <span>Pulsa el botón "QR" en la fila para ver y compartir el <strong>enlace del conductor</strong> (con su clave de seguridad, para operar: iniciar, incidencias, entrega). Usa "↗" para abrirlo directamente en una nueva pestaña. El QR oficial del DeCA — el que descarga el PDF para inspección — está en el propio PDF, accesible desde el detalle de la expedición. La verificación pública de solo consulta se comparte por separado, desde el detalle de la expedición.</span>
+              <strong>Comparte el acceso con el conductor</strong>
+              <span>Pulsa el botón "Compartir" en la fila para abrir <a href="#compartir-conductor" style="color:var(--blue);font-weight:500">el mismo panel de compartir explicado en el proceso 6</a>: copiar enlace, WhatsApp, email, descargar o imprimir el DeCA. El QR oficial del DeCA — el que descarga el PDF para inspección — está en el propio PDF, accesible desde el detalle de la expedición. La verificación pública de solo consulta se comparte por separado, desde el detalle de la expedición.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Imprime un DeCA directamente</strong>
+              <span>El icono de impresora de cada fila manda a imprimir ese documento sin pasos intermedios — útil cuando solo necesitas una copia en papel y no el resto de opciones de compartir.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Gestiona varias expediciones a la vez</strong>
+              <span>Marca las casillas de varias filas: si son borradores, puedes eliminarlos todos de golpe (se pide confirmación, para evitar borrados por error); si ya tienen PDF, puedes imprimirlos todos juntos en un solo trabajo de impresión.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -913,11 +965,11 @@ body {
           </li>
         </ol>
 <div class="captura">
-  <img src="/img/Cap-4-1.png" alt="Panel de expediciones con métricas y filtros">
+  <img src="/img/Cap-4-1.png" alt="Panel de expediciones con métricas, filtros y la columna de acciones (Ver, Compartir, imprimir)">
 </div>
         </div>
 <div class="captura">
-  <img src="/img/Cap-4-2.png" alt="Modal QR conductor con los botones Copiar enlace, WhatsApp y Abrir">
+  <img src="/img/Cap-4-2.png" alt="Panel Comparte el acceso con el conductor, abierto desde el botón Compartir del listado">
 </div>
 
     </section>
@@ -1029,34 +1081,34 @@ body {
           <li class="paso-item">
             <div>
               <strong>Descarga el PDF oficial</strong>
-              <span>Pulsa "↓ Descargar PDF" para obtener el <strong>documento oficial almacenado en el repositorio</strong> — el mismo que descarga la inspección al escanear su QR. Incluye todos los campos del art. 6, el QR del DeCA y los metadatos de creación y modificación exigidos.</span>
+              <span>Pulsa "Descargar DeCA" para obtener el <strong>documento oficial almacenado en el repositorio</strong> — el mismo que descarga la inspección al escanear su QR. Incluye todos los campos del art. 6, el QR del DeCA y los metadatos de creación y modificación exigidos.</span>
             </div>
           </li>
           <li class="paso-item">
             <div>
               <strong>Regenera el PDF si hay modificaciones</strong>
-              <span>Si cambian datos tras la emisión (p. ej. cambio de vehículo), pulsa "Regenerar PDF" e indica el <strong>motivo</strong> (obligatorio). El documento actualizado conserva el mismo QR, mantiene la información anterior y añade una sección de modificaciones con fecha y motivo. Las expediciones emitidas antes de esta funcionalidad pueden generar su PDF oficial con el mismo botón.</span>
+              <span>Si cambian datos tras la emisión (p. ej. cambio de vehículo), pulsa "Regenerar DeCA (modificación)" e indica el <strong>motivo</strong> (obligatorio). El documento actualizado conserva el mismo QR, mantiene la información anterior y añade una sección de modificaciones con fecha y motivo. Las expediciones emitidas antes de esta funcionalidad pueden generar su PDF oficial con el mismo botón.</span>
             </div>
           </li>
           <li class="paso-item">
             <div>
-              <strong>Comparte la URL de verificación</strong>
-              <span>Pulsa "⬡ Copiar URL verificación" para copiar el enlace público de solo consulta del documento (sin clave de conductor). Útil para enviar a clientes o adjuntar en emails: quien lo reciba puede ver los datos, el historial y el hash, pero no puede operar nada.</span>
+              <strong>Más opciones</strong>
+              <span>El icono de tres puntos agrupa dos acciones menos frecuentes: <strong>"Export JSON"</strong> (el documento en formato UN/CEFACT, pensado para integraciones con tu ERP) y <strong>"Copiar URL de consulta"</strong> — el enlace público de solo lectura del documento, sin clave de conductor. Útil para enviar a clientes o adjuntar en emails: quien lo reciba puede ver los datos, el historial y el hash, pero no puede operar nada.</span>
             </div>
           </li>
           <li class="paso-item">
             <div>
               <strong>Comparte el enlace del conductor</strong>
-              <span>Más abajo en el detalle, el bloque "Enlace del conductor — operar" tiene su propio QR, "Copiar enlace", "Abrir" y "Enlace + QR" (para email). A diferencia de la URL de verificación, este enlace lleva la clave de seguridad de la expedición y es el único que permite iniciar transporte, registrar incidencias y confirmar la entrega — compártelo solo con el conductor de este transporte.</span>
+              <span>Más abajo en el detalle, <a href="#compartir-conductor" style="color:var(--blue);font-weight:500">el panel "Comparte el acceso con el conductor" (explicado en el proceso 6)</a> reúne copiar enlace, WhatsApp, email, descargar y imprimir el DeCA. A diferencia de la URL de consulta, este enlace lleva la clave de seguridad de la expedición y es el único que permite iniciar transporte, registrar incidencias y confirmar la entrega — compártelo solo con el conductor de este transporte.</span>
             </div>
           </li>
         </ol>
 <div class="captura">
-  <img src="/img/Cap-6-1.png" alt="Vista de detalle de expedición">
+  <img src="/img/Cap-6-1.png" alt="Vista de detalle de expedición, con la fila de acciones (Descargar DeCA, Imprimir DeCA, Regenerar DeCA, Cambiar fecha, Editar fecha prevista, Más opciones)">
 </div>
 </div>
 <div class="captura">
-  <img src="/img/Cap-6-2.png" alt="PDF generado">
+  <img src="/img/Cap-6-2.png" alt="PDF oficial del DeCA generado">
 </div>
 
         <div class="nota">
