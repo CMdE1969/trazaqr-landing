@@ -1252,7 +1252,7 @@ footer {
     <div class="feature reveal">
       <div class="feature-icon">📍</div>
       <h3>Geolocalización de eventos</h3>
-      <p>Inicio de transporte, incidencias y entrega quedan registrados con timestamp y coordenadas GPS del dispositivo.</p>
+      <p>Inicio de transporte, incidencias y entrega quedan registrados con fecha y hora y, siempre que el usuario autorice la geolocalización, también con la ubicación del dispositivo.</p>
     </div>
     <div class="feature reveal">
       <div class="feature-icon">⚠️</div>
@@ -1319,15 +1319,19 @@ footer {
   </div>
 </section>
 
-<!-- ACADEMIA (enlace a la guía) -->
+<!-- ACADEMIA (bloque de preguntas frecuentes con enlace a la guía completa) -->
 <section style="padding:0 24px 72px;">
-  <div class="reveal" style="max-width:960px;margin:0 auto;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
-    <div style="flex:1 1 380px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--blue);text-transform:uppercase;margin-bottom:8px;">Academia TrazaQR</div>
-      <div style="font-family:var(--ff-display);font-size:22px;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:6px;">¿Quién está obligado al DeCA?</div>
-      <div style="font-size:14px;color:var(--muted);max-width:52ch;">Guía completa sobre qué transportes están sujetos, quién responde y qué casos quedan fuera, con vídeo explicativo y referencias oficiales.</div>
-    </div>
-    <a href="/academia/deca/quien-esta-obligado" class="btn-secondary">Leer la guía →</a>
+  <div class="reveal" style="max-width:960px;margin:0 auto;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px 36px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--blue);text-transform:uppercase;margin-bottom:8px;">Academia TrazaQR</div>
+    <div style="font-family:var(--ff-display);font-size:22px;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:6px;">¿Tienes dudas sobre el DeCA?</div>
+    <div style="font-size:14px;color:var(--muted);max-width:60ch;margin-bottom:20px;">Resolvemos de forma sencilla las preguntas más habituales sobre el Documento Electrónico de Control Administrativo (DeCA) basándonos en normativa y documentación oficial.</div>
+    <ul style="list-style:none;padding:0;margin:0 0 24px;display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:10px 32px;">
+      <li><a href="/academia/deca/que-es-el-deca" style="color:var(--blue);text-decoration:none;font-size:14px;font-weight:500;">¿Qué es el DeCA? →</a></li>
+      <li><a href="/academia/deca/quien-esta-obligado" style="color:var(--blue);text-decoration:none;font-size:14px;font-weight:500;">¿Quién está obligado al DeCA? →</a></li>
+      <li><a href="/academia/deca/quien-debe-generar" style="color:var(--blue);text-decoration:none;font-size:14px;font-weight:500;">¿Quién debe generar el DeCA? →</a></li>
+      <li><a href="/academia/deca/sin-deca-control-carretera" style="color:var(--blue);text-decoration:none;font-size:14px;font-weight:500;">¿Qué ocurre si no llevas el DeCA en un control de carretera? →</a></li>
+    </ul>
+    <a href="/academia/deca" class="btn-secondary">Ver toda la Academia →</a>
   </div>
 </section>
 
@@ -1459,7 +1463,6 @@ footer {
       <ul class="plan-features">
         <li>Expediciones ilimitadas</li>
         <li>Varios usuarios en la misma empresa</li>
-        <li>Panel de inspección para clientes</li>
         <li>Soporte prioritario</li>
         <li>Onboarding incluido</li>
       </ul>
