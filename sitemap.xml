@@ -117,6 +117,17 @@
     </video:video>
   </url>
   <url>
+    <loc>https://trazaqr.com/academia/deca/como-crear-un-deca-paso-a-paso</loc>
+    <lastmod>2026-08-27</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/X48LWex-nK8/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>¿Cómo se crea un DeCA paso a paso? | Academia TrazaQR</video:title>
+      <video:description>Te explicamos cómo se crea un DeCA paso a paso: los datos del transporte, el PDF generado, el repositorio y el código QR que da acceso al documento.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/X48LWex-nK8</video:player_loc>
+      <video:duration>115</video:duration>
+    </video:video>
+  </url>
+  <url>
     <loc>https://trazaqr.com/ayuda</loc>
     <lastmod>2026-08-06</lastmod>
   </url>
