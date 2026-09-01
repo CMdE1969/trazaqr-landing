@@ -43,6 +43,8 @@
   --muted:      #6B7B8D;
   --border:     rgba(12,68,124,0.12);
   --gold:       #C9973A;
+  --red:        #B3261E;
+  --red-light:  #FBEAEA;
   --ff-display: 'Fraunces', Georgia, serif;
   --ff-body:    'DM Sans', system-ui, sans-serif;
 }
@@ -79,6 +81,8 @@ body {
 /* ── SIDEBAR ────────────────────────────────────────────────── */
 .sidebar {
   position: sticky; top: 72px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -189,7 +193,7 @@ body {
   font-size: 13px; color: var(--blue);
   margin-bottom: 1.25rem; line-height: 1.5;
 }
-.nota strong { display: block; margin-bottom: 2px; }
+.nota strong.nota-titulo { display: block; margin-bottom: 2px; }
 
 .nota-aviso {
   background: #FAEEDA;
@@ -198,6 +202,19 @@ body {
   padding: 10px 14px;
   font-size: 13px; color: #633806;
   margin-bottom: 1.25rem; line-height: 1.5;
+}
+
+.nota-firma {
+  background: var(--red-light);
+  border-left: 3px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  font-size: 13px; font-weight: 700; color: var(--red);
+  margin-bottom: 0.5rem; line-height: 1.5;
+}
+.nota-firma-cita {
+  font-size: 13px; color: var(--text); line-height: 1.6;
+  margin: 0 0 1.25rem;
 }
 
 /* Marco de captura */
@@ -236,43 +253,41 @@ body {
   padding: 8px 12px; border-bottom: 1px solid #F0F0EE;
   vertical-align: top;
 }
-.badge-c { background: #E1F5EE; color: #085041; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; }
-.badge-t { background: #E6F1FB; color: #0C447C; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; }
-.badge-o { background: #F1EFE8; color: #5F5E5A; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+.badge-c { background: #E1F5EE; color: #085041; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+.badge-t { background: #E6F1FB; color: #0C447C; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+.badge-o { background: #F1EFE8; color: #5F5E5A; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; white-space: nowrap; }
 
 /* Responsive */
 @media (max-width: 768px) {
   .layout { grid-template-columns: 1fr; }
-  .sidebar { position: static; margin-right: 0; margin-bottom: 1.5rem; }
+  .sidebar { position: static; max-height: none; overflow-y: visible; margin-right: 0; margin-bottom: 1.5rem; }
   .proceso-body { padding: 1rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- TQR:HEADER:START — generado automáticamente desde partials/header.html por scripts/build-header.js. NO editar a mano: los cambios se perderán. -->
+<!-- TQR:HEADER:START — generado automáticamente desde partials/header-ayuda.html por scripts/build-header.js. NO editar a mano: los cambios se perderán. -->
 <!--
-  ÚNICA FUENTE DE VERDAD del Header/Nav público de trazaqr.com.
+  Variante de la cabecera pública SOLO para ayuda.html.
 
-  Para cambiar cualquier enlace, texto u orden del menú: edita SOLO este
-  fichero y después ejecuta, desde la raíz del repo:
+  Fuente de verdad de ESTA variante (Academia + teléfono/WhatsApp + botón
+  "Volver a la app"). El resto de páginas del sitio (home, Academia, legales)
+  siguen usando partials/header.html sin cambios.
+
+  Para cambiar cualquier enlace, texto u orden de ESTA cabecera: edita SOLO
+  este fichero y después ejecuta, desde la raíz del repo:
 
       node scripts/build-header.js
 
-  Eso reescribe automáticamente las 16 páginas públicas que llevan los
-  marcadores TQR:HEADER:START / TQR:HEADER:END (ver scripts/build-header.js).
-
-  NO EDITES el <nav> directamente dentro de index.html, academia/*.html,
-  deca/estoy-obligado.html, ayuda.html ni las páginas legales: es contenido
+  NO EDITES el <nav> directamente dentro de ayuda.html: es contenido
   generado y se sobrescribirá en el próximo build. Para comprobar antes de
-  un commit que ninguna página se ha desincronizado de este partial:
+  un commit que ayuda.html no se ha desincronizado de este partial:
 
       node scripts/build-header.js --check
 
   Requiere assets/header.css (estilos) y assets/header.js (SOLO el
-  comportamiento del menú móvil — abrir/cerrar, aria-expanded, cerrar al
-  pulsar fuera/Escape/al elegir opción; no genera ni inyecta este HTML)
-  cargados en cada página.
+  comportamiento del menú móvil) cargados en la página.
 -->
 <nav class="tqr-nav" aria-label="Navegación principal">
   <a href="https://trazaqr.com/" class="tqr-nav-logo">
@@ -280,14 +295,9 @@ body {
     TrazaQR Transporte
   </a>
   <ul class="tqr-nav-links" id="tqr-nav-links">
-    <li><a href="https://trazaqr.com/#como">Cómo funciona</a></li>
-    <li><a href="https://trazaqr.com/#normativa">Normativa</a></li>
-    <li><a href="https://trazaqr.com/deca/estoy-obligado">¿Estoy obligado?</a></li>
     <li><a href="https://trazaqr.com/academia">Academia</a></li>
-    <li><a href="https://trazaqr.com/#precios">Precios</a></li>
-    <li><a href="https://trazaqr.com/#faq">FAQ</a></li>
     <li><a href="https://wa.me/34610880061" class="tqr-nav-wa" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp al 610 880 061"><svg width="17" height="17" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>610 880 061</a></li>
-    <li><a href="https://app.trazaqr.com/" class="tqr-nav-cta">Acceder →</a></li>
+    <li><a href="https://app.trazaqr.com/" class="tqr-nav-cta">← Volver a la app</a></li>
   </ul>
   <button type="button" class="tqr-nav-toggle" id="tqr-nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="tqr-nav-links">
     <span aria-hidden="true">☰</span>
@@ -339,7 +349,7 @@ body {
     </a>
     <a href="#proceso-10" class="sidebar-link">
       <div class="sidebar-num">10</div>
-      Detalle y exportación
+      Detalle de expedición y exportación PDF
     </a>
     <a href="#proceso-11" class="sidebar-link">
       <div class="sidebar-num">11</div>
@@ -485,7 +495,7 @@ body {
       <div class="proceso-body">
 
         <div class="nota">
-          <strong>Tu resumen de un vistazo</strong>
+          <strong class="nota-titulo">Tu resumen de un vistazo</strong>
           Al entrar en la aplicación llegas al Dashboard: cuántas expediciones tienes en cada estado, incidencias, retrasos, evolución por meses y tus rutas, matrículas y transportistas más habituales. Todos los datos son solo de tu empresa y se calculan automáticamente — no hay nada que configurar.
         </div>
 
@@ -580,7 +590,7 @@ body {
       <div class="proceso-body">
 
         <div class="nota">
-          <strong>¿Cuándo debo generar el documento?</strong>
+          <strong class="nota-titulo">¿Cuándo debo generar el documento?</strong>
           El DeCA debe existir en formato digital <strong>antes del inicio del transporte</strong>. Si el documento no está emitido cuando el vehículo sale, cargador y transportista responden solidariamente.
         </div>
 
@@ -687,6 +697,14 @@ body {
           En la página de Expediciones, arriba a la derecha, hay tres botones: <strong>"↓ Exportar CSV"</strong> (descarga las expediciones actuales, respetando los filtros aplicados), <strong>"Plantilla import"</strong> (descarga un CSV con las columnas correctas y una fila de ejemplo) y <strong>"↑ Importar CSV/Excel"</strong> (sube tu fichero para crear los borradores).
         </p>
 
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.25rem 0 0.75rem">Exportar: cómo guardar tu registro obligatorio</h3>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          El botón <strong>"↓ Exportar CSV"</strong> no es solo para reutilizar datos: es la forma más rápida de generar el registro completo de tus expediciones que la normativa obliga a conservar durante al menos <strong>un año</strong> (art. 9 Orden FOM/2861/2012; Resolución de 5 de junio de 2026, apartado Segundo.4).
+        </p>
+        <div class="nota">
+          TrazaQR mantiene copias y registros de seguridad de tus documentos, pero la <strong>conservación del DeCA durante ese año es responsabilidad del cargador y/o del transportista</strong>, no del proveedor del servicio. Puedes cumplirla en el soporte que prefieras, papel o digital, por ejemplo exportando periódicamente tu listado a CSV, descargando los PDF individuales desde el detalle de cada expedición, o ambos.
+        </div>
+
         <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.25rem 0 0.75rem">Cómo importar, paso a paso</h3>
         <ol class="pasos-lista">
           <li class="paso-item">
@@ -750,7 +768,7 @@ body {
       <div class="proceso-body">
 
         <div class="nota">
-          <strong>Sin app. Sin registro. Sin papel.</strong>
+          <strong class="nota-titulo">Sin app. Sin registro. Sin papel.</strong>
           El conductor solo necesita escanear el QR con la cámara del móvil. No hay que instalar ninguna aplicación.
         </div>
 
@@ -793,7 +811,7 @@ body {
           <li class="paso-item">
             <div>
               <strong>Confirma la entrega en destino</strong>
-              <span>Al llegar, pulsa "Confirmar entrega en destino". Puede firmar con el dedo en la pantalla para acreditar la recepción — la firma es opcional, también hay un botón para confirmar sin firma. El sistema registra la hora real de entrega, con o sin firma, y esa confirmación queda dentro de TrazaQR como justificante de la entrega — un respaldo adicional al margen de cualquier otro documento de entrega que se use habitualmente. Con eso se cierra el ciclo del documento.</span>
+              <span>Al llegar, pulsa "Confirmar entrega en destino". Puede firmar<a href="#aviso-firma-6" style="color:var(--red);font-weight:700;text-decoration:none"> (*)</a> con el dedo en la pantalla para acreditar la recepción — la firma es opcional, también hay un botón para confirmar sin firma. El sistema registra la hora real de entrega, con o sin firma, y esa confirmación queda dentro de TrazaQR como justificante de la entrega — un respaldo adicional al margen de cualquier otro documento de entrega que se use habitualmente. Con eso se cierra el ciclo del documento.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -803,6 +821,14 @@ body {
             </div>
           </li>
         </ol>
+
+        <div class="nota-firma" id="aviso-firma-6" style="scroll-margin-top:80px">
+          (*) Esto no es una firma con certificado digital: es una Evidencia de Entrega.
+        </div>
+        <p class="nota-firma-cita">
+          "La firma de los documentos de control administrativo no es obligatoria, puesto que ni la Orden FOM/2861/2012, de 13 de diciembre, ni la Orden FOM/1230/2013, de 31 de mayo, establecen requisitos de firma." — Resolución de 5 de junio de 2026, BOE-A-2026-12784. Más detalle en <a href="#proceso-6-1" style="color:var(--blue);font-weight:500">¿Por qué TrazaQR no pide una firma con certificado digital?</a>
+        </p>
+
 <div class="captura">
   <img src="/img/Cap-2-1.png" alt="Vista del conductor en móvil antes de iniciar transporte, con el campo de nombre y el botón Iniciar transporte">
 </div>
@@ -858,6 +884,69 @@ body {
 
     </section>
 
+    <!-- PROCESO 6.1 (sin numerar, sin el peso visual de un proceso más) -->
+    <section class="proceso" id="proceso-6-1">
+      <div class="proceso-body" style="padding-top:1.5rem">
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin-bottom:0.75rem">¿Por qué TrazaQR no pide una firma con certificado digital?</h3>
+
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          Porque la norma no la exige, y porque lo que sí guardamos prueba más.
+        </p>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1rem">
+          La Resolución de 5 de junio de 2026, que fija cómo tiene que ser el DeCA electrónico, dice literalmente que "la firma de los documentos de control administrativo no es obligatoria": ni la Orden FOM/2861/2012 ni la Orden FOM/1230/2013 establecen ningún requisito de firma. Un DeCA sin firma es un DeCA completo y válido.
+        </p>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1.25rem">
+          En su lugar, cada entrega genera una evidencia de entrega: un conjunto de datos que se registran automáticamente en el momento en que el conductor confirma la entrega y que quedan unidos a ese DeCA.
+        </p>
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin-bottom:0.75rem">Qué se guarda en cada entrega</h3>
+        <ol class="pasos-lista">
+          <li class="paso-item">
+            <div>
+              <strong>Quién</strong>
+              <span>El enlace del conductor es personal y de un solo uso por expedición; sin él no se puede registrar nada.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Cuándo</strong>
+              <span>Fecha y hora del servidor, no del móvil. No se puede adelantar ni atrasar cambiando la hora del teléfono.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Dónde</strong>
+              <span>Coordenadas GPS con su precisión en metros, tomadas en el momento de la confirmación.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Qué se confirmó</strong>
+              <span>El estado de la entrega y las incidencias registradas durante el trayecto, cada una con su hora y ubicación.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Sobre qué documento</strong>
+              <span>Un hash SHA-256 del contenido del DeCA. Si alguien cambiara un solo dato, el hash dejaría de coincidir y se notaría.</span>
+            </div>
+          </li>
+        </ol>
+
+        <h3 style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin:1.5rem 0 0.75rem">Por qué esto es más difícil de discutir que una firma en una pantalla</h3>
+        <p style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:1.25rem">
+          Una firma trazada con el dedo en un móvil prueba que alguien dibujó algo. No prueba quién, ni dónde, ni cuándo, ni sobre qué documento exacto. La evidencia de entrega de TrazaQR sí registra esas cuatro cosas, y las registra en un histórico que no se puede modificar ni borrar: la base de datos rechaza cualquier intento de alterar o eliminar un registro ya guardado. No es una política interna que prometemos cumplir, es una restricción técnica.
+        </p>
+
+        <div class="nota">
+          <strong class="nota-titulo">¿Y si algún día hace falta firma?</strong>
+          La misma Resolución establece que, si se incorpora firma a un documento de control, debe ser como mínimo firma electrónica avanzada conforme al Reglamento eIDAS. Una firma trazada con el dedo no lo es. Por eso no la llamamos firma: la llamamos por lo que es. El día que la norma lo exija, o que un cliente lo necesite para otro documento, la evidencia que ya recogemos —identidad de acceso, momento, lugar y consentimiento— es exactamente la base sobre la que se construye.
+        </div>
+
+      </div>
+    </section>
+
     <!-- PROCESO 7 -->
     <section class="proceso" id="proceso-7">
       <div class="proceso-header">
@@ -870,7 +959,7 @@ body {
       <div class="proceso-body">
 
         <div class="nota">
-          <strong>Sin registro. Sin login. Sin repositorio ministerial.</strong>
+          <strong class="nota-titulo">Sin registro. Sin login. Sin repositorio ministerial.</strong>
           El agente escanea el QR del DeCA y <strong>descarga directamente el PDF oficial</strong> — sin menús, botones ni autenticación, como exige la Resolución de 5 de junio de 2026. El Ministerio de Transportes confirmó que no es necesario registrar el repositorio en ningún sistema oficial.
         </div>
 
@@ -930,12 +1019,6 @@ body {
           </li>
           <li class="paso-item">
             <div>
-              <strong>Reordenar y redimensionar columnas</strong>
-              <span>Arrastra el icono ⠿ de una cabecera para reordenar columnas. Arrastra el borde derecho de una cabecera para cambiar su anchura.</span>
-            </div>
-          </li>
-          <li class="paso-item">
-            <div>
               <strong>Comparte el acceso con el conductor</strong>
               <span>Pulsa el botón "Compartir" en la fila para abrir <a href="#compartir-conductor" style="color:var(--blue);font-weight:500">el mismo panel de compartir explicado en el proceso 6</a>: copiar enlace, WhatsApp, email, descargar o imprimir el DeCA. El QR oficial del DeCA — el que descarga el PDF para inspección — está en el propio PDF, accesible desde el detalle de la expedición. La verificación pública de solo consulta se comparte por separado, desde el detalle de la expedición.</span>
             </div>
@@ -944,6 +1027,12 @@ body {
             <div>
               <strong>Imprime un DeCA directamente</strong>
               <span>El icono de impresora de cada fila manda a imprimir ese documento sin pasos intermedios — útil cuando solo necesitas una copia en papel y no el resto de opciones de compartir.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
+              <strong>Elimina un borrador individual</strong>
+              <span>Cada fila en estado <span class="badge-o">BORRADOR</span> tiene su propio icono 🗑 en la columna de acciones. Pide confirmación antes de borrarlo — solo disponible sobre borradores, nunca sobre expediciones ya emitidas.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -981,7 +1070,7 @@ body {
       <div class="proceso-body">
 
         <div class="nota">
-          <strong>¿Cómo funciona?</strong>
+          <strong class="nota-titulo">¿Cómo funciona?</strong>
           El sistema comprueba cada hora si hay expediciones en estado "Emitido" o "En tránsito" que hayan superado la fecha de descarga prevista en más horas de las configuradas. Si las hay, envía un email automático a los destinatarios configurados.
         </div>
 
@@ -1075,6 +1164,12 @@ body {
           </li>
           <li class="paso-item">
             <div>
+              <strong>Firma de recepción</strong>
+              <span>Si el conductor confirmó la entrega con firma, se muestra aquí.</span>
+            </div>
+          </li>
+          <li class="paso-item">
+            <div>
               <strong>Descarga el PDF oficial</strong>
               <span>Pulsa "Descargar DeCA" para obtener el <strong>documento oficial almacenado en el repositorio</strong> — el mismo que descarga la inspección al escanear su QR. Incluye todos los campos del art. 6, el QR del DeCA y los metadatos de creación y modificación exigidos.</span>
             </div>
@@ -1098,6 +1193,14 @@ body {
             </div>
           </li>
         </ol>
+
+        <div class="nota-firma">
+          Esto no es una firma con certificado digital: es una Evidencia de Entrega.
+        </div>
+        <p class="nota-firma-cita">
+          "La firma de los documentos de control administrativo no es obligatoria, puesto que ni la Orden FOM/2861/2012, de 13 de diciembre, ni la Orden FOM/1230/2013, de 31 de mayo, establecen requisitos de firma." — Resolución de 5 de junio de 2026, BOE-A-2026-12784. Más detalle en <a href="#proceso-6-1" style="color:var(--blue);font-weight:500">¿Por qué TrazaQR no pide una firma con certificado digital?</a>
+        </p>
+
 <div class="captura">
   <img src="/img/Cap-6-1.png" alt="Vista de detalle de expedición, con la fila de acciones (Descargar DeCA, Imprimir DeCA, Regenerar DeCA, Cambiar fecha, Editar fecha prevista, Más opciones)">
 </div>
@@ -1107,8 +1210,8 @@ body {
 </div>
 
         <div class="nota">
-          <strong>Conservación obligatoria</strong>
-          La normativa exige que el QR siga descargando el documento hasta al menos <strong>7 días naturales</strong> tras finalizar el servicio (Resolución de 5 de junio de 2026) y conservar el DeCA durante al menos <strong>1 año</strong> (art. 9 Orden FOM/2861/2012). TrazaQR cumple ambos plazos automáticamente: el PDF permanece en el repositorio y la fecha de archivo de cada expedición se muestra en el detalle.
+          <strong class="nota-titulo">El QR tiene fecha de caducidad — la conservación no</strong>
+          El QR de este documento sigue descargando el PDF hasta al menos <strong>7 días naturales</strong> tras finalizar el servicio (Resolución de 5 de junio de 2026, apartado Tercero.5); TrazaQR lo mantiene operativo automáticamente durante ese plazo. La conservación del DeCA durante el año siguiente es responsabilidad del cargador y del transportista, no depende de este QR: ver <a href="#proceso-5" style="color:var(--blue);font-weight:500">proceso 5</a> para cómo exportar tu registro.
         </div>
 
     </section>
@@ -1156,8 +1259,8 @@ body {
           </li>
           <li class="paso-item">
             <div>
-              <strong>Conservación legal automática</strong>
-              <span>El DeCA se conserva al menos 1 año (art. 9) y su QR sigue descargándolo tras finalizar el servicio, sin que tengas que hacer nada.</span>
+              <strong>Conservación legal</strong>
+              <span>Conservar cada DeCA un año a disposición de la Inspección es obligación del transportista y del cargador contractual (art. 9 Orden FOM/2861/2012; Resolución de 5 de junio de 2026, apartado Segundo.4), no del proveedor. Nosotros los guardamos y te los damos en PDF para que los archives donde quieras, en el soporte que prefieras. El QR es para la carretera y caduca; la conservación es el fichero.</span>
             </div>
           </li>
           <li class="paso-item">
@@ -1175,7 +1278,7 @@ body {
         </ol>
 
         <div class="nota">
-          <strong>Sin nada que configurar</strong>
+          <strong class="nota-titulo">Sin nada que configurar</strong>
           Toda esta protección viene activada de serie: no hay ajustes de seguridad que tengas que tocar ni servicios extra que contratar.
         </div>
 
@@ -1217,12 +1320,16 @@ body {
       </div>
     </section>
 
-    <!-- MANUAL DESCARGABLE -->
+    <!-- MANUAL DESCARGABLE — oculto temporalmente (01/09/2026): el PDF está
+         desactualizado y pendiente de reescritura alineada al html. Para
+         restaurar, quitar este comentario cuando el manual esté al día. -->
+    <!--
     <div style="text-align:center;background:var(--blue-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem">
       <div style="font-family:var(--ff-display);font-size:17px;color:var(--ink);margin-bottom:.4rem">¿Prefieres leerlo todo seguido?</div>
       <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Esta misma guía, completa, en un único PDF para consultar en pantalla o imprimir.</p>
       <a href="/manual-usuario-trazaqr.pdf" target="_blank" rel="noreferrer" style="display:inline-block;background:var(--blue);color:white;font-weight:600;font-size:14px;padding:10px 20px;border-radius:8px;text-decoration:none">↓ Descargar manual completo (PDF)</a>
     </div>
+    -->
 
     <!-- FOOTER -->
     <div style="text-align:center;padding:2rem 0;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:1rem">

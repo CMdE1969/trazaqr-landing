@@ -2,28 +2,34 @@
 /**
  * scripts/build-header.js
  * ---------------------------------------------------------------------
- * Inserta el contenido de partials/header.html (ÚNICA FUENTE DE VERDAD
- * del Header/Nav público) entre los marcadores
+ * Inserta el contenido del partial de cabecera correspondiente (por
+ * defecto partials/header.html — ÚNICA FUENTE DE VERDAD del Header/Nav
+ * público del sitio) entre los marcadores
  *
  *     <!-- TQR:HEADER:START -->
  *     <!-- TQR:HEADER:END -->
  *
  * de cada página pública listada en PAGES, más abajo.
  *
+ * Algunas páginas pueden usar un partial DISTINTO al general (variante),
+ * declarado en su propia entrada de PAGES — hoy solo ayuda.html, que usa
+ * partials/header-ayuda.html (cabecera reducida: Academia + teléfono +
+ * botón "Volver a la app", sin el resto de enlaces de la landing).
+ *
  * NO EDITAR el <nav> a mano dentro de esas páginas: cualquier cambio ahí
  * se perderá (y "--check" lo detectará como desincronizado) en el
- * próximo build. Edita SIEMPRE partials/header.html.
+ * próximo build. Edita SIEMPRE el partial correspondiente.
  *
  * Uso (desde la raíz del repo, trazaqr-landing):
  *
  *   node scripts/build-header.js           Reescribe las páginas que
- *                                           estén desincronizadas del
+ *                                           estén desincronizadas de su
  *                                           partial. No toca las que ya
  *                                           estén al día.
  *
  *   node scripts/build-header.js --check   No escribe nada. Sale con
  *                                           código 1 si alguna página
- *                                           está desincronizada del
+ *                                           está desincronizada de su
  *                                           partial (o tiene marcadores
  *                                           rotos/duplicados). Pensado
  *                                           para correr antes de un
@@ -39,41 +45,47 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const PARTIAL_PATH = path.join(ROOT, 'partials', 'header.html');
+const DEFAULT_PARTIAL = 'header.html';
 
-// Las 16 páginas públicas que llevan la cabecera global.
+// Las 16 páginas públicas que llevan la cabecera global. Cada entrada
+// puede llevar `partial` para usar un fichero de partials/ distinto al
+// general (DEFAULT_PARTIAL); si se omite, usa el general.
 const PAGES = [
-  'index.html',
-  'academia/index.html',
-  'academia/deca/index.html',
-  'academia/deca/que-es-el-deca.html',
-  'academia/deca/quien-debe-generar.html',
-  'academia/deca/quien-esta-obligado.html',
-  'academia/deca/sin-deca-control-carretera.html',
-  'academia/deca/transporte-internacional.html',
-  'academia/deca/transporte-privado-complementario.html',
-  'academia/deca/transportista-autonomo.html',
-  'deca/estoy-obligado.html',
-  'ayuda.html',
-  'terminos.html',
-  'privacidad.html',
-  'cookies.html',
-  'aviso-legal.html',
+  { file: 'index.html' },
+  { file: 'academia/index.html' },
+  { file: 'academia/deca/index.html' },
+  { file: 'academia/deca/que-es-el-deca.html' },
+  { file: 'academia/deca/quien-debe-generar.html' },
+  { file: 'academia/deca/quien-esta-obligado.html' },
+  { file: 'academia/deca/sin-deca-control-carretera.html' },
+  { file: 'academia/deca/transporte-internacional.html' },
+  { file: 'academia/deca/transporte-privado-complementario.html' },
+  { file: 'academia/deca/transportista-autonomo.html' },
+  { file: 'deca/estoy-obligado.html' },
+  { file: 'ayuda.html', partial: 'header-ayuda.html' },
+  { file: 'terminos.html' },
+  { file: 'privacidad.html' },
+  { file: 'cookies.html' },
+  { file: 'aviso-legal.html' },
 ];
 
 const START_MARKER = '<!-- TQR:HEADER:START';
 const END_MARKER = '<!-- TQR:HEADER:END -->';
-const GENERATED_NOTE =
-  ' — generado automáticamente desde partials/header.html por ' +
-  'scripts/build-header.js. NO editar a mano: los cambios se perderán. -->';
+
+function generatedNote(partialName) {
+  return (
+    ` — generado automáticamente desde partials/${partialName} por ` +
+    'scripts/build-header.js. NO editar a mano: los cambios se perderán. -->'
+  );
+}
 
 function countOccurrences(haystack, needle) {
   return haystack.split(needle).length - 1;
 }
 
-function buildBlock(partialContent) {
+function buildBlock(partialContent, partialName) {
   return (
-    START_MARKER + GENERATED_NOTE + '\n' +
+    START_MARKER + generatedNote(partialName) + '\n' +
     partialContent.trim() + '\n' +
     END_MARKER
   );
@@ -82,19 +94,26 @@ function buildBlock(partialContent) {
 function main() {
   const checkOnly = process.argv.includes('--check');
 
-  if (!fs.existsSync(PARTIAL_PATH)) {
-    console.error('No se encuentra partials/header.html en ' + PARTIAL_PATH);
-    process.exit(1);
+  // Carga (una vez cada uno) todos los partials distintos que use PAGES.
+  const partialNames = [...new Set(PAGES.map((p) => p.partial || DEFAULT_PARTIAL))];
+  const partials = {};
+  for (const name of partialNames) {
+    const partialPath = path.join(ROOT, 'partials', name);
+    if (!fs.existsSync(partialPath)) {
+      console.error('No se encuentra partials/' + name + ' en ' + partialPath);
+      process.exit(1);
+    }
+    partials[name] = fs.readFileSync(partialPath, 'utf8');
   }
-
-  const partial = fs.readFileSync(PARTIAL_PATH, 'utf8');
-  const block = buildBlock(partial);
 
   const outOfSync = [];
   const broken = [];
   const missing = [];
 
-  for (const rel of PAGES) {
+  for (const { file: rel, partial } of PAGES) {
+    const partialName = partial || DEFAULT_PARTIAL;
+    const block = buildBlock(partials[partialName], partialName);
+
     const filePath = path.join(ROOT, rel);
     if (!fs.existsSync(filePath)) {
       missing.push(rel);
@@ -157,13 +176,13 @@ function main() {
   if (checkOnly) {
     if (outOfSync.length || broken.length || missing.length) {
       if (outOfSync.length) {
-        console.error('\nDesincronizadas respecto a partials/header.html:');
+        console.error('\nDesincronizadas respecto a su partial:');
         outOfSync.forEach((f) => console.error('  - ' + f));
         console.error('\nEjecuta: node scripts/build-header.js');
       }
       process.exit(1);
     }
-    console.log(`OK — ${PAGES.length} páginas sincronizadas con partials/header.html`);
+    console.log(`OK — ${PAGES.length} páginas sincronizadas con su partial de cabecera`);
     return;
   }
 
