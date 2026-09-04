@@ -40,7 +40,7 @@
 @font-face {
   font-family: 'DM Sans';
   font-style: normal;
-  font-weight: 400 500;
+  font-weight: 100 1000;
   font-display: swap;
   src: url('/fonts/dm-sans-variable.woff2') format('woff2');
 }
@@ -832,6 +832,114 @@ footer {
   .pricing-grid { grid-template-columns: 1fr; }
   .normativa::after { display: none; }
 }
+
+/* ── Tarifas · bloque nuevo (sept 2026) ─────────────────────── */
+#precios .section-header { max-width: 640px; margin: 0 auto 22px; }
+#precios .section-header h2 {
+  color: var(--blue); font-size: clamp(28px, 4vw, 36px);
+  letter-spacing: -.01em; margin-bottom: 16px;
+}
+#precios .section-header p { font-size: 14.5px; color: var(--blue-mid); line-height: 1.6; }
+
+.tq-pill {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: max-content; margin: 20px auto 34px; padding: 8px 20px;
+  background: #E8F6F0; border: 2px solid rgba(29,158,117,.45); border-radius: 999px;
+  font-size: 13px; font-weight: 700; color: #1D9E75;
+}
+.tq-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.tq-grid {
+  max-width: 980px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: stretch;
+}
+@media (max-width: 900px) { .tq-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .tq-grid { grid-template-columns: 1fr; } }
+
+.tq-plan {
+  position: relative; background: white;
+  border: 2px solid rgba(12,68,124,.38); border-radius: 10px;
+  padding: 26px 20px 20px; display: flex; flex-direction: column; text-align: center;
+}
+.tq-plan.tq-free { border-color: rgba(29,158,117,.55); }
+.tq-plan.tq-pop {
+  background: var(--blue); border-color: white;
+  box-shadow: 0 0 0 2px rgba(12,68,124,.38);
+}
+
+.tq-tag {
+  position: absolute; top: -10px; left: 14px;
+  font-size: 8.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 3px; white-space: nowrap;
+}
+.tq-tag.tq-g { background: #E8F6F0; color: #1D9E75; border: 1px solid rgba(29,158,117,.45); }
+.tq-tag.tq-p { background: var(--gold); color: var(--ink); left: 50%; transform: translateX(-50%); }
+
+.tq-name {
+  font-family: var(--ff-body);
+  font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+}
+.tq-plan.tq-pop .tq-name { color: rgba(255,255,255,.72); }
+
+.tq-price {
+  font-family: var(--ff-body); font-weight: 700; color: var(--blue);
+  font-size: 40px; line-height: 1; letter-spacing: -.015em; margin-bottom: 6px;
+}
+.tq-price small { font-size: 22px; font-weight: 700; }
+.tq-plan.tq-pop .tq-price { color: white; }
+
+.tq-sub { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 18px; min-height: 16px; }
+.tq-plan.tq-pop .tq-sub { color: rgba(255,255,255,.88); }
+
+.tq-box {
+  background: #F7F8FA; border: 1px solid rgba(12,68,124,.22); border-radius: 8px;
+  padding: 16px 10px; margin-bottom: 18px; flex-grow: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+}
+.tq-plan.tq-pop .tq-box { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.32); }
+.tq-lab { font-size: 9.5px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
+.tq-plan.tq-pop .tq-lab { color: rgba(255,255,255,.7); }
+.tq-big {
+  font-family: var(--ff-body);
+  font-size: 34px; font-weight: 700; color: var(--blue); line-height: 1.05; letter-spacing: -.01em;
+}
+.tq-plan.tq-pop .tq-big { color: white; }
+.tq-big.tq-gr { color: #1D9E75; font-size: 26px; }
+.tq-unit { font-size: 9.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); line-height: 1.35; }
+.tq-plan.tq-pop .tq-unit { color: rgba(255,255,255,.7); }
+
+.tq-btn {
+  display: block; width: 100%; padding: 11px 10px; border-radius: 6px;
+  font-family: var(--ff-body); font-size: 13.5px; font-weight: 600;
+  text-decoration: none; text-align: center;
+  border: 2px solid var(--blue); color: var(--blue); background: white;
+}
+.tq-btn.tq-solid { background: #1D9E75; border-color: #1D9E75; color: white; }
+.tq-plan.tq-pop .tq-btn { background: white; border-color: white; color: var(--blue); }
+
+.tq-feat {
+  max-width: 980px; margin: 26px auto 0; background: #F8F9FA;
+  border: 2px solid rgba(12,68,124,.38); border-radius: 10px; padding: 24px 26px 26px;
+}
+.tq-feat h3 {
+  font-family: var(--ff-body); font-size: 14.5px; font-weight: 700; color: var(--blue);
+  margin: 0 0 18px; text-align: center;
+}
+.tq-feat ul {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 26px;
+}
+@media (max-width: 760px) { .tq-feat ul { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .tq-feat ul { grid-template-columns: 1fr; } }
+.tq-feat li { position: relative; padding-left: 21px; font-size: 13px; line-height: 1.45; color: var(--text); }
+.tq-feat li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--gold); font-size: 12.5px; font-weight: 700; }
+
+.tq-notes { max-width: 980px; margin: 18px auto 0; padding: 0 2px; }
+.tq-notes p { margin: 0 0 8px; font-size: 12px; line-height: 1.6; color: var(--text); }
+.tq-notes p.tq-q { font-style: italic; }
+.tq-notes p.tq-more { font-size: 14.5px; font-weight: 500; margin-top: 12px; margin-bottom: 0; }
+.tq-notes a { color: var(--blue-mid); font-weight: 600; }
 </style>
 <!-- Cookies (RGPD/LSSI): Google Analytics SOLO se carga si el visitante acepta.
      La elección se guarda en localStorage ('tqr_cookies': 'si'/'no') y se puede
@@ -1398,84 +1506,89 @@ footer {
 <!-- PRECIOS -->
 <section class="pricing" id="precios">
   <div class="section-header reveal">
-    <div class="section-label" style="color: var(--gold);">Tarifas</div>
-    <h2>Precio fijo al mes. <em>Tú sabes lo que pagas.</em></h2>
-    <p>Sin calculadoras, sin tramos, sin letra pequeña. Elige tu plan y listo.</p>
+    <h2>Elige el plan que se adapta a tu volumen</h2>
+    <p>Todas las funcionalidades de TRAZAQR en todos los planes.<br>
+       Elige solo seg&uacute;n el n&uacute;mero de DeCAs que necesitas.</p>
   </div>
 
-  <p style="text-align:center;font-size:13px;color:var(--muted);margin:-32px auto 48px;max-width:500px;">
-    Sin permanencia · <a href="https://app.trazaqr.com/registro" style="color:var(--blue);">Alta en 5 minutos</a>
-  </p>
-  <div class="pricing-grid" style="grid-template-columns: repeat(4, 1fr);">
+  <div class="tq-pill reveal">
+    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M8.1 13.6 4.5 10l1.2-1.2 2.4 2.4 5.2-5.2L14.5 7z"/></svg>
+    Sin permanencia &middot; Alta en 5 minutos
+  </div>
 
-    <!-- Plan Lanzamiento -->
-    <div class="plan reveal" style="border: 2px solid var(--green, #1D9E75); position: relative;">
-      <div class="plan-badge" style="background: #1D9E75;">🎁 Gratis lanzamiento</div>
-      <div class="plan-name">Lanzamiento</div>
-      <div class="plan-price">0<span>€</span></div>
-      <div class="plan-period">· 60 días de prueba</div>
-      <ul class="plan-features">
-        <li>60 días gratis, sin tarjeta</li>
-        <li>100% funcionalidad completa</li>
-        <li>QR de acceso sin app</li>
-        <li>Huella SHA-256</li>
-      </ul>
-      <a href="https://app.trazaqr.com/registro" class="plan-btn" style="background: #1D9E75;">Activar gratis</a>
+  <div class="tq-grid">
+
+    <!-- Lanzamiento -->
+    <div class="tq-plan tq-free reveal">
+      <span class="tq-tag tq-g">Gratis lanzamiento</span>
+      <div class="tq-name">Lanzamiento</div>
+      <div class="tq-price">0<small>&euro;</small></div>
+      <div class="tq-sub">60 d&iacute;as gratis, sin tarjeta</div>
+      <div class="tq-box">
+        <span class="tq-big tq-gr">Sin l&iacute;mite</span>
+        <span class="tq-unit">de DeCAs</span>
+      </div>
+      <a href="https://app.trazaqr.com/registro" class="tq-btn tq-solid">Activar gratis</a>
     </div>
 
-    <!-- Plan Autónomo -->
-    <div class="plan reveal">
-      <div class="plan-name">Autónomo</div>
-      <div class="plan-price">9<span style="font-size:22px;font-weight:500">,90€</span> <span style="font-size:13px;font-weight:400;color:var(--muted);">sin IVA</span></div>
-      <div class="plan-period">/ mes · hasta 75 expediciones</div>
-      <ul class="plan-features">
-        <li>75 expediciones emitidas / mes</li>
-        <li>QR de acceso sin app</li>
-        <li>Historial completo (art. 9)</li>
-        <li>Exportación CSV</li>
-        <li>Sin permanencia</li>
-      </ul>
-      <a href="https://app.trazaqr.com/registro" class="plan-btn">Empezar</a>
+    <!-- Aut&oacute;nomo -->
+    <div class="tq-plan reveal">
+      <div class="tq-name">Aut&oacute;nomo</div>
+      <div class="tq-price">9<small>,90&euro;</small></div>
+      <div class="tq-sub">al mes sin IVA</div>
+      <div class="tq-box">
+        <span class="tq-lab">Hasta</span>
+        <span class="tq-big">75</span>
+        <span class="tq-unit">DeCAs entregados / mes</span>
+      </div>
+      <a href="https://app.trazaqr.com/registro" class="tq-btn">Activar</a>
     </div>
 
-    <!-- Plan Pyme -->
-    <div class="plan plan-popular reveal">
-      <div class="plan-badge">Más popular</div>
-      <div class="plan-name">Pyme</div>
-      <div class="plan-price">24<span style="font-size:22px;font-weight:500">,90€</span> <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.6);">sin IVA</span></div>
-      <div class="plan-period">/ mes · hasta 300 expediciones</div>
-      <ul class="plan-features">
-        <li>300 expediciones emitidas / mes</li>
-        <li>QR de acceso sin app</li>
-        <li>Historial completo (art. 9)</li>
-        <li>Alertas de retraso por email</li>
-        <li>Exportación CSV · Sin permanencia</li>
-      </ul>
-      <a href="https://app.trazaqr.com/registro" class="plan-btn">Empezar</a>
+    <!-- Pyme -->
+    <div class="tq-plan tq-pop reveal">
+      <span class="tq-tag tq-p">M&aacute;s popular</span>
+      <div class="tq-name">Pyme</div>
+      <div class="tq-price">24<small>,90&euro;</small></div>
+      <div class="tq-sub">al mes sin IVA</div>
+      <div class="tq-box">
+        <span class="tq-lab">Hasta</span>
+        <span class="tq-big">300</span>
+        <span class="tq-unit">DeCAs entregados / mes</span>
+      </div>
+      <a href="https://app.trazaqr.com/registro" class="tq-btn">Activar</a>
     </div>
 
-    <!-- Plan Flota -->
-    <div class="plan reveal">
-      <div class="plan-name">Flota</div>
-      <div class="plan-price">49<span style="font-size:22px;font-weight:500">,90€</span> <span style="font-size:13px;font-weight:400;color:var(--muted);">sin IVA</span></div>
-      <div class="plan-period">/ mes · expediciones ilimitadas</div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Los mismos beneficios que Pyme, más:</div>
-      <ul class="plan-features">
-        <li>Expediciones ilimitadas</li>
-        <li>Varios usuarios en la misma empresa</li>
-        <li>Soporte prioritario</li>
-        <li>Onboarding incluido</li>
-      </ul>
-      <a href="https://app.trazaqr.com/registro" class="plan-btn">Empezar</a>
+    <!-- Flota -->
+    <div class="tq-plan reveal">
+      <div class="tq-name">Flota</div>
+      <div class="tq-price">49<small>,90&euro;</small></div>
+      <div class="tq-sub">al mes sin IVA</div>
+      <div class="tq-box">
+        <span class="tq-big tq-gr">Sin l&iacute;mite</span>
+        <span class="tq-unit">DeCAs entregados / mes</span>
+      </div>
+      <a href="https://app.trazaqr.com/registro" class="tq-btn">Activar</a>
     </div>
 
   </div>
 
+  <div class="tq-feat reveal">
+    <h3>Todas las funcionalidades de TRAZAQR en todos los planes</h3>
+    <ul>
+      <li>Crea y gestiona tus DeCA de forma sencilla y sin complicaciones</li>
+      <li>Acceso directo para el conductor: sin aplicaci&oacute;n ni registro</li>
+      <li>Comparte tus DeCA en un clic e importa o exporta datos al instante</li>
+      <li>Control total del viaje: inicio, incidencias, entregas y alertas de retraso</li>
+      <li>Acreditaci&oacute;n de entrega por GPS y evidencia de entrega por firma opcional <sup>(*)</sup></li>
+      <li>Listo para usar: sin necesidad de instalaciones ni integraciones</li>
+    </ul>
+  </div>
 
-  <!-- Nota comparativa -->
-  <p style="text-align:center;font-size:12px;color:var(--muted);margin:8px auto 0;max-width:560px;">
-    ¿Pagas por documento con tu proveedor actual? Con TrazaQR Autónomo son <strong>0,13 €/expedición</strong> — precio fijo, sin compromisos anuales.
-  </p>
+  <div class="tq-notes reveal">
+    <p>(*) Esto no es una firma con certificado digital, es una Evidencia de Entrega.</p>
+    <p class="tq-q">&laquo;La firma de los documentos de control administrativo no es obligatoria, puesto que ni la Orden FOM/2861/2012, de 13 de diciembre, ni la Orden FOM/1230/2013, de 31 de mayo, establecen requisitos de firma.&raquo; &mdash; Resoluci&oacute;n de 5 de junio de 2026, BOE-A-2026-12784.</p>
+    <p class="tq-more">M&aacute;s detalles en Academia TrazaQR: <a href="/ayuda.html#firma">&iquest;Por qu&eacute; TrazaQR no pide una firma con certificado digital?</a></p>
+  </div>
 </section>
 
 <!-- FAQ -->
