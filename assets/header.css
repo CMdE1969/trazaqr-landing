@@ -64,6 +64,28 @@
 .tqr-nav-wa { color: #0C447C !important; font-weight: 600; }
 .tqr-nav-wa svg { flex-shrink: 0; }
 
+/* Aviso "Academia" reforzado — solo en la cabecera de Ayuda (partials/header-ayuda.html) */
+.tqr-nav-academia-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+  gap: 1px;
+}
+.tqr-nav-academia-hint {
+  color: #B3261E;
+  font-size: 10.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tqr-nav-links a.tqr-nav-academia {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #0C447C !important;
+  gap: 4px;
+}
+.tqr-nav-academia-arrow { font-weight: 800; }
+
 .tqr-nav-cta {
   background: #0C447C;
   color: #fff !important;
@@ -118,6 +140,14 @@
     min-height: 44px;
   }
   .tqr-nav-links a.tqr-nav-wa { color: #0C447C !important; }
+
+  .tqr-nav-academia-item { padding: 10px 6vw 0; }
+  .tqr-nav-links a.tqr-nav-academia {
+    padding: 3px 0 14px !important;
+    border-bottom: 1px solid #F0EEE7;
+    font-size: 17px !important;
+  }
+
   .tqr-nav-links a.tqr-nav-cta {
     margin: 12px 6vw;
     padding: 13px 16px;
