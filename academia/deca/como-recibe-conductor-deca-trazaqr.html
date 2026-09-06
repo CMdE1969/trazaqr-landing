@@ -103,7 +103,7 @@ footer a:hover{color:#fff;}
       "description": "Comparte el acceso al transporte por WhatsApp, email o enlace. El conductor abre el DeCA desde su móvil, sin cuenta, sin instalar una app y sin acceso al backoffice.",
       "inLanguage": "es",
       "datePublished": "2026-08-28",
-      "dateModified": "2026-08-28",
+      "dateModified": "2026-09-06",
       "breadcrumb": { "@id": "https://trazaqr.com/academia/deca/como-recibe-conductor-deca-trazaqr#breadcrumb" },
       "hasPart": { "@id": "https://trazaqr.com/academia/deca/como-recibe-conductor-deca-trazaqr#video" }
     },
@@ -335,6 +335,26 @@ footer a:hover{color:#fff;}
 
   <p>La firma de recepción es una funcionalidad adicional de TrazaQR. <strong>No es un requisito del DeCA y no convierte por sí sola el documento en un albarán, una carta de porte ni una firma electrónica avanzada.</strong></p>
 
+  <h3 id="firma-certificado-digital" style="scroll-margin-top:80px">¿Por qué TrazaQR no pide una firma con certificado digital?</h3>
+  <p>Porque la norma no la exige, y porque lo que sí guardamos prueba más.</p>
+  <p>La Resolución de 5 de junio de 2026, que fija cómo tiene que ser el DeCA electrónico, dice literalmente que "la firma de los documentos de control administrativo no es obligatoria": ni la Orden FOM/2861/2012 ni la Orden FOM/1230/2013 establecen ningún requisito de firma. Un DeCA sin firma es un DeCA completo y válido.</p>
+  <p>En su lugar, cada entrega genera una evidencia de entrega: un conjunto de datos que se registran automáticamente en el momento en que el conductor confirma la entrega y que quedan unidos a ese DeCA.</p>
+
+  <h3>Qué se guarda en cada entrega</h3>
+  <ul>
+    <li><strong>Quién:</strong> el enlace del conductor es personal y de un solo uso por expedición; sin él no se puede registrar nada.</li>
+    <li><strong>Cuándo:</strong> fecha y hora del servidor, no del móvil. No se puede adelantar ni atrasar cambiando la hora del teléfono.</li>
+    <li><strong>Dónde:</strong> coordenadas GPS con su precisión en metros, tomadas en el momento de la confirmación.</li>
+    <li><strong>Qué se confirmó:</strong> el estado de la entrega y las incidencias registradas durante el trayecto, cada una con su hora y ubicación.</li>
+    <li><strong>Sobre qué documento:</strong> un hash SHA-256 del contenido del DeCA. Si alguien cambiara un solo dato, el hash dejaría de coincidir y se notaría.</li>
+  </ul>
+
+  <h3>Por qué esto es más difícil de discutir que una firma en una pantalla</h3>
+  <p>Una firma trazada con el dedo en un móvil prueba que alguien dibujó algo. No prueba quién, ni dónde, ni cuándo, ni sobre qué documento exacto. La evidencia de entrega de TrazaQR sí registra esas cuatro cosas, y las registra en un histórico que no se puede modificar ni borrar: la base de datos rechaza cualquier intento de alterar o eliminar un registro ya guardado. No es una política interna que prometemos cumplir, es una restricción técnica.</p>
+
+  <h3>¿Y si algún día hace falta firma?</h3>
+  <p>La misma Resolución establece que, si se incorpora firma a un documento de control, debe ser como mínimo firma electrónica avanzada conforme al Reglamento eIDAS. Una firma trazada con el dedo no lo es. Por eso no la llamamos firma: la llamamos por lo que es. El día que la norma lo exija, o que un cliente lo necesite para otro documento, la evidencia que ya recogemos —identidad de acceso, momento, lugar y consentimiento— es exactamente la base sobre la que se construye.</p>
+
   <h2>8. Las acciones quedan registradas en el histórico</h2>
   <p>La operativa realizada durante el transporte queda reflejada en el histórico de eventos. Por ejemplo:</p>
   <ul>
@@ -394,7 +414,7 @@ footer a:hover{color:#fff;}
     <p><strong>Resolución de 5 de junio de 2026 sobre los sistemas y documentos electrónicos de control administrativo</strong><br>
     <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2026-12784">https://www.boe.es/buscar/act.php?id=BOE-A-2026-12784</a></p>
     <p><strong>Webinar sobre el Documento Electrónico de Control Administrativo.</strong><br>Ministerio de Transportes y Movilidad Sostenible, julio de 2026.</p>
-    <p class="revision">Última revisión normativa y de producto: 28 de agosto de 2026.</p>
+    <p class="revision">Última revisión normativa y de producto: 6 de septiembre de 2026.</p>
   </div>
 </div>
 
