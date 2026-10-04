@@ -43,6 +43,9 @@ a{color:var(--ac-blue);}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ac-blue);margin-bottom:10px;}
 h1{font-family:var(--ff-display);font-weight:700;font-size:34px;line-height:40px;letter-spacing:-.01em;color:var(--ac-ink);margin-bottom:16px;}
 .lead{font-size:16px;color:var(--ac-muted);max-width:60ch;margin-bottom:36px;}
+.academy-signature{display:flex;align-items:center;gap:14px;background:var(--ac-blue-light);border:1px solid rgba(17,128,218,.18);border-radius:14px;padding:16px 18px;margin:0 0 28px;}
+.academy-signature-mark{font-family:var(--ff-display);font-size:11px;letter-spacing:.14em;color:var(--ac-blue-mid);font-weight:700;white-space:nowrap;}
+.academy-signature p{font-size:13px;color:var(--ac-ink);margin:0;}
 .cat-card{display:block;background:var(--ac-surface);border:1px solid var(--ac-border);border-radius:16px;
   padding:28px;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s;}
 .cat-card:hover{border-color:var(--ac-blue);transform:translateY(-2px);}
@@ -51,7 +54,7 @@ h1{font-family:var(--ff-display);font-weight:700;font-size:34px;line-height:40px
 footer{border-top:1px solid var(--ac-border);background:var(--ac-ink);color:rgba(255,255,255,.7);padding:26px 24px;text-align:center;font-size:13px;}
 footer a{color:rgba(255,255,255,.7);margin:0 8px;text-decoration:none;}
 footer a:hover{color:#fff;}
-@media (max-width:600px){ .wrap{padding:32px 18px 60px;} }
+@media (max-width:600px){ .wrap{padding:32px 18px 60px;} .academy-signature{align-items:flex-start;flex-direction:column;gap:5px;} }
 </style>
 
 <script type="application/ld+json">
@@ -187,6 +190,11 @@ footer a:hover{color:#fff;}
   <h1>Guías claras sobre el DeCA y el transporte de mercancías</h1>
   <p class="lead">Explicaciones directas, basadas en la normativa vigente, sobre el Documento Electrónico de Control Administrativo y las obligaciones del transporte de mercancías por carretera en España.</p>
 
+  <div class="academy-signature" aria-label="Lema de Academia TrazaQR">
+    <div class="academy-signature-mark">ACADEMIA TRAZAQR</div>
+    <p><strong>Formación clara. Cumplimiento seguro.</strong></p>
+  </div>
+
   <a href="/academia/deca" class="cat-card">
     <h2>DeCA — Documento Electrónico de Control Administrativo</h2>
     <p>Quién está obligado, qué transportes quedan fuera y qué exige la normativa desde el 5 de octubre de 2026.</p>
@@ -194,7 +202,8 @@ footer a:hover{color:#fff;}
 </div>
 
 <footer>
-  <div>TrazaQR Transporte · <a href="tel:+34610880061">610 880 061</a> · <a href="mailto:info@trazaqr.com">info@trazaqr.com</a></div>
+  <div><strong>Academia TrazaQR: Formación clara. Cumplimiento seguro.</strong></div>
+  <div style="margin-top:6px;">TrazaQR Transporte · <a href="tel:+34610880061">610 880 061</a> · <a href="mailto:info@trazaqr.com">info@trazaqr.com</a></div>
   <div style="margin-top:8px;">
     <a href="/">Inicio</a><a href="/ayuda">Ayuda</a><a href="/aviso-legal">Aviso legal</a><a href="/terminos">Términos</a><a href="/privacidad">Privacidad</a><a href="/cookies">Cookies</a>
   </div>
