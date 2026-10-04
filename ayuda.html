@@ -127,6 +127,11 @@ body {
   border-radius: 16px; padding: 2rem 2.5rem;
   margin-bottom: 2rem; color: white;
 }
+  .academy-promo { display:flex; align-items:center; justify-content:space-between; gap:18px; margin:18px 0 28px; padding:18px 20px; border:1px solid rgba(17,128,218,.20); border-radius:14px; background:#EAF4FD; }
+  .academy-promo strong { display:block; color:var(--ink); font-family:var(--ff-display); font-size:15px; margin-bottom:4px; }
+  .academy-promo span { display:block; color:var(--muted); font-size:13px; line-height:1.5; }
+  .academy-promo a { flex-shrink:0; background:var(--blue); color:#fff; border-radius:8px; padding:9px 14px; font-size:13px; font-weight:600; text-decoration:none; }
+  .academy-promo a:hover { background:var(--blue-mid); }
 .help-hero h1 {
   font-family: var(--ff-display); font-size: 28px;
   font-weight: 600; margin-bottom: 8px; letter-spacing: -.02em;
@@ -263,6 +268,7 @@ body {
   .sidebar { position: static; max-height: none; overflow-y: visible; margin-right: 0; margin-bottom: 1.5rem; }
   .proceso-body { padding: 1rem; }
   .cap-grid-2 { grid-template-columns: 1fr !important; }
+  .academy-promo { align-items: flex-start; flex-direction: column; }
 }
 </style>
 </head>
@@ -383,6 +389,15 @@ body {
       <h1>Centro de ayuda</h1>
       <p>Guía completa para gestionar el Documento Electrónico de Control Administrativo (DeCA) conforme a la Orden FOM/2861/2012 modificada por la Orden TRM/282/2026. Obligatorio desde el 5 de octubre de 2026.</p>
     </div>
+
+    <aside class="academy-promo" aria-label="Academia TrazaQR">
+      <div>
+        <strong>Academia TrazaQR</strong>
+        <span>Vídeos y guías prácticas para aprender el flujo completo de TrazaQR.</span>
+        <span><b>Formación clara. Cumplimiento seguro.</b></span>
+      </div>
+      <a href="/academia">Visitar Academia</a>
+    </aside>
 
     <!-- PROCESO 1 -->
     <section class="proceso" id="proceso-1">
