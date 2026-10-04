@@ -51,6 +51,11 @@ h1{font-family:var(--ff-display);font-weight:700;font-size:34px;line-height:40px
 .cat-card:hover{border-color:var(--ac-blue);transform:translateY(-2px);}
 .cat-card h2{font-family:var(--ff-display);font-weight:700;font-size:24px;line-height:30px;color:var(--ac-ink);margin-bottom:8px;}
 .cat-card p{font-size:14px;color:var(--ac-muted);line-height:1.6;}
+.video-card{margin-top:24px;background:var(--ac-blue-light);border:1px solid rgba(17,128,218,.20);border-radius:16px;padding:24px;}
+.video-card h2{font-family:var(--ff-display);font-weight:700;font-size:22px;line-height:28px;color:var(--ac-ink);margin-bottom:8px;}
+.video-card p{font-size:14px;color:var(--ac-muted);line-height:1.6;margin-bottom:16px;}
+.video-card video{display:block;width:100%;border-radius:10px;background:#12131A;aspect-ratio:16/9;}
+.video-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;text-decoration:none;color:var(--ac-blue-mid);}
 footer{border-top:1px solid var(--ac-border);background:var(--ac-ink);color:rgba(255,255,255,.7);padding:26px 24px;text-align:center;font-size:13px;}
 footer a{color:rgba(255,255,255,.7);margin:0 8px;text-decoration:none;}
 footer a:hover{color:#fff;}
@@ -199,6 +204,17 @@ footer a:hover{color:#fff;}
     <h2>DeCA — Documento Electrónico de Control Administrativo</h2>
     <p>Quién está obligado, qué transportes quedan fuera y qué exige la normativa desde el 5 de octubre de 2026.</p>
   </a>
+
+  <section class="video-card" aria-labelledby="video-primer-deca">
+    <div class="eyebrow">Vídeos</div>
+    <h2 id="video-primer-deca">Aprende a emitir tu primer DeCA: de borrador a entregado</h2>
+    <p>Una demostración completa de TrazaQR: crear el borrador, emitir el documento, iniciar el transporte y confirmar la entrega.</p>
+    <video controls preload="metadata" playsinline>
+      <source src="/assets/academia/tutorial-primer-deca-borrador-a-entregado.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este vídeo. <a href="/assets/academia/tutorial-primer-deca-borrador-a-entregado.mp4">Abrir el vídeo directamente</a>.
+    </video>
+    <a class="video-link" href="/assets/academia/tutorial-primer-deca-borrador-a-entregado.mp4" target="_blank" rel="noopener">Abrir vídeo en una pestaña nueva →</a>
+  </section>
 </div>
 
 <footer>
