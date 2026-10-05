@@ -27,7 +27,7 @@
   .btn-si { background: #0C447C; color: #fff; }
   .btn-no { background: #fff; color: #0C447C; }
 </style>
-</head>
+<script src="/assets/tracking.js" defer></script></head>
 <body>
 <!-- TQR:HEADER:START — generado automáticamente desde partials/header.html por scripts/build-header.js. NO editar a mano: los cambios se perderán. -->
 <!--
@@ -77,20 +77,22 @@
 <div class="container">
 
   <h1>Política de Cookies</h1>
-  <div class="meta">TrazaQR Transporte · Última actualización: julio 2026 · Versión 1.0</div>
+  <div class="meta">TrazaQR Transporte · Última actualización: octubre 2026 · Versión 1.1</div>
 
-  <p>Esta web utiliza únicamente cookies de análisis (Google Analytics), y solo si las aceptas expresamente. No usamos cookies publicitarias ni de seguimiento de terceros.</p>
+  <p>En trazaqr.com y app.trazaqr.com usamos Google Analytics para estadísticas y el píxel de Meta para medir anuncios y registros. Cada categoría se activa únicamente si la aceptas. La aplicación también utiliza almacenamiento técnico necesario para iniciar sesión.</p>
 
   <h2>Cookies que utilizamos</h2>
   <table>
     <tr><th>Cookie</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr>
     <tr><td><code>_ga</code></td><td>Análisis (Google Analytics)</td><td>Distinguir visitantes de forma anónima para estadísticas de uso</td><td>Hasta 2 años</td></tr>
     <tr><td><code>_ga_M9CX3LKYQ5</code></td><td>Análisis (Google Analytics)</td><td>Mantener el estado de la sesión de medición</td><td>Hasta 2 años</td></tr>
+    <tr><td><code>_fbp</code></td><td>Publicidad (Meta)</td><td>Distinguir navegadores para medir visitas y registros atribuidos a anuncios</td><td>Hasta 3 meses</td></tr>
+    <tr><td><code>_fbc</code></td><td>Publicidad (Meta, si hay identificador de clic)</td><td>Relacionar una visita con el clic en un anuncio</td><td>Hasta 3 meses</td></tr>
   </table>
-  <p>Además, guardamos tu elección de consentimiento en el almacenamiento local de tu navegador (<code>tqr_cookies</code>). Este dato es estrictamente técnico, no sale de tu dispositivo y está exento de consentimiento.</p>
+  <p>Guardamos tus preferencias en <code>tqr_cookies</code> (almacenamiento local) y en las cookies técnicas <code>tqr_analytics</code> y <code>tqr_marketing</code>, compartidas entre ambos subdominios durante 180 días.</p>
 
   <h2>Quién trata los datos</h2>
-  <p>Las cookies de análisis son de Google Analytics (Google Ireland Ltd.). Solo se instalan si pulsas "Aceptar" en el aviso de cookies. Si las rechazas, no se carga ningún script de Google y tu visita no se mide.</p>
+  <p>Google Ireland Ltd. / Google LLC trata la medición de estadísticas y Meta Platforms Ireland Ltd. / Meta Platforms Inc. trata la medición publicitaria. Solo se cargan sus etiquetas con el consentimiento correspondiente.</p>
 
   <h2>Cambiar tu elección</h2>
   <div class="highlight">
@@ -101,6 +103,14 @@
     </div>
   </div>
   <p>Al retirar el consentimiento dejamos de cargar Google Analytics y eliminamos sus cookies de este navegador. También puedes borrarlas manualmente desde la configuración de tu navegador.</p>
+  <div class="highlight">
+    Medición publicitaria de Meta: <span class="estado" id="estado-marketing">—</span>
+    <div class="botones">
+      <button class="btn-si" onclick="elegirMarketing('si')">Aceptar Meta</button>
+      <button class="btn-no" onclick="elegirMarketing('no')">Rechazar Meta</button>
+    </div>
+  </div>
+  <p>Al retirar el consentimiento publicitario dejamos de enviar eventos a Meta en las siguientes visitas y eliminamos sus cookies de este navegador. Para detener las etiquetas ya cargadas en esta página, se recarga automáticamente.</p>
 
   <h2>Más información</h2>
   <p>El detalle del tratamiento de datos personales está en nuestra <a href="/privacidad">Política de Privacidad</a>. Para cualquier duda: <a href="mailto:info@trazaqr.com">info@trazaqr.com</a>.</p>
@@ -121,15 +131,29 @@
 
   window.elegir = function (valor) {
     try { localStorage.setItem(KEY, valor); } catch (e) {}
+    document.cookie = 'tqr_analytics=' + valor + ';Max-Age=15552000;path=/;domain=.trazaqr.com;SameSite=Lax;Secure';
     if (valor === 'no') {
       var caducar = ';Max-Age=0;path=/;domain=.trazaqr.com';
       document.cookie = '_ga=' + caducar;
       document.cookie = '_ga_M9CX3LKYQ5=' + caducar;
     }
     pintarEstado();
+    location.reload();
   };
 
-  document.addEventListener('DOMContentLoaded', pintarEstado);
+  function pintarMarketing() {
+    var valor = document.cookie.split('; ').find(function (v) { return v.indexOf('tqr_marketing=') === 0; });
+    document.getElementById('estado-marketing').textContent = valor ? (valor.endsWith('=si') ? 'Aceptada' : 'Rechazada') : 'Sin decidir';
+  }
+  window.elegirMarketing = function (valor) {
+    document.cookie = 'tqr_marketing=' + valor + ';Max-Age=15552000;path=/;domain=.trazaqr.com;SameSite=Lax;Secure';
+    if (valor === 'no') {
+      ['_fbp', '_fbc'].forEach(function (name) { document.cookie = name + '=;Max-Age=0;path=/;domain=.trazaqr.com'; });
+    }
+    location.reload();
+  };
+
+  document.addEventListener('DOMContentLoaded', function () { pintarEstado(); pintarMarketing(); });
 })();
 </script>
 

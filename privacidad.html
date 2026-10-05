@@ -23,7 +23,7 @@
   a { color: #0C447C; }
   footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid #e8e8e5; font-size: 12px; color: #aaa; }
 </style>
-</head>
+<script src="/assets/tracking.js" defer></script></head>
 <body>
 <!-- TQR:HEADER:START — generado automáticamente desde partials/header.html por scripts/build-header.js. NO editar a mano: los cambios se perderán. -->
 <!--
@@ -135,8 +135,9 @@
       <tr><td>Protección frente a accesos automatizados (anti-bots)</td><td>Interés legítimo (art. 6.1.f) — seguridad de la plataforma</td></tr>
       <tr><td><strong>Seguridad del acceso, detección de incidencias y abusos, y análisis de la fricción del proceso de registro</strong></td><td><strong>Interés legítimo (art. 6.1.f)</strong></td></tr>
       <tr><td><strong>Gestión comercial y prospección entre profesionales (B2B)</strong></td><td><strong>Interés legítimo (art. 6.1.f)</strong>, con el límite del art. 21.2 LSSI para las comunicaciones comerciales electrónicas</td></tr>
-      <tr><td>Analítica de la web pública (Google Analytics 4)</td><td>Consentimiento (art. 6.1.a)</td></tr>
-      <tr><td>Analítica de uso de la aplicación, sin cookies ni identificación</td><td>Interés legítimo (art. 6.1.f)</td></tr>
+      <tr><td>Analítica de la web pública y de la aplicación (Google Analytics 4)</td><td>Consentimiento (art. 6.1.a)</td></tr>
+      <tr><td>Medición de visitas e inscripciones atribuidas a anuncios (píxel de Meta)</td><td>Consentimiento (art. 6.1.a)</td></tr>
+      <tr><td>Analítica técnica de Vercel en la aplicación, sin cookies ni identificación</td><td>Interés legítimo (art. 6.1.f)</td></tr>
     </tbody>
   </table>
   </div>
@@ -178,7 +179,8 @@
       <tr><td>Stripe Payments Europe, Ltd.</td><td>Procesamiento de pagos y gestión de suscripciones. TrazaQR no almacena datos de tarjeta</td><td>UE (Irlanda) / EE. UU.</td><td>DPF UE–EE. UU. + SCC. Actúa como encargado para la ejecución del pago y como responsable independiente para la prevención del fraude y sus propias obligaciones legales (PSD2, prevención del blanqueo)</td></tr>
       <tr><td>Resend Inc.</td><td>Envío de correos del servicio: alertas de retraso, avisos de fin de prueba, confirmación de registro y recuperación de contraseña</td><td>EE. UU.</td><td>SCC</td></tr>
       <tr><td>Cloudflare, Inc.</td><td>Protección anti-bots (Turnstile) en el registro y en la comprobación de NIF. Trata la dirección IP y señales técnicas del navegador</td><td>EE. UU. / red global</td><td>DPF UE–EE. UU. + SCC</td></tr>
-      <tr><td>Google Ireland Ltd. / Google LLC</td><td>Analítica de la web pública trazaqr.com (Google Analytics 4). Solo si usted acepta las cookies de análisis — ver apartado 9</td><td>UE (Irlanda) / EE. UU.</td><td>DPF UE–EE. UU. + SCC</td></tr>
+      <tr><td>Google Ireland Ltd. / Google LLC</td><td>Analítica de trazaqr.com y app.trazaqr.com (Google Analytics 4). Solo con consentimiento para estadísticas — ver apartado 9</td><td>UE (Irlanda) / EE. UU.</td><td>DPF UE–EE. UU. + SCC</td></tr>
+      <tr><td>Meta Platforms Ireland Ltd. / Meta Platforms Inc.</td><td>Medición de visitas e inscripciones mediante el píxel de Meta. Solo con consentimiento para marketing — ver apartado 9</td><td>UE (Irlanda) / EE. UU.</td><td>Según las garantías aplicables del proveedor</td></tr>
       <tr><td>Hostinger UAB</td><td>Gestión de DNS del dominio y correo electrónico corporativo (buzón <a href="mailto:info@trazaqr.com">info@trazaqr.com</a>)</td><td>UE (Lituania)</td><td>Entidad UE — RGPD directamente aplicable</td></tr>
       <tr><td>Microsoft (OneDrive)</td><td>Custodia de copias de seguridad CSV para continuidad y recuperación del servicio; pueden contener datos de Expediciones y DeCA</td><td>Geografía asociada a la cuenta de Microsoft; posibles transferencias internacionales</td><td>Condiciones y garantías de protección de datos de Microsoft; DPF UE–EE. UU. y cláusulas contractuales tipo cuando resulten aplicables</td></tr>
     </tbody>
@@ -209,7 +211,7 @@
   </table>
   </div>
 
-  <p>Los demás proveedores del apartado 5.1 <strong>no tratan datos del DeCA</strong>: Stripe interviene únicamente en los pagos, Cloudflare en la protección de los formularios públicos, Google en la analítica de la web pública y Hostinger en el DNS y el correo corporativo.</p>
+  <p>Los demás proveedores del apartado 5.1 <strong>no tratan datos del DeCA</strong>: Stripe interviene únicamente en los pagos, Cloudflare en la protección de los formularios públicos, Google en la analítica consentida, Meta en la medición publicitaria consentida y Hostinger en el DNS y el correo corporativo.</p>
 
   <p>Esta relación, junto con la del apartado 5.1, es <strong>la relación vigente y única de subencargados</strong>. Cualquier <strong>incorporación o sustitución</strong> se comunica a los Clientes <strong>por correo electrónico con 15 días naturales de antelación</strong> y se refleja simultáneamente en este apartado, con derecho de oposición en los términos de la cláusula 11.b.6 de los <a href="/terminos#11-proteccion-de-datos">Términos y Condiciones</a>.</p>
 
@@ -291,21 +293,23 @@
 
   <h2 id="cookies" style="scroll-margin-top:80px">9. Cookies</h2>
 
-  <p>La aplicación <strong>app.trazaqr.com</strong> utiliza únicamente cookies técnicas necesarias para el funcionamiento de la sesión de usuario (autenticación) y analítica sin cookies, que no instala cookies ni identifica al visitante. No utiliza cookies de seguimiento ni publicidad.</p>
+  <p>La aplicación <strong>app.trazaqr.com</strong> utiliza almacenamiento técnico necesario para el funcionamiento de la sesión de usuario (autenticación) y analítica sin cookies de Vercel. Si usted acepta las categorías opcionales, también se activan Google Analytics y el píxel de Meta.</p>
 
-  <p>La web <strong>trazaqr.com</strong> utiliza cookies de análisis de Google Analytics 4 (Google Ireland Ltd. / Google LLC) <strong>únicamente si usted las acepta</strong> en el aviso de cookies. Si las rechaza o no responde, no se instala ninguna cookie de análisis ni se carga ningún script de Google. Las cookies utilizadas en caso de aceptación son:</p>
+  <p>En <strong>trazaqr.com</strong> y <strong>app.trazaqr.com</strong>, Google Analytics 4 (Google Ireland Ltd. / Google LLC) solo se activa tras aceptar las estadísticas. El píxel de Meta (Meta Platforms Ireland Ltd. / Meta Platforms Inc.) solo se activa tras aceptar la medición publicitaria. Las cookies opcionales son:</p>
 
   <ul>
 
     <li><code>_ga</code> — distingue visitantes de forma seudonimizada. Duración: 2 años.</li>
 
     <li><code>_ga_M9CX3LKYQ5</code> — mantiene el estado de la sesión de análisis. Duración: 2 años.</li>
+    <li><code>_fbp</code> — distingue navegadores para medir resultados publicitarios. Duración: hasta 3 meses.</li>
+    <li><code>_fbc</code> — asocia una visita con el clic en un anuncio, cuando procede. Duración: hasta 3 meses.</li>
 
   </ul>
 
-  <p>Finalidad: estadísticas de uso de la web. Base jurídica: su consentimiento (art. 6.1.a RGPD). La transferencia a Google LLC (EE. UU.) se ampara en el Marco de Privacidad de Datos UE–EE. UU. y cláusulas contractuales tipo.</p>
+  <p>Finalidades: estadísticas de uso y medición de anuncios y registros. Base jurídica: su consentimiento separado para cada categoría (art. 6.1.a RGPD). No enviamos a estas etiquetas el email, el NIF ni el contenido de los DeCA.</p>
 
-  <p>Puede cambiar o retirar su elección en cualquier momento desde el enlace «Cookies» del pie de página, o borrando las cookies desde su navegador.</p>
+  <p>Puede cambiar o retirar ambas elecciones en cualquier momento desde <a href="/cookies">Política de Cookies</a>, o borrando las cookies desde su navegador.</p>
 
   <h2 id="10-menores-de-edad" style="scroll-margin-top:80px">10. Menores de edad</h2>
 
