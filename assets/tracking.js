@@ -4,9 +4,12 @@
   const APP = location.hostname === 'app.trazaqr.com' || location.hostname === 'localhost'
   const PIXEL_ID = '1410899413954942'
   const GA_ID = 'G-M9CX3LKYQ5'
+  const ADS_ID = 'AW-18483216349'
+  const ADS_CONVERSION = 'AW-18483216349/7GTqCJ7goI4dEN3_ve1E'
   const DAY = 60 * 60 * 24
   let metaLoaded = false
   let googleLoaded = false
+  let adsLoaded = false
   let lastMetaPath = ''
   let lastGooglePath = ''
   let lastMetaStartPath = ''
@@ -25,7 +28,21 @@
     document.cookie = name + '=' + value + '; Max-Age=' + (180 * DAY) + '; Path=/; SameSite=Lax; Secure' + domain
   }
   function analyticsAllowed() { return read('tqr_analytics') === 'si' }
-  function marketingAllowed() { return read('tqr_marketing') === 'si' }
+  // Nueva elección: el consentimiento anterior solo mencionaba a Meta.
+  function marketingAllowed() { return read('tqr_advertising') === 'si' }
+
+  function ensureGoogleTag(id) {
+    const hadGtag = typeof window.gtag === 'function'
+    window.dataLayer = window.dataLayer || []
+    window.gtag = window.gtag || function () { dataLayer.push(arguments) }
+    if (!hadGtag) gtag('js', new Date())
+    if (!document.querySelector('script[src^="https://www.googletagmanager.com/gtag/js"]')) {
+      const script = document.createElement('script')
+      script.async = true
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id
+      document.head.appendChild(script)
+    }
+  }
 
   function loadMeta() {
     if (!marketingAllowed() || metaLoaded || !safePath()) return
@@ -46,20 +63,21 @@
   function loadGoogle() {
     if (!APP || !analyticsAllowed() || googleLoaded) return
     googleLoaded = true
-    window.dataLayer = window.dataLayer || []
-    window.gtag = window.gtag || function () { dataLayer.push(arguments) }
-    gtag('js', new Date())
+    ensureGoogleTag(GA_ID)
     gtag('config', GA_ID, { send_page_view: false })
-    const script = document.createElement('script')
-    script.async = true
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID
-    document.head.appendChild(script)
     pageView()
+  }
+  function loadGoogleAds() {
+    if (!marketingAllowed() || adsLoaded || !safePath()) return
+    adsLoaded = true
+    ensureGoogleTag(ADS_ID)
+    gtag('config', ADS_ID)
   }
   function pageView() {
     const path = location.pathname
     if (APP && !metaLoaded) loadMeta()
     if (!safePath()) return
+    if (!adsLoaded) loadGoogleAds()
     if (marketingAllowed() && metaLoaded && lastMetaPath !== path) {
       fbq('track', 'PageView')
       lastMetaPath = path
@@ -89,6 +107,7 @@
     if (safePath()) {
       loadGoogle()
       loadMeta()
+      loadGoogleAds()
       flushConversions()
     }
   }
@@ -100,6 +119,10 @@
     let sent = false
     if (marketingAllowed() && metaLoaded) {
       fbq('track', 'CompleteRegistration', { content_name: 'Prueba de 30 días', status: 'completed' })
+      sent = true
+    }
+    if (marketingAllowed() && adsLoaded) {
+      gtag('event', 'conversion', { send_to: ADS_CONVERSION, value: 0, currency: 'EUR' })
       sent = true
     }
     if (analyticsAllowed() && googleLoaded) {
@@ -132,24 +155,24 @@
     const copy = document.createElement('span')
     copy.style.maxWidth = '650px'
     copy.textContent = APP
-      ? '¿Nos permites medir las visitas y el registro? Google Analytics crea estadísticas y el píxel de Meta mide anuncios. Solo se activan si aceptas.'
-      : '¿Nos permites medir los resultados de los anuncios con el píxel de Meta? Solo se activa si aceptas.'
+      ? '¿Nos permites medir visitas y registros? Google Analytics crea estadísticas; Meta y Google Ads miden anuncios. Solo se activan si aceptas.'
+      : '¿Nos permites medir los resultados de los anuncios con Meta y Google Ads? Solo se activan si aceptas.'
     const link = document.createElement('a')
     link.href = 'https://trazaqr.com/cookies'; link.textContent = ' Más información y preferencias'
     link.style.color = '#9fc3ee'; copy.appendChild(link)
     banner.appendChild(copy)
     const actions = document.createElement('span')
     actions.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap'
-    if (APP && read('tqr_analytics') === null && read('tqr_marketing') === null) {
-      actions.appendChild(button('Aceptar ambas', true, function () { write('tqr_analytics', 'si'); write('tqr_marketing', 'si'); removeBanner(); loadGoogle(); loadMeta() }))
-      actions.appendChild(button('Solo estadísticas', false, function () { write('tqr_analytics', 'si'); write('tqr_marketing', 'no'); removeBanner(); loadGoogle() }))
-      actions.appendChild(button('Rechazar', false, function () { write('tqr_analytics', 'no'); write('tqr_marketing', 'no'); removeBanner() }))
+    if (APP && read('tqr_analytics') === null && read('tqr_advertising') === null) {
+      actions.appendChild(button('Aceptar ambas', true, function () { write('tqr_analytics', 'si'); write('tqr_advertising', 'si'); removeBanner(); loadGoogle(); loadMeta(); loadGoogleAds() }))
+      actions.appendChild(button('Solo estadísticas', false, function () { write('tqr_analytics', 'si'); write('tqr_advertising', 'no'); removeBanner(); loadGoogle() }))
+      actions.appendChild(button('Rechazar', false, function () { write('tqr_analytics', 'no'); write('tqr_advertising', 'no'); removeBanner() }))
     } else if (APP && read('tqr_analytics') === null) {
       actions.appendChild(button('Aceptar estadísticas', true, function () { write('tqr_analytics', 'si'); removeBanner(); loadGoogle() }))
       actions.appendChild(button('Rechazar estadísticas', false, function () { write('tqr_analytics', 'no'); removeBanner() }))
     } else {
-      actions.appendChild(button('Aceptar Meta', true, function () { write('tqr_marketing', 'si'); removeBanner(); loadMeta() }))
-      actions.appendChild(button('Rechazar', false, function () { write('tqr_marketing', 'no'); removeBanner() }))
+      actions.appendChild(button('Aceptar publicidad', true, function () { write('tqr_advertising', 'si'); removeBanner(); loadMeta(); loadGoogleAds() }))
+      actions.appendChild(button('Rechazar', false, function () { write('tqr_advertising', 'no'); removeBanner() }))
     }
     banner.appendChild(actions)
     document.body.appendChild(banner)
@@ -161,7 +184,7 @@
       if (choice === 'si' || choice === 'no') write('tqr_analytics', choice)
     } catch (e) { /* almacenamiento bloqueado */ }
   }
-  window.tqrTracking = { pageView, completeRegistration, refresh: function () { loadGoogle(); loadMeta() } }
+  window.tqrTracking = { pageView, completeRegistration, refresh: function () { loadGoogle(); loadMeta(); loadGoogleAds() } }
   document.addEventListener('click', function (event) {
     if (!APP && (event.target.closest('#ck-aceptar, #ck-rechazar, #cookie-banner button, .botones button'))) {
       setTimeout(syncLandingChoice, 0)
@@ -169,7 +192,7 @@
   })
   document.addEventListener('DOMContentLoaded', function () {
     syncLandingChoice()
-    loadGoogle(); loadMeta()
-    if (read('tqr_marketing') === null || (APP && read('tqr_analytics') === null)) showBanner()
+    loadGoogle(); loadMeta(); loadGoogleAds()
+    if (read('tqr_advertising') === null || (APP && read('tqr_analytics') === null)) showBanner()
   })
 })()
