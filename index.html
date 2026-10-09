@@ -113,8 +113,8 @@ body {
 
 .hero-tag {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold-light); color: var(--gold);
-  border: 1px solid rgba(201,151,58,0.3);
+  background: #FFF1F0; color: #B42318;
+  border: 1px solid #F4B4AE;
   border-radius: 20px; padding: 6px 14px;
   font-size: 12px; font-weight: 500; letter-spacing: .04em;
   text-transform: uppercase; margin-bottom: 28px;
@@ -122,7 +122,7 @@ body {
 
 .hero-tag::before {
   content: ''; width: 6px; height: 6px;
-  background: var(--gold); border-radius: 50%;
+  background: #B42318; border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -196,25 +196,6 @@ h1 em {
 @media (max-width: 600px) {
   .btn-comprobar { display: flex; width: 100%; max-width: none; font-size: 16px; padding: 18px 20px; }
 }
-
-.hero-deadline {
-  margin-top: 48px;
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 10px 20px; background: white;
-  border: 1px solid var(--border); border-radius: 10px;
-  font-size: 13px; color: var(--muted);
-}
-.hero-deadline strong { color: var(--ink); }
-.deadline-bar {
-  width: 120px; height: 4px; background: #eee; border-radius: 2px; overflow: hidden;
-}
-.deadline-fill {
-  height: 100%; border-radius: 2px;
-  background: linear-gradient(90deg, var(--gold), #E8A020);
-  width: 72%;
-  animation: fillBar 1.5s var(--ease) 1s both;
-}
-@keyframes fillBar { from { width: 0 } }
 
 /* ── Problema ───────────────────────────────────────────────── */
 .problema {
@@ -1166,7 +1147,7 @@ footer {
   <div class="hero-inner">
 
     <div class="hero-tag">
-      Obligatorio desde el 5 de octubre de 2026
+      Obligatorio desde el 5 oct 2026
     </div>
 
     <h1>El Documento <em>Electrónico</em> de<br>Control Administrativo para tu flota — D<span class="deca-e">e</span>CA</h1>
@@ -1195,12 +1176,6 @@ footer {
     <p style="margin-top:14px;font-size:13.5px;color:var(--muted);">
       Sin tarjeta · Alta en 5 minutos · Sin permanencia · <a href="https://app.trazaqr.com" target="_blank" style="color:var(--blue);">ya tengo cuenta</a>
     </p>
-
-    <div class="hero-deadline">
-      <span>Tiempo hasta la obligatoriedad</span>
-      <div class="deadline-bar"><div class="deadline-fill"></div></div>
-      <strong>5 oct 2026</strong>
-    </div>
 
   </div>
 </section>
@@ -1693,7 +1668,7 @@ footer {
 <!-- CTA FINAL -->
 <section class="cta">
   <div class="cta-inner reveal">
-    <h2>Listo antes<br>del <em>5 de octubre</em></h2>
+    <h2>Prepara tus <em>DeCA hoy</em></h2>
     <p>
       Alta en 5 minutos. Sin instalación. Sin formación para el conductor.
       Tu flota cumple la normativa desde el primer día.
