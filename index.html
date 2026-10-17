@@ -929,16 +929,7 @@ footer {
 (function () {
   var KEY = 'tqr_cookies';
 
-  function cargarGA() {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M9CX3LKYQ5';
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function () { dataLayer.push(arguments); };
-    gtag('js', new Date());
-    gtag('config', 'G-M9CX3LKYQ5');
-  }
+  function cargarGA() { window.tqrTracking?.refresh?.(); }
 
   function borrarCookiesGA() {
     // Borrado best-effort de las cookies de GA al retirar el consentimiento
@@ -1798,6 +1789,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 const form = document.querySelector('#form-contacto')
 if (form) {
   form.addEventListener('submit', () => {
+    if (typeof gtag !== 'function') return
     gtag('event', 'generate_lead', {
       event_category: 'formulario',
       event_label: 'demo_request'
@@ -1808,6 +1800,7 @@ if (form) {
 // 2. Clic en "Acceder ahora" (cualquier enlace a app.trazaqr.com)
 document.querySelectorAll('a[href*="app.trazaqr.com"]').forEach(el => {
   el.addEventListener('click', () => {
+    if (typeof gtag !== 'function') return
     gtag('event', 'cta_click', {
       event_category: 'conversion',
       event_label: el.textContent.trim().substring(0, 50)
@@ -1818,6 +1811,7 @@ document.querySelectorAll('a[href*="app.trazaqr.com"]').forEach(el => {
 // 3. Descarga del PDF de muestra
 document.querySelectorAll('a[href*="ejemplo-deca-trazaqr.pdf"]').forEach(el => {
   el.addEventListener('click', () => {
+    if (typeof gtag !== 'function') return
     gtag('event', 'file_download', {
       event_category: 'contenido',
       event_label: 'ejemplo-deca-trazaqr.pdf'
@@ -1828,6 +1822,7 @@ document.querySelectorAll('a[href*="ejemplo-deca-trazaqr.pdf"]').forEach(el => {
 // 4. Clic en "Solicitar demo" (nav y sección contacto)
 document.querySelectorAll('a[href="#demo"]').forEach(el => {
   el.addEventListener('click', () => {
+    if (typeof gtag !== 'function') return
     gtag('event', 'demo_intent', {
       event_category: 'interes',
       event_label: el.closest('nav') ? 'nav' : 'cta'

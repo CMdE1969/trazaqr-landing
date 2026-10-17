@@ -61,10 +61,14 @@
     pageView()
   }
   function loadGoogle() {
-    if (!APP || !analyticsAllowed() || googleLoaded) return
+    if (!analyticsAllowed() || googleLoaded) return
     googleLoaded = true
     ensureGoogleTag(GA_ID)
-    gtag('config', GA_ID, { send_page_view: false })
+    gtag('config', GA_ID, {
+      send_page_view: false,
+      linker: { domains: ['trazaqr.com', 'app.trazaqr.com'] },
+      cookie_domain: 'trazaqr.com',
+    })
     pageView()
   }
   function loadGoogleAds() {
@@ -82,23 +86,12 @@
       fbq('track', 'PageView')
       lastMetaPath = path
     }
-    if (APP && analyticsAllowed() && googleLoaded && lastGooglePath !== path) {
+    if (analyticsAllowed() && googleLoaded && lastGooglePath !== path) {
       gtag('event', 'page_view', { page_path: path, page_location: location.origin + path })
       lastGooglePath = path
     }
-    if (APP && path === '/registro') {
-      if (marketingAllowed() && metaLoaded && lastMetaStartPath !== path) {
-        fbq('track', 'Lead', { content_name: 'Inicio de prueba de 30 días' })
-        lastMetaStartPath = path
-      }
-      if (analyticsAllowed() && googleLoaded && lastGoogleStartPath !== path) {
-        gtag('event', 'sign_up_start', { method: 'web' })
-        lastGoogleStartPath = path
-      }
-    } else {
-      lastMetaStartPath = ''
-      lastGoogleStartPath = ''
-    }
+    lastMetaStartPath = ''
+    lastGoogleStartPath = ''
     flushConversions()
   }
   function completeRegistration(userId) {
