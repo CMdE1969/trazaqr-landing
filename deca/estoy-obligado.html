@@ -478,7 +478,7 @@ footer a { color:var(--muted); margin:0 8px; }
       : '';
 
     var ctas = obligado
-      ? '<div style="margin:24px 0 4px;padding:20px 22px;background:var(--blue-light);border:1px solid rgba(12,68,124,.16);border-radius:12px;"><h3 style="font-family:var(--ff-display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:5px;">Llévate la guía rápida del DeCA</h3><p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Quién está obligado, quién debe generarlo y qué necesita llevar el conductor. Una guía breve y práctica para consultarla cuando la necesites.</p><a class="btn btn-alt" href="/assets/guia-rapida-deca-trazaqr.pdf" download="Guía-Rápida-DECA-TrazaQR.pdf">Descargar guía gratis</a></div>' +
+      ? '<div style="margin:24px 0 4px;padding:20px 22px;background:var(--blue-light);border:1px solid rgba(12,68,124,.16);border-radius:12px;"><h3 style="font-family:var(--ff-display);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:5px;">Llévate la guía rápida del DeCA</h3><p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Quién está obligado, quién debe generarlo y qué necesita llevar el conductor. Una guía breve y práctica para consultarla cuando la necesites.</p><div class="ctas" style="margin-top:0"><a class="btn btn-alt" href="/assets/guia-rapida-deca-trazaqr.pdf" download="Guía-Rápida-DECA-TrazaQR.pdf" data-cta="guia-descarga">Descargar guía gratis</a><a class="btn btn-alt" href="https://wa.me/34610880061?text=Hola%2C%20quiero%20recibir%20la%20gu%C3%ADa%20r%C3%A1pida%20del%20DeCA." target="_blank" rel="noopener" data-cta="guia-whatsapp">Enviármela por WhatsApp</a></div></div>' +
         '<div class="ctas"><a class="btn btn-main" href="https://app.trazaqr.com/registro" data-cta="registro">Empezar 30 días gratis, sin tarjeta</a><a class="btn btn-alt" href="/#como" data-cta="como-funciona">Ver cómo funciona</a></div>' +
         '<p style="font-size:12.5px;color:var(--muted);margin-top:8px;">Crea y gestiona tus DeCA con TrazaQR.</p>'
       : '<div class="ctas"><a class="btn btn-alt" href="/">Conocer TrazaQR</a><a class="btn btn-alt" href="tel:+34610880061">Consultar mi caso: 610 880 061</a></div>';
@@ -536,7 +536,22 @@ footer a { color:var(--muted); margin:0 8px; }
 
     document.getElementById('btn-reiniciar').addEventListener('click', reiniciar);
     var cta = $res.querySelector('[data-cta="registro"]');
-    if (cta) cta.addEventListener('click', function () { ev('cta_registro_desde_comprobador', { source: ATRIB.source, medium: ATRIB.medium, campaign: ATRIB.campaign }); });
+    var eventParams = {
+      resultado: clave,
+      source: ATRIB.source,
+      medium: ATRIB.medium,
+      campaign: ATRIB.campaign,
+      landing_page: ATRIB.landing_page,
+      referrer: ATRIB.referrer
+    };
+    if (cta) cta.addEventListener('click', function () {
+      ev('cta_registro_desde_comprobador', eventParams);
+      ev('comprobador_cta_signup', eventParams);
+    });
+    var guiaDescarga = $res.querySelector('[data-cta="guia-descarga"]');
+    if (guiaDescarga) guiaDescarga.addEventListener('click', function () { ev('guia_deca_download', eventParams); });
+    var guiaWhatsapp = $res.querySelector('[data-cta="guia-whatsapp"]');
+    if (guiaWhatsapp) guiaWhatsapp.addEventListener('click', function () { ev('guia_deca_whatsapp', eventParams); });
     var ctaComo = $res.querySelector('[data-cta="como-funciona"]');
     if (ctaComo) ctaComo.addEventListener('click', function () { ev('cta_como_funciona_desde_comprobador', {}); });
     var form = document.getElementById('f-lead');
