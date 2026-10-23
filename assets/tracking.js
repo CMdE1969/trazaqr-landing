@@ -7,6 +7,7 @@
   const ADS_ID = 'AW-18483216349'
   const ADS_CONVERSION = 'AW-18483216349/7GTqCJ7goI4dEN3_ve1E'
   const DAY = 60 * 60 * 24
+  const ATTR_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'referrer', 'landing_page', 'tr_landing']
   let metaLoaded = false
   let googleLoaded = false
   let adsLoaded = false
@@ -30,6 +31,39 @@
   function analyticsAllowed() { return read('tqr_analytics') === 'si' }
   // Nueva elección: el consentimiento anterior solo mencionaba a Meta.
   function marketingAllowed() { return read('tqr_advertising') === 'si' }
+
+  function readAttribution() {
+    try { return JSON.parse(decodeURIComponent(read('tqr_atrib') || '{}')) || {} } catch (_) { return {} }
+  }
+  function captureAttribution() {
+    const params = new URLSearchParams(location.search)
+    const saved = readAttribution()
+    let referrer = ''
+    try { referrer = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : '' } catch (_) {}
+    const next = { ...saved }
+    ATTR_KEYS.forEach(key => {
+      const value = (params.get(key) || '').trim().slice(0, 500)
+      if (value && !next[key]) next[key] = value
+    })
+    if (!next.referrer && referrer) next.referrer = referrer
+    if (!next.landing_page) next.landing_page = location.pathname
+    if (Object.keys(next).length) write('tqr_atrib', encodeURIComponent(JSON.stringify(next)))
+    window.__tqrAttrib = next
+    return next
+  }
+  function decorateRegistrationLinks() {
+    if (APP) return
+    const attrib = captureAttribution()
+    document.querySelectorAll('a[href*="app.trazaqr.com/registro"]').forEach(link => {
+      try {
+        const url = new URL(link.href)
+        ATTR_KEYS.forEach(key => {
+          if (!url.searchParams.get(key) && attrib[key]) url.searchParams.set(key, attrib[key])
+        })
+        link.href = url.toString()
+      } catch (_) {}
+    })
+  }
 
   function ensureGoogleTag(id) {
     const hadGtag = typeof window.gtag === 'function'
@@ -185,6 +219,7 @@
   })
   document.addEventListener('DOMContentLoaded', function () {
     syncLandingChoice()
+    decorateRegistrationLinks()
     loadGoogle(); loadMeta(); loadGoogleAds()
     if (read('tqr_advertising') === null || (APP && read('tqr_analytics') === null)) showBanner()
   })
