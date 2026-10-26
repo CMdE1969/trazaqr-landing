@@ -47,6 +47,22 @@
     })
     if (!next.referrer && referrer) next.referrer = referrer
     if (!next.landing_page) next.landing_page = location.pathname
+    if (!next.utm_source) {
+      if (next.gclid) next.utm_source = 'google'
+      else if (/(^|\.)google\./.test(referrer)) next.utm_source = 'google'
+      else if (/(^|\.)bing\./.test(referrer)) next.utm_source = 'bing'
+      else if (/(^|\.)facebook\.com$|(^|\.)instagram\.com$/.test(referrer)) next.utm_source = referrer.split('.')[0]
+      else if (referrer) next.utm_source = referrer
+      else next.utm_source = 'direct'
+    }
+    if (!next.utm_medium) {
+      if (next.gclid) next.utm_medium = 'cpc'
+      else if (/(^|\.)google\.|(^|\.)bing\./.test(referrer)) next.utm_medium = 'organic'
+      else if (/(^|\.)facebook\.com$|(^|\.)instagram\.com$/.test(referrer)) next.utm_medium = 'social'
+      else if (referrer) next.utm_medium = 'referral'
+      else next.utm_medium = 'none'
+    }
+    if (!next.utm_campaign) next.utm_campaign = '(not set)'
     if (Object.keys(next).length) write('tqr_atrib', encodeURIComponent(JSON.stringify(next)))
     window.__tqrAttrib = next
     return next
