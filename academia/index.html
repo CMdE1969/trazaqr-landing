@@ -46,6 +46,29 @@ h1{font-family:var(--ff-display);font-weight:700;font-size:34px;line-height:40px
 .academy-signature{display:flex;align-items:center;gap:14px;background:var(--ac-blue-light);border:1px solid rgba(17,128,218,.18);border-radius:14px;padding:16px 18px;margin:0 0 28px;}
 .academy-signature-mark{font-family:var(--ff-display);font-size:11px;letter-spacing:.14em;color:var(--ac-blue-mid);font-weight:700;white-space:nowrap;}
 .academy-signature p{font-size:13px;color:var(--ac-ink);margin:0;}
+.academy-actions{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 32px;}
+.academy-actions a,.video-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 16px;border-radius:9px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,background .2s,border-color .2s;}
+.academy-actions a:hover,.video-actions a:hover{transform:translateY(-1px);}
+.academy-actions .primary,.video-actions .primary{background:var(--ac-blue);color:#fff;}
+.academy-actions .primary:hover,.video-actions .primary:hover{background:var(--ac-blue-mid);}
+.academy-actions .secondary,.video-actions .secondary{background:#fff;color:var(--ac-blue-mid);border:1px solid rgba(17,128,218,.35);}
+.academy-actions .secondary:hover,.video-actions .secondary:hover{border-color:var(--ac-blue);background:var(--ac-blue-light);}
+.question-block{margin:0 0 24px;}
+.question-block h2,.checker-card h2{font-family:var(--ff-display);font-weight:700;font-size:26px;line-height:32px;color:var(--ac-ink);margin-bottom:8px;}
+.section-intro{font-size:15px;color:var(--ac-muted);margin-bottom:18px;}
+.question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+.question-card{display:flex;flex-direction:column;align-items:flex-start;background:var(--ac-surface);border:1px solid var(--ac-border);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s;}
+.question-card:hover{border-color:var(--ac-blue);transform:translateY(-2px);}
+.question-card h3{font-family:var(--ff-display);font-weight:700;font-size:18px;line-height:24px;color:var(--ac-ink);margin-bottom:8px;}
+.question-card p{font-size:14px;line-height:1.55;color:var(--ac-muted);margin-bottom:14px;}
+.question-card span,.all-guides-link{font-size:13px;font-weight:700;color:var(--ac-blue-mid);}
+.all-guides-link{display:inline-block;margin-top:16px;text-decoration:none;}
+.all-guides-link:hover{text-decoration:underline;}
+.checker-card{margin:0 0 24px;padding:24px;border-radius:16px;background:var(--ac-ink);color:#fff;}
+.checker-card h2{color:#fff;}
+.checker-card p{max-width:58ch;font-size:15px;line-height:1.6;color:rgba(255,255,255,.78);margin-bottom:16px;}
+.checker-card a{display:inline-flex;align-items:center;min-height:44px;padding:11px 16px;border-radius:9px;background:#fff;color:var(--ac-ink);font-size:14px;font-weight:700;text-decoration:none;}
+.checker-card a:hover{background:var(--ac-blue-light);}
 .cat-card{display:block;background:var(--ac-surface);border:1px solid var(--ac-border);border-radius:16px;
   padding:28px;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s;}
 .cat-card:hover{border-color:var(--ac-blue);transform:translateY(-2px);}
@@ -55,11 +78,12 @@ h1{font-family:var(--ff-display);font-weight:700;font-size:34px;line-height:40px
 .video-card h2{font-family:var(--ff-display);font-weight:700;font-size:22px;line-height:28px;color:var(--ac-ink);margin-bottom:8px;}
 .video-card p{font-size:14px;color:var(--ac-muted);line-height:1.6;margin-bottom:16px;}
 .video-card video{display:block;width:100%;border-radius:10px;background:#12131A;aspect-ratio:16/9;}
+.video-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
 .video-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;text-decoration:none;color:var(--ac-blue-mid);}
 footer{border-top:1px solid var(--ac-border);background:var(--ac-ink);color:rgba(255,255,255,.7);padding:26px 24px;text-align:center;font-size:13px;}
 footer a{color:rgba(255,255,255,.7);margin:0 8px;text-decoration:none;}
 footer a:hover{color:#fff;}
-@media (max-width:600px){ .wrap{padding:32px 18px 60px;} .academy-signature{align-items:flex-start;flex-direction:column;gap:5px;} }
+@media (max-width:600px){ .wrap{padding:32px 18px 60px;} .academy-signature{align-items:flex-start;flex-direction:column;gap:5px;} .academy-actions,.video-actions{flex-direction:column;} .academy-actions a,.video-actions a{width:100%;} .question-grid{grid-template-columns:1fr;} .question-block h2,.checker-card h2{font-size:23px;line-height:29px;} }
 </style>
 
 <script type="application/ld+json">
@@ -200,19 +224,57 @@ footer a:hover{color:#fff;}
     <p><strong>Formación clara. Cumplimiento seguro.</strong></p>
   </div>
 
-  <a href="/academia/deca" class="cat-card">
-    <h2>DeCA — Documento Electrónico de Control Administrativo</h2>
-    <p>Quién está obligado, qué transportes quedan fuera y qué exige la normativa desde el 5 de octubre de 2026.</p>
-  </a>
+  <div class="academy-actions" aria-label="Accesos principales de Academia">
+    <a class="primary" href="/academia/deca">Ver todas las guías DeCA</a>
+    <a class="secondary" href="/deca/estoy-obligado">¿Estoy obligado? Comprobarlo</a>
+  </div>
+
+  <section class="question-block" aria-labelledby="empieza-por-tu-duda">
+    <h2 id="empieza-por-tu-duda">Empieza por tu duda</h2>
+    <p class="section-intro">Encuentra rápidamente la respuesta que necesitas sobre el DeCA.</p>
+    <div class="question-grid">
+      <a class="question-card" href="/academia/deca/quien-esta-obligado">
+        <h3>¿Estoy obligado al DeCA?</h3>
+        <p>Comprueba qué transportes están sujetos al DeCA y cuáles están exentos.</p>
+        <span>Ver respuesta →</span>
+      </a>
+      <a class="question-card" href="/academia/deca/quien-debe-generar">
+        <h3>¿Quién tiene que generar el DeCA?</h3>
+        <p>Descubre qué responsabilidad tienen el cargador contractual y el transportista efectivo.</p>
+        <span>Ver respuesta →</span>
+      </a>
+      <a class="question-card" href="/academia/deca/que-debe-llevar-conductor">
+        <h3>¿Qué tiene que llevar el conductor?</h3>
+        <p>Consulta cómo debe disponer el conductor del DeCA durante el transporte.</p>
+        <span>Ver respuesta →</span>
+      </a>
+      <a class="question-card" href="/academia/deca/como-crear-un-deca-paso-a-paso">
+        <h3>¿Cómo se crea un DeCA?</h3>
+        <p>Consulta el proceso para preparar y generar el documento antes de iniciar el transporte.</p>
+        <span>Ver paso a paso →</span>
+      </a>
+    </div>
+    <a class="all-guides-link" href="/academia/deca">Ver las 11 guías sobre el DeCA →</a>
+  </section>
+
+  <section class="checker-card" aria-labelledby="comprobador-academia">
+    <h2 id="comprobador-academia">¿No sabes si el DeCA afecta a tu transporte?</h2>
+    <p>Responde 4 preguntas y comprueba tu caso en aproximadamente un minuto. Gratis y sin registro.</p>
+    <a href="/deca/estoy-obligado">Comprobar mi transporte →</a>
+  </section>
 
   <section class="video-card" aria-labelledby="video-primer-deca">
     <div class="eyebrow">Vídeos</div>
-    <h2 id="video-primer-deca">Aprende a emitir tu primer DeCA: de borrador a entregado</h2>
-    <p>Una demostración completa de TrazaQR: crear el borrador, emitir el documento, iniciar el transporte y confirmar la entrega.</p>
+    <h2 id="video-primer-deca">¿Ya necesitas gestionar el DeCA?</h2>
+    <p>Mira cómo funciona TrazaQR en una operación completa: desde la creación del DeCA hasta el acceso del conductor y la entrega.</p>
     <video controls preload="metadata" playsinline>
       <source src="/assets/academia/tutorial-primer-deca-borrador-a-entregado.mp4" type="video/mp4">
       Tu navegador no puede reproducir este vídeo. <a href="/assets/academia/tutorial-primer-deca-borrador-a-entregado.mp4">Abrir el vídeo directamente</a>.
     </video>
+    <div class="video-actions" aria-label="Acciones de TrazaQR">
+      <a class="primary" href="https://app.trazaqr.com/registro">Probar TrazaQR gratis →</a>
+      <a class="secondary" href="https://trazaqr.com/#como">Ver cómo funciona TrazaQR →</a>
+    </div>
     <a class="video-link" href="/assets/academia/tutorial-primer-deca-borrador-a-entregado.mp4" target="_blank" rel="noopener">Abrir vídeo en una pestaña nueva →</a>
   </section>
 </div>
